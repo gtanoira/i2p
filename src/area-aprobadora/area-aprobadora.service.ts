@@ -1,0 +1,19 @@
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+
+// Schemas
+import { AreaAprobadora, AreaAprobadoraDocument } from './area-aprobadora.schema';
+
+@Injectable()
+export class AreaAprobadoraService {
+
+  constructor(
+    @InjectModel(AreaAprobadora.name) private areaAprobadoraModel: Model<AreaAprobadoraDocument>
+  ) {}
+
+  // Traer todos los registros
+  async findAll(): Promise<AreaAprobadora[]> {
+    return this.areaAprobadoraModel.find().exec();
+  }
+}
