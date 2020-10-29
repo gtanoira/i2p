@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose/dist';
+import { MongooseModule } from '@nestjs/mongoose';
 
 // Environment
 import { I2P_DBASE, I2P_OLD } from './environment/environment.settings';

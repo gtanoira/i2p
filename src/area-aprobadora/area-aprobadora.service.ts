@@ -16,4 +16,9 @@ export class AreaAprobadoraService {
   async findAll(): Promise<AreaAprobadora[]> {
     return this.areaAprobadoraModel.find().exec();
   }
+
+  // Grabar un nuevo doc
+  async addAreaAprobadora(area: AreaAprobadora) {
+    return this.areaAprobadoraModel.create(area);
+  }
 }

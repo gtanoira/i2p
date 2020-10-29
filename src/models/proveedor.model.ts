@@ -9,5 +9,5 @@ export class Proveedor {
   public name!: string;
 
   @Prop()
-  public sapCondPago!: string;
+  public sapCondPago?: string;
 };
