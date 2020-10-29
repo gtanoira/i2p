@@ -10,7 +10,7 @@ export type AreaAprobadoraDocument = AreaAprobadora & Document;
   collection: 'area_aprobadoras'
 })
 export class AreaAprobadora {
-  @Prop()
+  @Prop({required: true, unique: true})
   public id!: string;
 
   @Prop()
