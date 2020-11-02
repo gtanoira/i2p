@@ -10,7 +10,7 @@ export type AreaAprobadoraDocument = AreaAprobadora & Document;
   collection: 'area_aprobadoras'
 })
 export class AreaAprobadora {
-  @Prop({required: true, unique: true})
+  @Prop({unique: true})
   public id!: string;
 
   @Prop()
@@ -18,7 +18,7 @@ export class AreaAprobadora {
 
   // Detalle Factura
   @Prop({ type: Proveedor, _id: false })
-  public proveedores?: Proveedor[]
+  public proveedores!: Proveedor[]
 }
 
 export const AreaAprobadoraSchema = SchemaFactory.createForClass(AreaAprobadora);

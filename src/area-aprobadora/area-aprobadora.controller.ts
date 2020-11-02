@@ -64,7 +64,7 @@ export class AreaAprobadoraController {
     return {message: rtnMessage};
   }
 
-  @Get('/')
+  @Get()
   async findAll(): Promise<AreaAprobadora[]> {
     return await this.areaAprobadoraService.findAll();
   }
