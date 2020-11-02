@@ -2632,7 +2632,7 @@
         "affectsGlobalScope": false
       },
       "../src/main.ts": {
-        "version": "2a0baf4a3d3f16f80f39c99ea8ff4a10497d14c6f20797380ce519959a9f003d",
+        "version": "8ff811d8aa5c15a3df1b4a953ca16e2e0cc3bc2962995a4ed85214d3eb7ab460",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
@@ -5008,7 +5008,8 @@
       "../src/main.ts": [
         "../node_modules/@nestjs/core/index.d.ts",
         "../node_modules/@nestjs/platform-express/interfaces/nest-express-application.interface.d.ts",
-        "../src/app.module.ts"
+        "../src/app.module.ts",
+        "../src/environment/environment.settings.ts"
       ],
       "../src/models/proveedor.model.ts": [
         "../node_modules/@nestjs/mongoose/index.d.ts"
