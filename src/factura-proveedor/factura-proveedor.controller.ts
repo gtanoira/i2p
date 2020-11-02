@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Patch, Post, ServiceUnavailableException } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Patch, Post, ServiceUnavailableException } from '@nestjs/common';
 import { Decimal128 } from 'bson';
 import * as moment from 'moment';
 
@@ -77,6 +77,7 @@ export class FacturaProveedorController {
 
   // Alta de facturas
   @Post()
+  @HttpCode(200)
   async addFactura(@Body() facturaProveedorDto: CreateFacturaProveedorDto ): Promise<FacturaProveedorDocument> {
     return await this.facturaProveedorService.addFacturaProveedor(facturaProveedorDto);
   }

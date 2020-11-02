@@ -18,7 +18,7 @@ export class DetalleFactura {
   public descripcion?: string | null;
   
   @ApiProperty({ default: null })
-  public mesServicio?: Date | string;
+  public mesServicio?: string;
 
   @ApiProperty({ default: null })
   public sapCentroCostoId?: string | null;

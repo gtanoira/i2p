@@ -18,7 +18,7 @@ export class DetalleFactura {
   public descripcion?: string | null;
   
   @Prop({ default: null })
-  public mesServicio?: Date | string;
+  public mesServicio?: string;
 
   @Prop({ default: null })
   public sapCentroCostoId?: string | null;
@@ -71,10 +71,7 @@ export class ImpuestoFactura {
 // Log Facturas
 export class LogFactura {
 
-  @Prop({ 
-    default: Date.now(),
-    set: (value: string | Date | undefined) => { return value === undefined ? null : value; }
-  })
+  @Prop()
   public fechaLog!: Date;
 
   @Prop({ enum: LogFacturaStatus, default: 'CREADA' })
