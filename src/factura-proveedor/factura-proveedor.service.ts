@@ -14,7 +14,8 @@ export class FacturaProveedorService {
   
   // Traer todos los registros
   async findAll(): Promise<FacturaProveedor[]> {
-    return this.facturaProveedorModel.find().exec();
+    console.log('*** PASO 1');
+    return this.facturaProveedorModel.find({$limit : 2});
   }
 
   // Grabar un nuevo doc

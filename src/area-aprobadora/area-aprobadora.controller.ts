@@ -16,11 +16,6 @@ export class AreaAprobadoraController {
     private areaAprobadoraOldService: AreaAprobadoraOldService
   ) {}
 
-  @Get()
-  async findAll(): Promise<AreaAprobadora[]> {
-    return await this.areaAprobadoraService.findAll();
-  }
-
   @Patch('/migrate')
   async migrateFromOld(): Promise<{[key:string]: any}> {
 
@@ -69,5 +64,9 @@ export class AreaAprobadoraController {
     return {message: rtnMessage};
   }
 
+  @Get('/')
+  async findAll(): Promise<AreaAprobadora[]> {
+    return await this.areaAprobadoraService.findAll();
+  }
 }
 

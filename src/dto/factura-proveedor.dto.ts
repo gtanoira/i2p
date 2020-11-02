@@ -1,69 +1,69 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { Document, Types } from 'mongoose';
+import { IsDate } from 'class-validator';
 
 // Models
-import { DocStatus, LogFacturaStatus } from '../models/constantes.model';
+import { DocStatus, LogFacturaStatus } from 'src/models/constantes.model';
 
 // Detalle Factura
 export class DetalleFactura {
 
-  @Prop()
+  @ApiProperty()
   public posicion!: number;
 
-  @Prop()
+  @ApiProperty()
   public concepto!: string;
 
-  @Prop({ default: '' })
+  @ApiProperty({ default: '' })
   public descripcion?: string | null;
   
-  @Prop({ default: null })
+  @ApiProperty({ default: null })
   public mesServicio?: Date | string;
 
-  @Prop({ default: null })
+  @ApiProperty({ default: null })
   public sapCentroCostoId?: string | null;
 
-  @Prop({ default: null })
+  @ApiProperty({ default: null })
   public sapCentroCostoDesc?: string | null;
 
-  @Prop({ default: null })
+  @ApiProperty({ default: null })
   public sapCtaCtbleId?: string | null;
 
-  @Prop({ default: null })
+  @ApiProperty({ default: null })
   public sapCtaCtbleDesc?: string | null;
 
-  @Prop({ default: null })
+  @ApiProperty({ default: null })
   public sapOrden?: string | null;
 
-  @Prop({ default: 0.00 })
+  @ApiProperty({ default: 0.00 })
   public itemNeto!: number;
 
-  @Prop({ default: null })
+  @ApiProperty({ default: null })
   public sapTaxId?: string | null;
 
-  @Prop({ default: null })
+  @ApiProperty({ default: null })
   public sapTaxDesc?: string | null;
 
-  @Prop({ default: 0.00 })
+  @ApiProperty({ default: 0.00 })
   public itemIva!: number;
 }
 
 // Impuestos Facturas
 export class ImpuestoFactura {
 
-  @Prop()
+  @ApiProperty()
   public posicion!: number;
 
-  @Prop()
+  @ApiProperty()
   public sapTaxId!: string;
 
-  @Prop({ default: null })
+  @ApiProperty({ default: null })
   public sapTaxDesc?: string | null;
 
-  @Prop({ default: 0.00 })
+  @ApiProperty({ default: 0.00 })
   public totalImpuesto!: number;
 
-  @Prop({ default: true })
+  @ApiProperty({ default: true })
   public debeCalcularse?: boolean;
 
 }
@@ -71,92 +71,85 @@ export class ImpuestoFactura {
 // Log Facturas
 export class LogFactura {
 
-  @Prop({ 
-    default: Date.now(),
-    set: (value: string | Date | undefined) => { return value === undefined ? null : value; }
-  })
+  @ApiProperty()
+  @Type(() => Date)
+  @IsDate()
   public fechaLog!: Date;
 
-  @Prop({ enum: LogFacturaStatus, default: 'CREADA' })
+  @ApiProperty({ enum: LogFacturaStatus, default: 'CREADA' })
   public statusLog!: string;
 
-  @Prop()
+  @ApiProperty()
   public userLog!: string;
 }
 
-@Schema({
-  collection: 'factura_proveedores'
-})
-export class FacturaProveedor {
-
-  @Prop()
-  public migration_id?: Types.ObjectId;
+export class CreateFacturaProveedorDto {
   
-  @Prop()
+  @ApiProperty()
   public empresaId!: string;
 
-  @Prop({default: null})
+  @ApiProperty({default: null})
   public empresaDesc?: string;
 
-  @Prop()
+  @ApiProperty()
   public proveedorId!: string;
 
-  @Prop({default: null})
+  @ApiProperty({default: null})
   public proveedorDesc?: string;
 
-  @Prop()
+  @ApiProperty()
+  @Type(() => Date)
+  @IsDate()
   public fechaDoc!: Date;
 
-  @Prop({ default: null })
+  @ApiProperty({ default: null })
+  @Type(() => Date)
   public fechaCtble?: Date;
 
-  @Prop()
+  @ApiProperty()
   public sapCbteId!: string;
 
-  @Prop({default: null})
+  @ApiProperty({default: null})
   public sapCbteDesc?: string;
 
-  @Prop({ default: null })
+  @ApiProperty({ default: null })
   public numeroFactura?: string | null;
  
-  @Prop({ uppercase: true, match: /[A-Z]{3}/, default: 'ARS' })
+  @ApiProperty({ default: 'ARS' })
   public monedaDoc!: string;
  
-  @Prop({ default: 0.00 })
+  @ApiProperty({ default: 0.00 })
   public monedaCotiz?: number;
 
-  @Prop({ default: 0.00 })
+  @ApiProperty({ default: 0.00 })
   public totalNeto?: number;
   
-  @Prop({ default: null })
+  @ApiProperty({ default: null })
   public sapDocId?: string;
 
-  @Prop({ default: null})
+  @ApiProperty({ default: null})
   @Type(() => Date)
   public sapDocFecha?: Date;
 
-  @Prop({ uppercase: true })
+  @ApiProperty()
   public areaAprobadoraId!: string;
 
-  @Prop({default: null})
+  @ApiProperty({default: null})
   public areaAprobadoraDesc?: string;
 
-  @Prop({ enum: DocStatus, default: 'EN_CARGA' })
+  @ApiProperty({ enum: DocStatus, default: 'EN_CARGA' })
   public docStatus!: string;
 
   // Detalle Factura
-  @Prop({ type: DetalleFactura, _id: false })
+  @ApiProperty({ type: DetalleFactura, default: [] })
   public detalle?: DetalleFactura[];
 
   // Impuestos Factura
-  @Prop({ type: ImpuestoFactura, _id: false })
+  @ApiProperty({ type: ImpuestoFactura, default: [] })
   public impuestos?: ImpuestoFactura[];
 
   // Log Factura
-  @Prop({ type: LogFactura, _id: false })
+  @ApiProperty({ type: LogFactura, default: [] })
   public log?: LogFactura[];
 
 }
-
-export type FacturaProveedorDocument = FacturaProveedor & Document;
-export const FacturaProveedorSchema = SchemaFactory.createForClass(FacturaProveedor);

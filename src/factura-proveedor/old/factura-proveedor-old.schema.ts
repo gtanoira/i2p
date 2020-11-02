@@ -16,7 +16,7 @@ class DetalleFactura {
   public accountcode?: string;
   
   @Prop()
-  public amount_item?: string;
+  public amount_item?: string | null;
 
   @Prop()
   public tax_percentage?: string;
@@ -205,5 +205,4 @@ export class FacturaProveedorOld {
   @Prop({ type: ImpuestoFactura })
   public detailtax?: ImpuestoFactura[]
 }
-
 export const FacturaProveedorOldSchema = SchemaFactory.createForClass(FacturaProveedorOld);
