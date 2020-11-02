@@ -1,4 +1,4 @@
-// DocStatus: indica en qué proceso se encuentra la factura del proveedor
+/* // DocStatus: indica en qué proceso se encuentra la factura del proveedor
 export enum DocStatus {
   EN_CARGA = 'enCarga',
   EN_APROBACION = 'enAprobacion',
@@ -16,4 +16,24 @@ export enum LogFacturaStatus {
   ENVIADA_SAP = 'enviadaASap',
   FINALIZADA = 'finalizada',
   ANULADA = 'anulada'
-}
+} */
+
+// DocStatus: indica en qué proceso se encuentra la factura del proveedor
+export const DocStatus = [
+  'EN_CARGA',
+  'EN_APROBACION',
+  'EN_SAP',
+  'FINALIZADA',
+  'ANULADA'
+];
+
+// LogFacturaStatus
+export const LogFacturaStatus  = [
+  'CREADA',
+  'MODIFICADA',
+  'APROBADA',
+  'RECHAZADA',
+  'ENVIADA_SAP',
+  'FINALIZADA',
+  'ANULADA'
+];

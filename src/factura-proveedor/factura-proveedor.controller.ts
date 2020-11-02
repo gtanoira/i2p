@@ -1,17 +1,18 @@
-import { Controller, Patch, ServiceUnavailableException } from '@nestjs/common';
+import { Body, Controller, Patch, Post, ServiceUnavailableException } from '@nestjs/common';
 import { Decimal128 } from 'bson';
-import moment from 'moment';
+import * as moment from 'moment';
 
 // Schemas
-import { DetalleFactura, FacturaProveedor, ImpuestoFactura, LogFactura } from './factura-proveedor.schema';
+import { DetalleFactura, FacturaProveedor, FacturaProveedorDocument, ImpuestoFactura, LogFactura } from './factura-proveedor.schema';
 import { FacturaProveedorOld } from './old/factura-proveedor-old.schema';
 
-// Models
-import { DocStatus, LogFacturaStatus } from 'src/models/constantes.model';
+// DTOs
+import { CreateFacturaProveedorDto } from '../dto/factura-proveedor.dto';
 
 // Services
 import { FacturaProveedorService } from './factura-proveedor.service';
 import { FacturaProveedorOldService } from './old/factura-proveedor.service';
+import { Type } from 'class-transformer';
 
 @Controller('factura_proveedores')
 export class FacturaProveedorController {
@@ -20,7 +21,7 @@ export class FacturaProveedorController {
     private facturaProveedorService: FacturaProveedorService,
     private facturaProveedorOldService: FacturaProveedorOldService
   ) {}
-  
+
   @Patch('/migrate')
   async migrateFromOld(): Promise<{[key:string]: any}> {
     // Mensaje de retorno del request
@@ -45,13 +46,16 @@ export class FacturaProveedorController {
       // Grabar las facturas
       for (const factura of newDocs) {
         await this.facturaProveedorService.addFacturaProveedor(factura)
-          .then(() => { docsInsertados += 1; })
-          .catch(() => { 
+          .then(() => {
+            docsInsertados += 1;
+          })
+          .catch((error) => {
             docsConError.push({
               migrationId: factura.migration_id,
               proveedor: factura.proveedorDesc,
               fechaDoc: factura.fechaDoc,
-              docNro: factura.numeroFactura
+              docNro: factura.numeroFactura,
+              error: error.message
             })
           });
       };
@@ -62,20 +66,6 @@ export class FacturaProveedorController {
         errors: docsConError
       };
 
-      /* const enviarFactura = async (factura: FacturaProveedor): Promise<number> => {
-        return await this.facturaProveedorService.addFacturaProveedor(factura)
-          .then(() => { return 1; })
-          .catch(() => { return Promise.reject(`${factura.migration_id}`) });
-      };
-      const resultadoEnviar: Iterable<Promise<number>> = newDocs.forEach(async factura => {
-        return enviarFactura(factura)
-          .then(data => docsInsertados += data)
-          .catch();
-      });
-      Promise.all(resultadoEnviar)
-        .then()
-        .catch(); */
-
     } else {
       rtnMessage = {
         message: 'No hay facturas que migrar en la base de datos de Juan Carta.',
@@ -85,7 +75,12 @@ export class FacturaProveedorController {
     return rtnMessage;
   }
 
-  // Armar la cabecera de la nueva factura}
+  // Alta de facturas
+  @Post()
+  async addFactura(@Body() facturaProveedorDto: CreateFacturaProveedorDto ): Promise<FacturaProveedorDocument> {
+    return await this.facturaProveedorService.addFacturaProveedor(facturaProveedorDto);
+  }
+  // Armar la cabecera de la nueva factura
   private mapNewDoc(factura: FacturaProveedorOld): FacturaProveedor {
 
     // Armar los Detalles Factura
@@ -101,10 +96,10 @@ export class FacturaProveedorController {
         sapCtaCtbleId: detalle.accountcode.split(/\:/)[0],
         sapCtaCtbleDesc: detalle.accountcode.split(/\:/)[1],
         sapOrden: detalle.order,
-        itemNeto: Decimal128.fromString(detalle.amount_item),
-        sapTaxId: detalle.tax_percentage.split(/\:/)[0],
-        sapTaxDesc: detalle.tax_percentage.split(/\:/)[1],
-        itemIva: Decimal128.fromString(detalle.tax_amount)
+        itemNeto: +this.validateNumber(detalle.amount_item),//Decimal128.fromString(this.validateNumber(detalle.amount_item)),
+        sapTaxId: detalle.tax_percentage?.split(/\:/)[0],
+        sapTaxDesc: detalle.tax_percentage?.split(/\:/)[1],
+        itemIva: +this.validateNumber(detalle.tax_amount)//Decimal128.fromString(this.validateNumber(detalle.tax_amount)),
       });
     });
 
@@ -113,9 +108,9 @@ export class FacturaProveedorController {
     factura.detailtax.forEach((impuesto, index) => {
       impuestoFactura.push({
         posicion: index + 1,
-        sapTaxId: impuesto.taxcode.split(/\:/)[0],
-        sapTaxDesc: impuesto.taxcode.split(/\:/)[1],
-        totalImpuesto: Decimal128.fromString(impuesto.taxamount)
+        sapTaxId: impuesto.taxcode?.split(/\:/)[0],
+        sapTaxDesc: impuesto.taxcode?.split(/\:/)[1],
+        totalImpuesto: +this.validateNumber(impuesto.taxamount)//Decimal128.fromString(this.validateNumber(impuesto.taxamount)),
       });
     });
 
@@ -125,28 +120,28 @@ export class FacturaProveedorController {
       logFactura.push({
         fechaLog: moment(gralLog.update_date, 'lll').toDate(),
         statusLog: this.toLogStatus(gralLog.action),
-        userLog: gralLog.description.split(/\:/)[1]
+        userLog: gralLog.description?.split(/\:/)[1]
       });
     });
 
     // Armar la factura
     const newFactura: FacturaProveedor = {
       empresaId: factura.company.split(/\:/)[0],
-      empresaDesc: factura.company.split(/\:/)[1],
+      empresaDesc: factura.company.split(/\:/)[1].trim(),
       proveedorId: factura.supplier.split(/\:/)[0],
-      proveedorDesc: factura.supplier.split(/\:/)[1],
+      proveedorDesc: factura.supplier.split(/\:/)[1].trim(),
       fechaDoc: moment(factura.documentdate, 'YYYY-MM-DD').toDate(),
-      fechaCtble: moment(factura.accountingdate, 'YYYY-MM-DD').toDate(),
+      fechaCtble: this.validateFecha(factura.accountingdate, null),// moment(factura.accountingdate, 'YYYY-MM-DD').toDate(),
       sapCbteId: factura.documenttype.split(/\:/)[0],
-      sapCbteDesc: factura.documenttype.split(/\:/)[1],
+      sapCbteDesc: factura.documenttype.split(/\:/)[1].trim(),
       numeroFactura: factura.documentnumber,
       monedaDoc: factura.currency,
-      monedaCotiz: Decimal128.fromString(factura.exchangerate),
-      totalNeto: Decimal128.fromString(factura.netamountinvoice.replace(' $', '')),
+      monedaCotiz: +this.validateNumber(factura.exchangerate), //Decimal128.fromString(this.validateNumber(factura.exchangerate)),
+      totalNeto: +this.validateNumber(factura.netamountinvoice), //Decimal128.fromString(this.validateNumber(factura.netamountinvoice)),
       sapDocId: factura.sap_id,
-      sapDocFecha: moment(factura.sap_date.split(' @')[0], 'YYYY-MM-dd').toDate(),
+      sapDocFecha: this.validateFecha(factura.sap_date, ' @'), //moment(factura.sap_date?.split(' @')[0], 'YYYY-MM-dd').toDate(),
       areaAprobadoraId: factura.approvalarea.split(/\:/)[0],
-      areaAprobadoraDesc: factura.approvalarea.split(/\:/)[1],
+      areaAprobadoraDesc: factura.approvalarea.split(/\:/)[1].trim(),
       docStatus: this.toDocStatus(factura.sap_status),
       detalle: detalleFactura,
       impuestos: impuestoFactura,
@@ -157,31 +152,52 @@ export class FacturaProveedorController {
     return newFactura;
   }
 
+  // Validar el campo numérico que viene como string
+  private validateNumber(value: string | undefined | null): string {
+    if (value === undefined || value === null || value.trim() === '') {
+      return '0';
+    } else {
+      // Quitar caracteres de más
+      return value.replace(/\$/g, '').replace(/,/g, '').trim();
+    }
+  }
+
   // Convertir el statusLog de Logs Factura
-  private toLogStatus(action: string): LogFacturaStatus {
+  private toLogStatus(action: string): string {
     switch (action) {
       case 'Aprobado':
-        return LogFacturaStatus.APROBADA;
+        return 'APROBADA';
       case 'Creada':
-        return LogFacturaStatus.CREADA;
+        return 'CREADA';
       case 'Rechazado':
-        return LogFacturaStatus.RECHAZADA;
+        return 'RECHAZADA';
       case 'Rechazado':
-        return LogFacturaStatus.RECHAZADA;
+        return 'RECHAZADA';
       default:
-        return LogFacturaStatus.MODIFICADA;
+        return 'MODIFICADA';
     };
   }
 
   // Convertir el docStatus de la Factura
-  private toDocStatus(action: string): DocStatus {
+  private toDocStatus(action: string): string {
     switch (action) {
       case 'PENDIENTE':
-        return DocStatus.EN_APROBACION;
+        return 'EN_APROBACION';
       case 'ENVIADA A SAP':
-        return DocStatus.EN_SAP;
+        return 'EN_SAP';
       default:
-        return DocStatus.EN_CARGA;
+        return 'EN_CARGA';
     };
   }
+
+  // Validar fecha
+  private validateFecha(value: string | undefined | null, separator: string | null): Date {
+    if (value === undefined || value === null || value.trim() === '') {
+      return null;
+    } else {
+      // Quitar caracteres de más
+      return moment(value.split(separator)[0], 'YYYY-MM-dd').toDate();
+    }
+  }
+
 }
