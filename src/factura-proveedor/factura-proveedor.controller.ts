@@ -1,4 +1,4 @@
-import { Body, Controller, Patch, Post, ServiceUnavailableException } from '@nestjs/common';
+import { Body, Controller, Get, Patch, Post, ServiceUnavailableException } from '@nestjs/common';
 import { Decimal128 } from 'bson';
 import * as moment from 'moment';
 
@@ -80,6 +80,12 @@ export class FacturaProveedorController {
   async addFactura(@Body() facturaProveedorDto: CreateFacturaProveedorDto ): Promise<FacturaProveedorDocument> {
     return await this.facturaProveedorService.addFacturaProveedor(facturaProveedorDto);
   }
+
+  // Traer todas las facturas
+  @Get()
+  async getAll(): Promise<FacturaProveedor[]> {
+    return await this.facturaProveedorService.findAll();
+  } 
   // Armar la cabecera de la nueva factura
   private mapNewDoc(factura: FacturaProveedorOld): FacturaProveedor {
 
