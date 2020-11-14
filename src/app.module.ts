@@ -13,6 +13,7 @@ import { AppService } from './app.service';
 // Modules
 import { AreaAprobadoraModule } from './area-aprobadora/area-aprobadora.module';
 import { FacturaProveedorModule } from './factura-proveedor/factura-proveedor.module';
+import { SociedadModule } from './sociedad/sociedad.module';
 
 // Connection Options
 const connOptions = {
@@ -37,6 +38,7 @@ const connOptions = {
     }),
     AreaAprobadoraModule,
     FacturaProveedorModule,
+    SociedadModule,
   ],
   controllers: [
     AppController

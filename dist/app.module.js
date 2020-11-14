@@ -14,6 +14,7 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const area_aprobadora_module_1 = require("./area-aprobadora/area-aprobadora.module");
 const factura_proveedor_module_1 = require("./factura-proveedor/factura-proveedor.module");
+const sociedad_module_1 = require("./sociedad/sociedad.module");
 const connOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -30,6 +31,7 @@ AppModule = __decorate([
             mongoose_1.MongooseModule.forRoot(environment_settings_1.I2P_OLD, Object.assign({ connectionName: 'i2p_old' }, connOptions)),
             area_aprobadora_module_1.AreaAprobadoraModule,
             factura_proveedor_module_1.FacturaProveedorModule,
+            sociedad_module_1.SociedadModule,
         ],
         controllers: [
             app_controller_1.AppController
