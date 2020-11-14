@@ -11,8 +11,9 @@ exports.DocStatus = [
 exports.LogFacturaStatus = [
     'CREADA',
     'MODIFICADA',
-    'APROBADA',
+    'EN_PROCESO',
     'RECHAZADA',
+    'APROBADA',
     'ENVIADA_SAP',
     'FINALIZADA',
     'ANULADA'

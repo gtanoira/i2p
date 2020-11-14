@@ -27,12 +27,13 @@ export const DocStatus = [
   'ANULADA'
 ];
 
-// LogFacturaStatus
+// LogFacturaStatus: status que se coloca en cada LOG de la factura
 export const LogFacturaStatus  = [
   'CREADA',
   'MODIFICADA',
-  'APROBADA',
+  'EN_PROCESO',
   'RECHAZADA',
+  'APROBADA',
   'ENVIADA_SAP',
   'FINALIZADA',
   'ANULADA'

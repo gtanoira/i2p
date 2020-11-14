@@ -1,5 +1,4 @@
 import { Body, Controller, Get, HttpCode, Patch, Post, ServiceUnavailableException } from '@nestjs/common';
-import { Decimal128 } from 'bson';
 import * as moment from 'moment';
 
 // Schemas
@@ -12,7 +11,6 @@ import { CreateFacturaProveedorDto } from '../dto/factura-proveedor.dto';
 // Services
 import { FacturaProveedorService } from './factura-proveedor.service';
 import { FacturaProveedorOldService } from './old/factura-proveedor.service';
-import { Type } from 'class-transformer';
 
 @Controller('factura_proveedores')
 export class FacturaProveedorController {
