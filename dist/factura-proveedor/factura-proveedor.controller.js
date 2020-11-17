@@ -15,6 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FacturaProveedorController = void 0;
 const common_1 = require("@nestjs/common");
 const moment = require("moment");
+const get_token_decorator_1 = require("../common/get-token.decorator");
+const validate_token_pipe_1 = require("../common/validate-token.pipe");
+const user_auth_model_1 = require("../models/user-auth.model");
 const factura_proveedor_dto_1 = require("../dto/factura-proveedor.dto");
 const factura_proveedor_service_1 = require("./factura-proveedor.service");
 const factura_proveedor_service_2 = require("./old/factura-proveedor.service");
@@ -69,7 +72,8 @@ let FacturaProveedorController = class FacturaProveedorController {
     async addFactura(facturaProveedorDto) {
         return await this.facturaProveedorService.addFacturaProveedor(facturaProveedorDto);
     }
-    async getAll() {
+    async getAll(authorization) {
+        console.log('*** getAll:', authorization);
         return await this.facturaProveedorService.findAll();
     }
     mapNewDoc(factura) {
@@ -195,8 +199,9 @@ __decorate([
 ], FacturaProveedorController.prototype, "addFactura", null);
 __decorate([
     common_1.Get(),
+    __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe())),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], FacturaProveedorController.prototype, "getAll", null);
 FacturaProveedorController = __decorate([

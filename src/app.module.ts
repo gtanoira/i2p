@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { HttpModule, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
 // Environment
@@ -14,6 +14,7 @@ import { AppService } from './app.service';
 import { AreaAprobadoraModule } from './area-aprobadora/area-aprobadora.module';
 import { FacturaProveedorModule } from './factura-proveedor/factura-proveedor.module';
 import { SociedadModule } from './sociedad/sociedad.module';
+import { AuthorizationsService } from './shared/authorizations.service';
 
 // Connection Options
 const connOptions = {
@@ -38,13 +39,15 @@ const connOptions = {
     }),
     AreaAprobadoraModule,
     FacturaProveedorModule,
+    HttpModule,
     SociedadModule,
   ],
   controllers: [
     AppController
   ],
   providers: [
-    AppService
+    AppService,
+    AuthorizationsService
   ],
 })
 export class AppModule {}
