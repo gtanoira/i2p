@@ -26,7 +26,7 @@ let FacturaProveedorController = class FacturaProveedorController {
         this.facturaProveedorService = facturaProveedorService;
         this.facturaProveedorOldService = facturaProveedorOldService;
     }
-    async migrateFromOld() {
+    async migrateFromOld(infoUser) {
         let rtnMessage = {};
         let docsInsertados = 0;
         const docsConError = [];
@@ -69,11 +69,10 @@ let FacturaProveedorController = class FacturaProveedorController {
         }
         return rtnMessage;
     }
-    async addFactura(facturaProveedorDto) {
+    async addFactura(infoUser, facturaProveedorDto) {
         return await this.facturaProveedorService.addFacturaProveedor(facturaProveedorDto);
     }
-    async getAll(authorization) {
-        console.log('*** getAll:', authorization);
+    async getAll(infoUser) {
         return await this.facturaProveedorService.findAll();
     }
     mapNewDoc(factura) {
@@ -185,16 +184,18 @@ let FacturaProveedorController = class FacturaProveedorController {
 };
 __decorate([
     common_1.Patch('/migrate'),
+    __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe())),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], FacturaProveedorController.prototype, "migrateFromOld", null);
 __decorate([
     common_1.Post(),
     common_1.HttpCode(200),
-    __param(0, common_1.Body()),
+    __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe())),
+    __param(1, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [factura_proveedor_dto_1.CreateFacturaProveedorDto]),
+    __metadata("design:paramtypes", [Object, factura_proveedor_dto_1.CreateFacturaProveedorDto]),
     __metadata("design:returntype", Promise)
 ], FacturaProveedorController.prototype, "addFactura", null);
 __decorate([

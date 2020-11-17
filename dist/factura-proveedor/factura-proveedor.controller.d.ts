@@ -7,11 +7,11 @@ export declare class FacturaProveedorController {
     private facturaProveedorService;
     private facturaProveedorOldService;
     constructor(facturaProveedorService: FacturaProveedorService, facturaProveedorOldService: FacturaProveedorOldService);
-    migrateFromOld(): Promise<{
+    migrateFromOld(infoUser: UserAuth): Promise<{
         [key: string]: any;
     }>;
-    addFactura(facturaProveedorDto: CreateFacturaProveedorDto): Promise<FacturaProveedorDocument>;
-    getAll(authorization: UserAuth): Promise<FacturaProveedor[]>;
+    addFactura(infoUser: UserAuth, facturaProveedorDto: CreateFacturaProveedorDto): Promise<FacturaProveedorDocument>;
+    getAll(infoUser: UserAuth): Promise<FacturaProveedor[]>;
     private mapNewDoc;
     private validateNumber;
     private toLogStatus;

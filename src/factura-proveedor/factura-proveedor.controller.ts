@@ -24,7 +24,9 @@ export class FacturaProveedorController {
   ) {}
 
   @Patch('/migrate')
-  async migrateFromOld(): Promise<{[key:string]: any}> {
+  async migrateFromOld(
+    @GetToken(new ValidateTokenPipe()) infoUser: UserAuth
+  ): Promise<{[key:string]: any}> {
     // Mensaje de retorno del request
     let rtnMessage = {};  // mensaje de retorno
     let docsInsertados = 0;  // cantidad de registros guardados en la base de datos
@@ -79,16 +81,18 @@ export class FacturaProveedorController {
   // Alta de facturas
   @Post()
   @HttpCode(200)
-  async addFactura(@Body() facturaProveedorDto: CreateFacturaProveedorDto ): Promise<FacturaProveedorDocument> {
+  async addFactura(
+    @GetToken(new ValidateTokenPipe()) infoUser: UserAuth,  
+    @Body() facturaProveedorDto: CreateFacturaProveedorDto
+  ): Promise<FacturaProveedorDocument> {
     return await this.facturaProveedorService.addFacturaProveedor(facturaProveedorDto);
   }
 
   // Traer todas las facturas
   @Get()
   async getAll(
-    @GetToken(new ValidateTokenPipe()) authorization: UserAuth
+    @GetToken(new ValidateTokenPipe()) infoUser: UserAuth
   ): Promise<FacturaProveedor[]> {
-    console.log('*** getAll:', authorization);
     return await this.facturaProveedorService.findAll();
   } 
   // Armar la cabecera de la nueva factura

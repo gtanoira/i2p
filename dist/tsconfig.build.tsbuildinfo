@@ -2962,8 +2962,8 @@
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.controller.ts": {
-        "version": "3940490b0954933ef01010baaa264d92d40e9cc2619a0ac6294ba923bb274c4f",
-        "signature": "a39437a2646e3a3eed842c668521caa9199591b7e29f9c16e22ccb61ccd6b820",
+        "version": "e8f29ff92511a8569a11b37344508c68efa3246ba832b6200f390c739a273cf2",
+        "signature": "00d5d9cdf14152dbc0aaa74fd8e9caeee47c5f649e0d173ccfb95f9d4e3b94f8",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/old/factura-proveedor.controller.ts": {
