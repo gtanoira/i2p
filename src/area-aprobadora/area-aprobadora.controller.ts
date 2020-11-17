@@ -4,9 +4,12 @@ import { AreaAprobadora } from './area-aprobadora.schema';
 // Services
 import { AreaAprobadoraService } from './area-aprobadora.service';
 import { AreaAprobadoraOldService } from './old/area-aprobadora.service';
-
 // Models
 import { Proveedor } from '../models/proveedor.model';
+import { UserAuth } from 'src/models/user-auth.model';
+// Decorators & Pipes
+import { GetToken } from 'src/common/get-token.decorator';
+import { ValidateTokenPipe } from 'src/common/validate-token.pipe';
 
 @Controller('area_aprobadoras')
 export class AreaAprobadoraController {
@@ -17,7 +20,9 @@ export class AreaAprobadoraController {
   ) {}
 
   @Patch('/migrate')
-  async migrateFromOld(): Promise<{[key:string]: any}> {
+  async migrateFromOld(
+    @GetToken(new ValidateTokenPipe) infoUser: UserAuth
+  ): Promise<{[key:string]: any}> {
 
     // Mensaje de retorno del request
     let rtnMessage = '';
@@ -65,7 +70,9 @@ export class AreaAprobadoraController {
   }
 
   @Get()
-  async findAll(): Promise<AreaAprobadora[]> {
+  async findAll(
+    @GetToken(new ValidateTokenPipe) infoUser: UserAuth
+  ): Promise<AreaAprobadora[]> {
     return await this.areaAprobadoraService.findAll();
   }
 }
