@@ -20,27 +20,12 @@ import { FacturaProveedorOldService } from './old/factura-proveedor.service';
     ], 'i2p_dbase'),
     MongooseModule.forFeature([
       { name: FacturaProveedorOld.name, schema: FacturaProveedorOldSchema }
-    ], 'i2p_old'),
+    ], 'i2p_old')
   ],
   controllers: [FacturaProveedorController, FacturaProveedorOldController],
-  providers: [FacturaProveedorService, FacturaProveedorOldService]
+  providers: [
+    FacturaProveedorService, 
+    FacturaProveedorOldService
+  ]
 })
 export class FacturaProveedorModule {}
-
-/* 
-MongooseModule.forFeature([
-  { name: FacturaProveedor.name, schema: FacturaProveedorSchema }
-], 'i2p_dbase'),
- */
-
- /*
-      MongooseModule.forFeatureAsync([
-      {
-        name: FacturaProveedor.name,
-        useFactory: () => {
-          const schema = FacturaProveedorSchema;
-          schema.pre('save', () => preSaveFacturaProveedor());
-          return schema;
-        },
-      }], 'i2p_dbase'),
- */

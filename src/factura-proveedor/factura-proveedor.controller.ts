@@ -1,13 +1,16 @@
 import { Body, Controller, Get, HttpCode, Patch, Post, ServiceUnavailableException } from '@nestjs/common';
 import * as moment from 'moment';
 
-// Schemas
+//Decorators
+import { GetToken } from 'src/common/get-token.decorator';
+// Pipes
+import { ValidateTokenPipe } from 'src/common/validate-token.pipe';
+// Schemas & Models
 import { DetalleFactura, FacturaProveedor, FacturaProveedorDocument, ImpuestoFactura, LogFactura } from './factura-proveedor.schema';
 import { FacturaProveedorOld } from './old/factura-proveedor-old.schema';
-
+import { UserAuth } from 'src/models/user-auth.model';
 // DTOs
 import { CreateFacturaProveedorDto } from '../dto/factura-proveedor.dto';
-
 // Services
 import { FacturaProveedorService } from './factura-proveedor.service';
 import { FacturaProveedorOldService } from './old/factura-proveedor.service';
@@ -82,7 +85,10 @@ export class FacturaProveedorController {
 
   // Traer todas las facturas
   @Get()
-  async getAll(): Promise<FacturaProveedor[]> {
+  async getAll(
+    @GetToken(new ValidateTokenPipe()) authorization: UserAuth
+  ): Promise<FacturaProveedor[]> {
+    console.log('*** getAll:', authorization);
     return await this.facturaProveedorService.findAll();
   } 
   // Armar la cabecera de la nueva factura
