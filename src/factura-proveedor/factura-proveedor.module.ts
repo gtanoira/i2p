@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 // Schemas
 import { FacturaProveedor, FacturaProveedorSchema } from './factura-proveedor.schema';
+import { FacturaImagenOld, FacturaImagenOldSchema } from './old/factura-imagen-old.schema';
 import { FacturaProveedorOld, FacturaProveedorOldSchema } from './old/factura-proveedor-old.schema';
 
 // Controllers
@@ -19,10 +20,14 @@ import { FacturaProveedorOldService } from './old/factura-proveedor.service';
       { name: FacturaProveedor.name, schema: FacturaProveedorSchema }
     ], 'i2p_dbase'),
     MongooseModule.forFeature([
-      { name: FacturaProveedorOld.name, schema: FacturaProveedorOldSchema }
+      { name: FacturaProveedorOld.name, schema: FacturaProveedorOldSchema },
+      { name: FacturaImagenOld.name, schema: FacturaImagenOldSchema }
     ], 'i2p_old')
   ],
-  controllers: [FacturaProveedorController, FacturaProveedorOldController],
+  controllers: [
+    FacturaProveedorController,
+    FacturaProveedorOldController
+  ],
   providers: [
     FacturaProveedorService, 
     FacturaProveedorOldService

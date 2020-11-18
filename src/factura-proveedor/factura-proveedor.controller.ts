@@ -1,10 +1,17 @@
-import { Body, Controller, Get, HttpCode, Patch, Post, ServiceUnavailableException } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, NotFoundException, Param, Patch, Post, Res, ServiceUnavailableException } from '@nestjs/common';
 import * as moment from 'moment';
+
+// import * as fs from 'file-system';
+// import { fs } from 'file-system';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const fs = require('file-system');
 
 //Decorators
 import { GetToken } from 'src/common/get-token.decorator';
 // Pipes
 import { ValidateTokenPipe } from 'src/common/validate-token.pipe';
+// Environment
+import { PUBLIC_PATH, PUBLIC_URL } from 'src/environment/environment.settings';
 // Schemas & Models
 import { DetalleFactura, FacturaProveedor, FacturaProveedorDocument, ImpuestoFactura, LogFactura } from './factura-proveedor.schema';
 import { FacturaProveedorOld } from './old/factura-proveedor-old.schema';
@@ -14,6 +21,9 @@ import { CreateFacturaProveedorDto } from '../dto/factura-proveedor.dto';
 // Services
 import { FacturaProveedorService } from './factura-proveedor.service';
 import { FacturaProveedorOldService } from './old/factura-proveedor.service';
+import { Types } from 'mongoose';
+import { Response } from 'supertest';
+import { Resolver } from 'dns';
 
 @Controller('factura_proveedores')
 export class FacturaProveedorController {
@@ -27,7 +37,8 @@ export class FacturaProveedorController {
   async migrateFromOld(
     @GetToken(new ValidateTokenPipe()) infoUser: UserAuth
   ): Promise<{[key:string]: any}> {
-    // Mensaje de retorno del request
+
+    // Variables
     let rtnMessage = {};  // mensaje de retorno
     let docsInsertados = 0;  // cantidad de registros guardados en la base de datos
     const docsConError = [];  // informe de las facturas que NO pudieron ser grabadas en la base de datos
@@ -94,8 +105,48 @@ export class FacturaProveedorController {
     @GetToken(new ValidateTokenPipe()) infoUser: UserAuth
   ): Promise<FacturaProveedor[]> {
     return await this.facturaProveedorService.findAll();
-  } 
-  // Armar la cabecera de la nueva factura
+  }
+
+  // Show Pdf File
+  @Get('/pdf/:fileName')
+  public getPdfFile(
+    //@GetToken(new ValidateTokenPipe()) infoUser: UserAuth,
+    @Param('fileName') fileName: string,
+    @Res() res
+  ): void {
+
+    const fileRead = new Promise((resolve, reject) => {
+      fs.readFile(`${PUBLIC_PATH}/pdf/${fileName}`, (err, file) => {
+        if (err) {
+          reject(`Archivo inexistente: ${fileName}`);
+        } else {          
+          const stat = fs.statSync(`${PUBLIC_PATH}/pdf/${fileName}`);
+          res.setHeader('Content-Length', stat.size);
+          res.setHeader('Content-Type', 'application/pdf');
+          res.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
+          resolve(file);
+          // res.send(file);
+        };
+      });
+    });
+
+    fileRead
+      .then(pdfFile => {
+        res.send(pdfFile);
+      })
+      .catch(error => {
+        // El archivo no existe
+        console.log('*** err', error);
+        res.status(404).send({
+          statusCode: 404,
+          message: error,
+          error: "Not found"
+        });
+        //Promise.reject(new NotFoundException(error));    //`Archivo inexistente: ${fileName}`);
+      })
+  }
+
+  // Armar el documento con el nuevo formato
   private mapNewDoc(factura: FacturaProveedorOld): FacturaProveedor {
 
     // Armar los Detalles Factura
@@ -139,6 +190,10 @@ export class FacturaProveedorController {
       });
     });
 
+    // Salvar el PDF asociado al doc en el disco
+    const pdfName = `${factura.supplier.split(/\:/)[0]}_${factura.accountingdate}_${factura.documentnumber}.pdf`;
+    this.savePdfFile(factura._id, pdfName);
+
     // Armar la factura
     const newFactura: FacturaProveedor = {
       empresaId: factura.company.split(/\:/)[0],
@@ -158,6 +213,7 @@ export class FacturaProveedorController {
       areaAprobadoraId: factura.approvalarea.split(/\:/)[0],
       areaAprobadoraDesc: factura.approvalarea.split(/\:/)[1].trim(),
       docStatus: this.toDocStatus(factura.sap_status),
+      pdfFile: pdfName,
       detalle: detalleFactura,
       impuestos: impuestoFactura,
       log: logFactura,
@@ -165,6 +221,27 @@ export class FacturaProveedorController {
     };
 
     return newFactura;
+  }
+
+  // Salvar los PDFs de la base Mongo al directorio /PUBLIC/PDF
+  private savePdfFile(id: Types.ObjectId, fileName: string): void {
+
+    this.facturaProveedorOldService.getPdfFile(id)
+      .then(pdfFile => {
+        if (pdfFile !== null) {
+          // const data = Buffer.from(pdfFile);
+          fs.writeFile(`${PUBLIC_PATH}/pdf/${fileName}`, pdfFile.buffer, (err: {[key: string]: any}) => {
+            if (err) {
+              console.log(`*** File PDF save error: _id ${id}`, err);
+            }
+          })
+        }
+      })
+      .catch((error) => {
+        console.log(`*** fs.getPdfFile (read error): _id: ${id}`, error);
+      });
+      
+    return;
   }
 
   // Validar el campo numérico que viene como string

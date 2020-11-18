@@ -8,17 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AreaAprobadoraController = void 0;
 const common_1 = require("@nestjs/common");
 const area_aprobadora_service_1 = require("./area-aprobadora.service");
 const area_aprobadora_service_2 = require("./old/area-aprobadora.service");
+const user_auth_model_1 = require("../models/user-auth.model");
+const get_token_decorator_1 = require("../common/get-token.decorator");
+const validate_token_pipe_1 = require("../common/validate-token.pipe");
 let AreaAprobadoraController = class AreaAprobadoraController {
     constructor(areaAprobadoraService, areaAprobadoraOldService) {
         this.areaAprobadoraService = areaAprobadoraService;
         this.areaAprobadoraOldService = areaAprobadoraOldService;
     }
-    async migrateFromOld() {
+    async migrateFromOld(infoUser) {
         let rtnMessage = '';
         let docsInsertados = 0;
         const oldDocs = await this.areaAprobadoraOldService.findAll();
@@ -54,20 +60,22 @@ let AreaAprobadoraController = class AreaAprobadoraController {
         }
         return { message: rtnMessage };
     }
-    async findAll() {
+    async findAll(infoUser) {
         return await this.areaAprobadoraService.findAll();
     }
 };
 __decorate([
     common_1.Patch('/migrate'),
+    __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AreaAprobadoraController.prototype, "migrateFromOld", null);
 __decorate([
     common_1.Get(),
+    __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AreaAprobadoraController.prototype, "findAll", null);
 AreaAprobadoraController = __decorate([

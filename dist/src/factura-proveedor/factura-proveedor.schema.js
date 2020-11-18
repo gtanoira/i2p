@@ -183,6 +183,10 @@ __decorate([
     __metadata("design:type", String)
 ], FacturaProveedor.prototype, "docStatus", void 0);
 __decorate([
+    mongoose_1.Prop({ default: null }),
+    __metadata("design:type", String)
+], FacturaProveedor.prototype, "pdfFile", void 0);
+__decorate([
     mongoose_1.Prop({ type: DetalleFactura, _id: false }),
     __metadata("design:type", Array)
 ], FacturaProveedor.prototype, "detalle", void 0);

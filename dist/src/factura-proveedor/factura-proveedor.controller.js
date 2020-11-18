@@ -15,8 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FacturaProveedorController = void 0;
 const common_1 = require("@nestjs/common");
 const moment = require("moment");
+const fs = require('file-system');
 const get_token_decorator_1 = require("src/common/get-token.decorator");
 const validate_token_pipe_1 = require("src/common/validate-token.pipe");
+const environment_settings_1 = require("src/environment/environment.settings");
 const factura_proveedor_dto_1 = require("../dto/factura-proveedor.dto");
 const factura_proveedor_service_1 = require("./factura-proveedor.service");
 const factura_proveedor_service_2 = require("./old/factura-proveedor.service");
@@ -74,6 +76,35 @@ let FacturaProveedorController = class FacturaProveedorController {
     async getAll(infoUser) {
         return await this.facturaProveedorService.findAll();
     }
+    getPdfFile(fileName, res) {
+        const fileRead = new Promise((resolve, reject) => {
+            fs.readFile(`${environment_settings_1.PUBLIC_PATH}/pdf/${fileName}`, (err, file) => {
+                if (err) {
+                    reject(`Archivo inexistente: ${fileName}`);
+                }
+                else {
+                    const stat = fs.statSync(`${environment_settings_1.PUBLIC_PATH}/pdf/${fileName}`);
+                    res.setHeader('Content-Length', stat.size);
+                    res.setHeader('Content-Type', 'application/pdf');
+                    res.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
+                    resolve(file);
+                }
+                ;
+            });
+        });
+        fileRead
+            .then(pdfFile => {
+            res.send(pdfFile);
+        })
+            .catch(error => {
+            console.log('*** err', error);
+            res.status(404).send({
+                statusCode: 404,
+                message: error,
+                error: "Not found"
+            });
+        });
+    }
     mapNewDoc(factura) {
         const detalleFactura = [];
         factura.detail.forEach((detalle, index) => {
@@ -113,6 +144,8 @@ let FacturaProveedorController = class FacturaProveedorController {
                 userLog: (_a = gralLog.description) === null || _a === void 0 ? void 0 : _a.split(/\:/)[1]
             });
         });
+        const pdfName = `${factura.supplier.split(/\:/)[0]}_${factura.accountingdate}_${factura.documentnumber}.pdf`;
+        this.savePdfFile(factura._id, pdfName);
         const newFactura = {
             empresaId: factura.company.split(/\:/)[0],
             empresaDesc: factura.company.split(/\:/)[1].trim(),
@@ -131,12 +164,29 @@ let FacturaProveedorController = class FacturaProveedorController {
             areaAprobadoraId: factura.approvalarea.split(/\:/)[0],
             areaAprobadoraDesc: factura.approvalarea.split(/\:/)[1].trim(),
             docStatus: this.toDocStatus(factura.sap_status),
+            pdfFile: pdfName,
             detalle: detalleFactura,
             impuestos: impuestoFactura,
             log: logFactura,
             migration_id: factura._id
         };
         return newFactura;
+    }
+    savePdfFile(id, fileName) {
+        this.facturaProveedorOldService.getPdfFile(id)
+            .then(pdfFile => {
+            if (pdfFile !== null) {
+                fs.writeFile(`${environment_settings_1.PUBLIC_PATH}/pdf/${fileName}`, pdfFile.buffer, (err) => {
+                    if (err) {
+                        console.log(`*** File PDF save error: _id ${id}`, err);
+                    }
+                });
+            }
+        })
+            .catch((error) => {
+            console.log(`*** fs.getPdfFile (read error): _id: ${id}`, error);
+        });
+        return;
     }
     validateNumber(value) {
         if (value === undefined || value === null || value.trim() === '') {
@@ -204,6 +254,14 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], FacturaProveedorController.prototype, "getAll", null);
+__decorate([
+    common_1.Get('/pdf/:fileName'),
+    __param(0, common_1.Param('fileName')),
+    __param(1, common_1.Res()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", void 0)
+], FacturaProveedorController.prototype, "getPdfFile", null);
 FacturaProveedorController = __decorate([
     common_1.Controller('factura_proveedores'),
     __metadata("design:paramtypes", [factura_proveedor_service_1.FacturaProveedorService,

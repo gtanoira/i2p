@@ -45,6 +45,7 @@ export declare class FacturaProveedor {
     areaAprobadoraId: string;
     areaAprobadoraDesc?: string;
     docStatus: string;
+    pdfFile?: string;
     detalle?: DetalleFactura[];
     impuestos?: ImpuestoFactura[];
     log?: LogFactura[];

@@ -141,6 +141,9 @@ export class FacturaProveedor {
   @Prop({ enum: DocStatus, default: 'EN_CARGA' })
   public docStatus!: string;
 
+  @Prop({ default: null })
+  public pdfFile?: string;
+
   // Detalle Factura
   @Prop({ type: DetalleFactura, _id: false })
   public detalle?: DetalleFactura[];

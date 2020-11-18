@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.I2P_OLD = exports.I2P_DBASE = exports.SERVER_PORT = exports.LOGIN_CENTRAL_SERVER = exports.SAPGW_SERVER = exports.EMAIL_SERVER_SETTINGS = void 0;
+exports.PUBLIC_PATH = exports.PUBLIC_URL = exports.I2P_OLD = exports.I2P_DBASE = exports.SERVER_PORT = exports.LOGIN_CENTRAL_SERVER = exports.SAPGW_SERVER = exports.EMAIL_SERVER_SETTINGS = void 0;
 exports.EMAIL_SERVER_SETTINGS = {
     host: 'clxmail01.claxson.com',
     port: 25,
@@ -17,4 +17,6 @@ exports.LOGIN_CENTRAL_SERVER = 'http://localhost:8000';
 exports.SERVER_PORT = 4700;
 exports.I2P_DBASE = 'mongodb://i2p_admin:Portal.2020@admapps02:27017/i2p_dbase';
 exports.I2P_OLD = 'mongodb://invoice:Inv.1984@admapps02:27017/invoice2pay';
+exports.PUBLIC_URL = `http://localhost:${exports.SERVER_PORT}/public`;
+exports.PUBLIC_PATH = './public';
 //# sourceMappingURL=environment.settings.js.map

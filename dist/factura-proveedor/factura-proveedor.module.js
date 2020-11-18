@@ -10,6 +10,7 @@ exports.FacturaProveedorModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const factura_proveedor_schema_1 = require("./factura-proveedor.schema");
+const factura_imagen_old_schema_1 = require("./old/factura-imagen-old.schema");
 const factura_proveedor_old_schema_1 = require("./old/factura-proveedor-old.schema");
 const factura_proveedor_controller_1 = require("./factura-proveedor.controller");
 const factura_proveedor_controller_2 = require("./old/factura-proveedor.controller");
@@ -24,10 +25,14 @@ FacturaProveedorModule = __decorate([
                 { name: factura_proveedor_schema_1.FacturaProveedor.name, schema: factura_proveedor_schema_1.FacturaProveedorSchema }
             ], 'i2p_dbase'),
             mongoose_1.MongooseModule.forFeature([
-                { name: factura_proveedor_old_schema_1.FacturaProveedorOld.name, schema: factura_proveedor_old_schema_1.FacturaProveedorOldSchema }
+                { name: factura_proveedor_old_schema_1.FacturaProveedorOld.name, schema: factura_proveedor_old_schema_1.FacturaProveedorOldSchema },
+                { name: factura_imagen_old_schema_1.FacturaImagenOld.name, schema: factura_imagen_old_schema_1.FacturaImagenOldSchema }
             ], 'i2p_old')
         ],
-        controllers: [factura_proveedor_controller_1.FacturaProveedorController, factura_proveedor_controller_2.FacturaProveedorOldController],
+        controllers: [
+            factura_proveedor_controller_1.FacturaProveedorController,
+            factura_proveedor_controller_2.FacturaProveedorOldController
+        ],
         providers: [
             factura_proveedor_service_1.FacturaProveedorService,
             factura_proveedor_service_2.FacturaProveedorOldService
