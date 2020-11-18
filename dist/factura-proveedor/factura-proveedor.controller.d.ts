@@ -12,7 +12,9 @@ export declare class FacturaProveedorController {
     }>;
     addFactura(infoUser: UserAuth, facturaProveedorDto: CreateFacturaProveedorDto): Promise<FacturaProveedorDocument>;
     getAll(infoUser: UserAuth): Promise<FacturaProveedor[]>;
+    getPdfFile(fileName: string, res: any): void;
     private mapNewDoc;
+    private savePdfFile;
     private validateNumber;
     private toLogStatus;
     private toDocStatus;

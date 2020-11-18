@@ -1727,8 +1727,8 @@
         "affectsGlobalScope": false
       },
       "../src/environment/environment.settings.ts": {
-        "version": "d7e036ba3b4300cce349db9cec07024653bb0ff15b467a6441666279cf6fd5c6",
-        "signature": "c18aef572c8a230fa530657b9ce7a5780d282c48a11a3595233b1bc318f68d47",
+        "version": "450ef4cb075673ece44a11eb6f1705220d53b8a153004042eeb2c392be0c881d",
+        "signature": "441f146c1630f2b26674767188ebf4222cde3d83ddd5aa123de46906b78ad207",
         "affectsGlobalScope": false
       },
       "../src/models/proveedor.model.ts": {
@@ -1756,84 +1756,14 @@
         "signature": "1c67e94002f6e959d08d667eaf47e9fdce1f2686fa97c86c9bd8f1a5ed60d847",
         "affectsGlobalScope": false
       },
-      "../src/area-aprobadora/area-aprobadora.controller.ts": {
-        "version": "58a16887c01065a40506f1df06ea6811e81b20ec6c5b2b73b253484d62c98b27",
-        "signature": "ef730c9b4225041f3a52a8f382ebe64e8641d10503c7258f53ce062123381af5",
-        "affectsGlobalScope": false
-      },
-      "../src/area-aprobadora/old/area-aprobadora.controller.ts": {
-        "version": "b5de9730d87306d71e088bd63970e710563ba73d93acc80dfa088e9d9c07c470",
-        "signature": "ee7241effa3d27ffb4ccba9b723b0b3aeb28ea69adbce0d737895a4144675008",
-        "affectsGlobalScope": false
-      },
-      "../src/area-aprobadora/area-aprobadora.module.ts": {
-        "version": "c9257714b2500b5d2c5f890f779a3b0bb70e107877afdc198de9b8ccdc352809",
-        "signature": "8b63649228f08d7668c7515c0846bd882b5a6c537ad561df02b97a8ff5658041",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/class-transformer/classtransformoptions.d.ts": {
-        "version": "d3717ebff6037a2e7c72674f085393f58a6825e82a49ac8966234641d230c6b8",
-        "signature": "d3717ebff6037a2e7c72674f085393f58a6825e82a49ac8966234641d230c6b8",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/class-transformer/classtransformer.d.ts": {
-        "version": "a866bf053c8578a2784e8c9b1bb657924a2e70ba4793cc047e35e03d84d1a5ec",
-        "signature": "a866bf053c8578a2784e8c9b1bb657924a2e70ba4793cc047e35e03d84d1a5ec",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/class-transformer/metadata/exposeexcludeoptions.d.ts": {
-        "version": "1df726755b1ba47971bb0e1dd7ca514008a4b4049ce5c84bf7305d6c7cb90ab6",
-        "signature": "1df726755b1ba47971bb0e1dd7ca514008a4b4049ce5c84bf7305d6c7cb90ab6",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/class-transformer/enums/transformation-type.enum.d.ts": {
-        "version": "ba06bf784edafe0db0e2bd1f6ecf3465b81f6b1819871bf190a0e0137b5b7f18",
-        "signature": "ba06bf784edafe0db0e2bd1f6ecf3465b81f6b1819871bf190a0e0137b5b7f18",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/class-transformer/enums/index.d.ts": {
-        "version": "a0500233cb989bcb78f5f1a81f51eabc06b5c39e3042c560a7489f022f1f55a3",
-        "signature": "a0500233cb989bcb78f5f1a81f51eabc06b5c39e3042c560a7489f022f1f55a3",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/class-transformer/decorators.d.ts": {
-        "version": "2d6cba5e473d8ffb9a79966dae588177793ec087753f728377fff22c1e5ae32b",
-        "signature": "2d6cba5e473d8ffb9a79966dae588177793ec087753f728377fff22c1e5ae32b",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/class-transformer/index.d.ts": {
-        "version": "ea4f5e760ac2f6dd1fb06785f38d42b6dde82b29d8a1be10a7540dc598a5e4af",
-        "signature": "ea4f5e760ac2f6dd1fb06785f38d42b6dde82b29d8a1be10a7540dc598a5e4af",
-        "affectsGlobalScope": false
-      },
-      "../src/models/constantes.model.ts": {
-        "version": "6a3211c626e02b9f8a1f7a652c75d59ad5924e9f4bc954b72a1a5953d1ac5a6b",
-        "signature": "07a08aabd10e4efa085aa3db5416326254f390db3b2a84b0a8f874739cabcccc",
-        "affectsGlobalScope": false
-      },
-      "../src/factura-proveedor/factura-proveedor.schema.ts": {
-        "version": "a86c3139919ea3f99c53356f4fa2ecfdff251d3dad35b206ad1fe835ef28920a",
-        "signature": "8900bb75603cc0089d8232ab83437a713edf4cafc7f0e345be987bfa488d4451",
-        "affectsGlobalScope": false
-      },
-      "../src/factura-proveedor/old/factura-proveedor-old.schema.ts": {
-        "version": "6bd6dcafb63e84036d97108f2c839fa162667a3830f6d6a04a3c6d270cde070b",
-        "signature": "7281c3bcc3578131886fac3ea53e39c910e7a96d0d3792e1eee4cd0a684ab00b",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/moment/ts3.1-typings/moment.d.ts": {
-        "version": "f97edc4d3b4dd0b32766e9633086497565c37657fb591cc84a35864db4bc2fc5",
-        "signature": "f97edc4d3b4dd0b32766e9633086497565c37657fb591cc84a35864db4bc2fc5",
+      "../src/models/user-auth.model.ts": {
+        "version": "fa795de500236704a1dc26df477dd86871542211a94c7a31366754805bec4982",
+        "signature": "2e0eb3428af5d0f0af2261ccd47113a71c78c3e14639374a11fe0e66d93e1cfb",
         "affectsGlobalScope": false
       },
       "../src/common/get-token.decorator.ts": {
         "version": "5cdac66f3b2daab575e7a7682349ae13bbab1abf7272d60ad8a23d09eb8fcd5b",
         "signature": "8a80498551459fec235162c41b0ddeb26665225db2bb82b65bcadb4904be7f95",
-        "affectsGlobalScope": false
-      },
-      "../src/models/user-auth.model.ts": {
-        "version": "fa795de500236704a1dc26df477dd86871542211a94c7a31366754805bec4982",
-        "signature": "2e0eb3428af5d0f0af2261ccd47113a71c78c3e14639374a11fe0e66d93e1cfb",
         "affectsGlobalScope": false
       },
       "../node_modules/rxjs/internal/operators/audit.d.ts": {
@@ -2364,6 +2294,81 @@
       "../src/common/validate-token.pipe.ts": {
         "version": "a05dd2b5c9a7e6921439ec9ff4a36a627f02ef5cc305569cdf59503c54e61edd",
         "signature": "9e87376da40a12ca3f3a4ff05a9832fa98ad31fb6ca321a8187170dea25b2d5a",
+        "affectsGlobalScope": false
+      },
+      "../src/area-aprobadora/area-aprobadora.controller.ts": {
+        "version": "68fd9ec47509522749ef3d9d1f4412cab5570a8d01c07b70045bc2ab7b3e5f08",
+        "signature": "2cff2bb58648a661daf11fa5d32acd7362b42d63ca76cc0d508752e531c7e368",
+        "affectsGlobalScope": false
+      },
+      "../src/area-aprobadora/old/area-aprobadora.controller.ts": {
+        "version": "b5de9730d87306d71e088bd63970e710563ba73d93acc80dfa088e9d9c07c470",
+        "signature": "ee7241effa3d27ffb4ccba9b723b0b3aeb28ea69adbce0d737895a4144675008",
+        "affectsGlobalScope": false
+      },
+      "../src/area-aprobadora/area-aprobadora.module.ts": {
+        "version": "c9257714b2500b5d2c5f890f779a3b0bb70e107877afdc198de9b8ccdc352809",
+        "signature": "8b63649228f08d7668c7515c0846bd882b5a6c537ad561df02b97a8ff5658041",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/class-transformer/classtransformoptions.d.ts": {
+        "version": "d3717ebff6037a2e7c72674f085393f58a6825e82a49ac8966234641d230c6b8",
+        "signature": "d3717ebff6037a2e7c72674f085393f58a6825e82a49ac8966234641d230c6b8",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/class-transformer/classtransformer.d.ts": {
+        "version": "a866bf053c8578a2784e8c9b1bb657924a2e70ba4793cc047e35e03d84d1a5ec",
+        "signature": "a866bf053c8578a2784e8c9b1bb657924a2e70ba4793cc047e35e03d84d1a5ec",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/class-transformer/metadata/exposeexcludeoptions.d.ts": {
+        "version": "1df726755b1ba47971bb0e1dd7ca514008a4b4049ce5c84bf7305d6c7cb90ab6",
+        "signature": "1df726755b1ba47971bb0e1dd7ca514008a4b4049ce5c84bf7305d6c7cb90ab6",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/class-transformer/enums/transformation-type.enum.d.ts": {
+        "version": "ba06bf784edafe0db0e2bd1f6ecf3465b81f6b1819871bf190a0e0137b5b7f18",
+        "signature": "ba06bf784edafe0db0e2bd1f6ecf3465b81f6b1819871bf190a0e0137b5b7f18",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/class-transformer/enums/index.d.ts": {
+        "version": "a0500233cb989bcb78f5f1a81f51eabc06b5c39e3042c560a7489f022f1f55a3",
+        "signature": "a0500233cb989bcb78f5f1a81f51eabc06b5c39e3042c560a7489f022f1f55a3",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/class-transformer/decorators.d.ts": {
+        "version": "2d6cba5e473d8ffb9a79966dae588177793ec087753f728377fff22c1e5ae32b",
+        "signature": "2d6cba5e473d8ffb9a79966dae588177793ec087753f728377fff22c1e5ae32b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/class-transformer/index.d.ts": {
+        "version": "ea4f5e760ac2f6dd1fb06785f38d42b6dde82b29d8a1be10a7540dc598a5e4af",
+        "signature": "ea4f5e760ac2f6dd1fb06785f38d42b6dde82b29d8a1be10a7540dc598a5e4af",
+        "affectsGlobalScope": false
+      },
+      "../src/models/constantes.model.ts": {
+        "version": "6a3211c626e02b9f8a1f7a652c75d59ad5924e9f4bc954b72a1a5953d1ac5a6b",
+        "signature": "07a08aabd10e4efa085aa3db5416326254f390db3b2a84b0a8f874739cabcccc",
+        "affectsGlobalScope": false
+      },
+      "../src/factura-proveedor/factura-proveedor.schema.ts": {
+        "version": "2fae0115132657da46551e97d49546da818ab8652b7ee5f3cbf0c6f95cd136e9",
+        "signature": "9028f6b1357822b0151e41b4962570479417f53c9686ac8cbd83562764060edc",
+        "affectsGlobalScope": false
+      },
+      "../src/factura-proveedor/old/factura-imagen-old.schema.ts": {
+        "version": "2c978b3b7006f23ebd82ec1a19eb4f564753e190ef74be807b5d7ccc01df6bea",
+        "signature": "d3443e00350c8474d591e2882d32cbe71e37c231a87e349cbfacf3b63ef07455",
+        "affectsGlobalScope": false
+      },
+      "../src/factura-proveedor/old/factura-proveedor-old.schema.ts": {
+        "version": "6bd6dcafb63e84036d97108f2c839fa162667a3830f6d6a04a3c6d270cde070b",
+        "signature": "7281c3bcc3578131886fac3ea53e39c910e7a96d0d3792e1eee4cd0a684ab00b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/moment/ts3.1-typings/moment.d.ts": {
+        "version": "f97edc4d3b4dd0b32766e9633086497565c37657fb591cc84a35864db4bc2fc5",
+        "signature": "f97edc4d3b4dd0b32766e9633086497565c37657fb591cc84a35864db4bc2fc5",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/swagger/dist/decorators/api-basic.decorator.d.ts": {
@@ -3177,13 +3182,28 @@
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/old/factura-proveedor.service.ts": {
-        "version": "b6ea4f112ff40f5659ae936501ae665c2be4fbbea164df08da6c9342bccf50c0",
-        "signature": "e8b0ecaa1199b036acd196d01afe92be7f19b14afa1367ba9c71531c5b287ebf",
+        "version": "d0e2d66ced312ccea9102103063d861992114a3543ff0afdaf972174275056e7",
+        "signature": "bc0158232e4effe5d840976f11036540046ec08946af8476f54172c8157c553f",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/cookiejar/index.d.ts": {
+        "version": "8d48b8f8a377ade8dd1f000625bc276eea067f2529cc9cafdf082d17142107d6",
+        "signature": "8d48b8f8a377ade8dd1f000625bc276eea067f2529cc9cafdf082d17142107d6",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/superagent/index.d.ts": {
+        "version": "022bb15c2fb40bb465a4511476b1796b9977e2bab463ffd8b2b3d1d1a56b00d1",
+        "signature": "022bb15c2fb40bb465a4511476b1796b9977e2bab463ffd8b2b3d1d1a56b00d1",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/supertest/index.d.ts": {
+        "version": "e6540dcaa31aadbd070bea91d31c387c3e03baf78ea56420e706ae77660ae45a",
+        "signature": "e6540dcaa31aadbd070bea91d31c387c3e03baf78ea56420e706ae77660ae45a",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.controller.ts": {
-        "version": "e8f29ff92511a8569a11b37344508c68efa3246ba832b6200f390c739a273cf2",
-        "signature": "00d5d9cdf14152dbc0aaa74fd8e9caeee47c5f649e0d173ccfb95f9d4e3b94f8",
+        "version": "b4302d44963467b52dd0e5980f5a4b6175617b6736f02eb096849f0aa3ca5268",
+        "signature": "e769a09242c4ee1f6022ebafe94308d21fc03189ea97d4201b13bb6cb1e9651f",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/old/factura-proveedor.controller.ts": {
@@ -3192,7 +3212,7 @@
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.module.ts": {
-        "version": "44b68e59f75842ceda8384147d4eab950e1b9e28e5339eb7df8a0875fd204cc7",
+        "version": "4e7b49143cdef43ccc1ff618d66255461c017bca0316f9a6116db0d43ab65502",
         "signature": "4d428e572027b542ea1ffc59f078d5a98bd7701c1e3e74bd2bebdfe342d59301",
         "affectsGlobalScope": false
       },
@@ -3232,8 +3252,8 @@
         "affectsGlobalScope": false
       },
       "../src/sociedad/sociedad.controller.ts": {
-        "version": "d369fd7ada909eb0bdfc7e34561ae41f857343d91177afaf5574f331e32f0350",
-        "signature": "284cfb7fbba3838cbec6f7c3db3bcb0c66e03544edb2381ca989fd5ecaaf8e7f",
+        "version": "899f62700c81351b26d7ee7e5bbe2d0541a8c32f70546fda1ce096630bacc3eb",
+        "signature": "23ead55c8e18ca5c1a353a22f24783ca83ab69da8339256f8b9755fb3db92688",
         "affectsGlobalScope": false
       },
       "../src/sociedad/sociedad.module.ts": {
@@ -3299,21 +3319,6 @@
       "../src/sociedad/sociedad.service.spec.ts": {
         "version": "e6921d5c8935d50ac623762b07777bc222c5e91a1be5b019585127a5b4394c62",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/cookiejar/index.d.ts": {
-        "version": "8d48b8f8a377ade8dd1f000625bc276eea067f2529cc9cafdf082d17142107d6",
-        "signature": "8d48b8f8a377ade8dd1f000625bc276eea067f2529cc9cafdf082d17142107d6",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/superagent/index.d.ts": {
-        "version": "022bb15c2fb40bb465a4511476b1796b9977e2bab463ffd8b2b3d1d1a56b00d1",
-        "signature": "022bb15c2fb40bb465a4511476b1796b9977e2bab463ffd8b2b3d1d1a56b00d1",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/supertest/index.d.ts": {
-        "version": "e6540dcaa31aadbd070bea91d31c387c3e03baf78ea56420e706ae77660ae45a",
-        "signature": "e6540dcaa31aadbd070bea91d31c387c3e03baf78ea56420e706ae77660ae45a",
         "affectsGlobalScope": false
       },
       "../test/app.e2e-spec.ts": {
@@ -6102,7 +6107,10 @@
         "../src/area-aprobadora/area-aprobadora.schema.ts",
         "../src/area-aprobadora/area-aprobadora.service.ts",
         "../src/area-aprobadora/old/area-aprobadora.service.ts",
-        "../src/models/proveedor.model.ts"
+        "../src/common/get-token.decorator.ts",
+        "../src/common/validate-token.pipe.ts",
+        "../src/models/proveedor.model.ts",
+        "../src/models/user-auth.model.ts"
       ],
       "../src/area-aprobadora/area-aprobadora.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -6180,10 +6188,14 @@
       ],
       "../src/factura-proveedor/factura-proveedor.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/dns.d.ts",
+        "../node_modules/@types/supertest/index.d.ts",
         "../node_modules/moment/ts3.1-typings/moment.d.ts",
         "../src/common/get-token.decorator.ts",
         "../src/common/validate-token.pipe.ts",
         "../src/dto/factura-proveedor.dto.ts",
+        "../src/environment/environment.settings.ts",
         "../src/factura-proveedor/factura-proveedor.schema.ts",
         "../src/factura-proveedor/factura-proveedor.service.ts",
         "../src/factura-proveedor/old/factura-proveedor-old.schema.ts",
@@ -6196,6 +6208,7 @@
         "../src/factura-proveedor/factura-proveedor.controller.ts",
         "../src/factura-proveedor/factura-proveedor.schema.ts",
         "../src/factura-proveedor/factura-proveedor.service.ts",
+        "../src/factura-proveedor/old/factura-imagen-old.schema.ts",
         "../src/factura-proveedor/old/factura-proveedor-old.schema.ts",
         "../src/factura-proveedor/old/factura-proveedor.controller.ts",
         "../src/factura-proveedor/old/factura-proveedor.service.ts"
@@ -6216,6 +6229,11 @@
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/factura-proveedor/factura-proveedor.schema.ts"
       ],
+      "../src/factura-proveedor/old/factura-imagen-old.schema.ts": [
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/bson/bson.d.ts"
+      ],
       "../src/factura-proveedor/old/factura-proveedor-old.schema.ts": [
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts"
@@ -6229,6 +6247,8 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/bson/bson.d.ts",
+        "../src/factura-proveedor/old/factura-imagen-old.schema.ts",
         "../src/factura-proveedor/old/factura-proveedor-old.schema.ts"
       ],
       "../src/main.ts": [
@@ -6263,8 +6283,11 @@
       ],
       "../src/sociedad/sociedad.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../src/common/get-token.decorator.ts",
+        "../src/common/validate-token.pipe.ts",
         "../src/dto/orden.dto.ts",
         "../src/dto/sociedad.dto.ts",
+        "../src/models/user-auth.model.ts",
         "../src/sociedad/sociedad.schema.ts",
         "../src/sociedad/sociedad.service.ts"
       ],
@@ -8750,7 +8773,8 @@
       "../src/area-aprobadora/area-aprobadora.controller.ts": [
         "../src/area-aprobadora/area-aprobadora.schema.ts",
         "../src/area-aprobadora/area-aprobadora.service.ts",
-        "../src/area-aprobadora/old/area-aprobadora.service.ts"
+        "../src/area-aprobadora/old/area-aprobadora.service.ts",
+        "../src/models/user-auth.model.ts"
       ],
       "../src/area-aprobadora/area-aprobadora.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
@@ -8796,6 +8820,10 @@
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/factura-proveedor/factura-proveedor.schema.ts"
       ],
+      "../src/factura-proveedor/old/factura-imagen-old.schema.ts": [
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/bson/bson.d.ts"
+      ],
       "../src/factura-proveedor/old/factura-proveedor-old.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
@@ -8805,6 +8833,8 @@
       ],
       "../src/factura-proveedor/old/factura-proveedor.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/bson/bson.d.ts",
+        "../src/factura-proveedor/old/factura-imagen-old.schema.ts",
         "../src/factura-proveedor/old/factura-proveedor-old.schema.ts"
       ],
       "../src/shared/authorizations.service.ts": [
@@ -8815,6 +8845,7 @@
       "../src/sociedad/sociedad.controller.ts": [
         "../src/dto/orden.dto.ts",
         "../src/dto/sociedad.dto.ts",
+        "../src/models/user-auth.model.ts",
         "../src/sociedad/sociedad.schema.ts",
         "../src/sociedad/sociedad.service.ts"
       ],
@@ -9502,6 +9533,7 @@
       "../src/factura-proveedor/factura-proveedor.schema.ts",
       "../src/factura-proveedor/factura-proveedor.service.spec.ts",
       "../src/factura-proveedor/factura-proveedor.service.ts",
+      "../src/factura-proveedor/old/factura-imagen-old.schema.ts",
       "../src/factura-proveedor/old/factura-proveedor-old.schema.ts",
       "../src/factura-proveedor/old/factura-proveedor.controller.ts",
       "../src/factura-proveedor/old/factura-proveedor.service.ts",

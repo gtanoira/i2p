@@ -17,20 +17,22 @@ const common_1 = require("@nestjs/common");
 const sociedad_service_1 = require("./sociedad.service");
 const orden_dto_1 = require("src/dto/orden.dto");
 const sociedad_dto_1 = require("src/dto/sociedad.dto");
+const get_token_decorator_1 = require("src/common/get-token.decorator");
+const validate_token_pipe_1 = require("src/common/validate-token.pipe");
 let SociedadController = class SociedadController {
     constructor(sociedadService) {
         this.sociedadService = sociedadService;
     }
-    async findAll() {
+    async findAll(infoUser) {
         return await this.sociedadService.findAll();
     }
-    async addFactura(sociedadDto) {
+    async addFactura(infoUser, sociedadDto) {
         return await this.sociedadService.addSociedad(sociedadDto)
             .catch(error => {
             throw new common_1.BadRequestException(error.message);
         });
     }
-    async addOrden(sociedadId, ordenDto) {
+    async addOrden(infoUser, sociedadId, ordenDto) {
         return await this.sociedadService.addOrden(sociedadId, ordenDto)
             .catch(error => {
             throw new common_1.BadRequestException(error.message);
@@ -39,25 +41,28 @@ let SociedadController = class SociedadController {
 };
 __decorate([
     common_1.Get(),
+    __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], SociedadController.prototype, "findAll", null);
 __decorate([
     common_1.Post(),
     common_1.HttpCode(200),
-    __param(0, common_1.Body(new common_1.ValidationPipe())),
+    __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe)),
+    __param(1, common_1.Body(new common_1.ValidationPipe())),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [sociedad_dto_1.CreateSociedadDto]),
+    __metadata("design:paramtypes", [Object, sociedad_dto_1.CreateSociedadDto]),
     __metadata("design:returntype", Promise)
 ], SociedadController.prototype, "addFactura", null);
 __decorate([
     common_1.Post('/:sociedadId/ordenes'),
     common_1.HttpCode(200),
-    __param(0, common_1.Param('sociedadId')),
-    __param(1, common_1.Body(new common_1.ValidationPipe())),
+    __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe)),
+    __param(1, common_1.Param('sociedadId')),
+    __param(2, common_1.Body(new common_1.ValidationPipe())),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, orden_dto_1.CreateOrdenDto]),
+    __metadata("design:paramtypes", [Object, String, orden_dto_1.CreateOrdenDto]),
     __metadata("design:returntype", Promise)
 ], SociedadController.prototype, "addOrden", null);
 SociedadController = __decorate([

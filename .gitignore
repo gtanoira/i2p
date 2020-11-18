@@ -1,6 +1,9 @@
-# compiled output
+# I2P - Directorios a excluir
 /node_modules
 /dist/environment
+/public/pdf/*
+
+# I2P - Archivos a excluir
 
 # Logs
 logs

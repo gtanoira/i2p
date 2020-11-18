@@ -17,18 +17,33 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const factura_proveedor_old_schema_1 = require("./factura-proveedor-old.schema");
+const factura_imagen_old_schema_1 = require("./factura-imagen-old.schema");
 let FacturaProveedorOldService = class FacturaProveedorOldService {
-    constructor(facturaProveedorOldModel) {
+    constructor(facturaProveedorOldModel, facturaImagenOldModel) {
         this.facturaProveedorOldModel = facturaProveedorOldModel;
+        this.facturaImagenOldModel = facturaImagenOldModel;
     }
     async findAll() {
         return this.facturaProveedorOldModel.find().exec();
+    }
+    async getPdfFile(id) {
+        return this.facturaImagenOldModel.findById(id)
+            .then(data => {
+            if (data.pdf_file && data.pdf_file.length() > 0) {
+                return data.pdf_file;
+            }
+            else {
+                return null;
+            }
+        });
     }
 };
 FacturaProveedorOldService = __decorate([
     common_1.Injectable(),
     __param(0, mongoose_1.InjectModel(factura_proveedor_old_schema_1.FacturaProveedorOld.name)),
-    __metadata("design:paramtypes", [mongoose_2.Model])
+    __param(1, mongoose_1.InjectModel(factura_imagen_old_schema_1.FacturaImagenOld.name)),
+    __metadata("design:paramtypes", [mongoose_2.Model,
+        mongoose_2.Model])
 ], FacturaProveedorOldService);
 exports.FacturaProveedorOldService = FacturaProveedorOldService;
 //# sourceMappingURL=factura-proveedor.service.js.map
