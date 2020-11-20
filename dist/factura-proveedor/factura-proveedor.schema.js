@@ -99,7 +99,7 @@ __decorate([
     __metadata("design:type", Date)
 ], LogFactura.prototype, "fechaLog", void 0);
 __decorate([
-    mongoose_1.Prop({ enum: constantes_model_1.LogFacturaStatus, default: 'CREADA' }),
+    mongoose_1.Prop({ enum: constantes_model_1.DocStatus, default: 'CREADA' }),
     __metadata("design:type", String)
 ], LogFactura.prototype, "statusLog", void 0);
 __decorate([

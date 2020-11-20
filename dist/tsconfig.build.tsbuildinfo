@@ -2127,12 +2127,12 @@
         "affectsGlobalScope": false
       },
       "../src/models/constantes.model.ts": {
-        "version": "6a3211c626e02b9f8a1f7a652c75d59ad5924e9f4bc954b72a1a5953d1ac5a6b",
-        "signature": "07a08aabd10e4efa085aa3db5416326254f390db3b2a84b0a8f874739cabcccc",
+        "version": "a2f8dac4095ac13fe3bc729938fd45a8a7b23c8e11b55fab21fa47bf2cb55e83",
+        "signature": "735d0bcbcefb80e5a917dae6d231a4ff3bc256599a480132983479af56a23dd6",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.schema.ts": {
-        "version": "2fae0115132657da46551e97d49546da818ab8652b7ee5f3cbf0c6f95cd136e9",
+        "version": "963cf076de4e7b2ab781e6f4ba72d4d92975bdc8b15c1f3f9c355ad497331176",
         "signature": "9028f6b1357822b0151e41b4962570479417f53c9686ac8cbd83562764060edc",
         "affectsGlobalScope": false
       },
@@ -2952,8 +2952,8 @@
         "affectsGlobalScope": false
       },
       "../src/dto/factura-proveedor.dto.ts": {
-        "version": "ce553b48965fd30e3d3ca6e2674bd4d36ff8091350c83e2ed69121f7913a032d",
-        "signature": "f1b50ca12041dfaaa29c03016127e7e9fa06948b9ab5ee85286703246c330af2",
+        "version": "f83d941e7c50bab503967a9078ae3dab9ac22c4db84f796d936e21b378430df3",
+        "signature": "54c7cd59f727c83e62dcf6d6365848a863f7a37128707253ef68e2c772530a6a",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.service.ts": {
@@ -2982,7 +2982,7 @@
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.controller.ts": {
-        "version": "b4302d44963467b52dd0e5980f5a4b6175617b6736f02eb096849f0aa3ca5268",
+        "version": "c505db762b562ecc742203dacbbfa146fb336754e09634a043a8b50e409c65d4",
         "signature": "e769a09242c4ee1f6022ebafe94308d21fc03189ea97d4201b13bb6cb1e9651f",
         "affectsGlobalScope": false
       },
@@ -6035,6 +6035,7 @@
       ],
       "../src/dto/factura-proveedor.dto.ts": [
         "../node_modules/@nestjs/swagger/index.d.ts",
+        "../node_modules/@types/node/perf_hooks.d.ts",
         "../node_modules/class-transformer/index.d.ts",
         "../node_modules/class-validator/types/index.d.ts",
         "../src/models/constantes.model.ts"
