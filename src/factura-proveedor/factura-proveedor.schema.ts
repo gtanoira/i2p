@@ -3,7 +3,7 @@ import { Type } from 'class-transformer';
 import { Document, Types } from 'mongoose';
 
 // Models
-import { DocStatus, LogFacturaStatus } from '../models/constantes.model';
+import { DocStatus } from '../models/constantes.model';
 
 // Detalle Factura
 export class DetalleFactura {
@@ -74,7 +74,7 @@ export class LogFactura {
   @Prop()
   public fechaLog!: Date;
 
-  @Prop({ enum: LogFacturaStatus, default: 'CREADA' })
+  @Prop({ enum: DocStatus, default: 'CREADA' })
   public statusLog!: string;
 
   @Prop()

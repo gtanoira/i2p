@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, NotFoundException, Param, Patch, Post, Res, ServiceUnavailableException } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, NotFoundException, Param, Patch, Post, Res, ServiceUnavailableException, ValidationPipe } from '@nestjs/common';
 import * as moment from 'moment';
 
 // import * as fs from 'file-system';
@@ -94,8 +94,9 @@ export class FacturaProveedorController {
   @HttpCode(200)
   async addFactura(
     @GetToken(new ValidateTokenPipe()) infoUser: UserAuth,  
-    @Body() facturaProveedorDto: CreateFacturaProveedorDto
+    @Body(new ValidationPipe()) facturaProveedorDto: CreateFacturaProveedorDto
   ): Promise<FacturaProveedorDocument> {
+    facturaProveedorDto.setProveedorId(); // completa con 0 (ceros) a izq.
     return await this.facturaProveedorService.addFacturaProveedor(facturaProveedorDto);
   }
 

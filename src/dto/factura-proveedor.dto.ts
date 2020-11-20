@@ -1,69 +1,78 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Type } from 'class-transformer';
-import { IsDate } from 'class-validator';
+import { Expose, Type } from 'class-transformer';
+import { IsBoolean, IsDate, IsEmpty, IsEnum, IsInt, IsNotEmpty, IsNumber, IsNumberString, IsString, Length, ValidateNested } from 'class-validator';
+import { monitorEventLoopDelay } from 'perf_hooks';
 
 // Models
-import { DocStatus, LogFacturaStatus } from 'src/models/constantes.model';
+import { DocStatus } from 'src/models/constantes.model';
 
 // Detalle Factura
 export class DetalleFactura {
 
-  @ApiProperty()
+  @IsInt()
+  @IsNotEmpty()
   public posicion!: number;
 
-  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
   public concepto!: string;
 
-  @ApiProperty({ default: '' })
+  @IsString()
   public descripcion?: string | null;
   
-  @ApiProperty({ default: null })
+  @IsString()
   public mesServicio?: string;
 
-  @ApiProperty({ default: null })
+  @IsString()
   public sapCentroCostoId?: string | null;
 
-  @ApiProperty({ default: null })
+  @IsString()
   public sapCentroCostoDesc?: string | null;
 
-  @ApiProperty({ default: null })
+  @IsString()
   public sapCtaCtbleId?: string | null;
 
-  @ApiProperty({ default: null })
+  @IsString()
   public sapCtaCtbleDesc?: string | null;
 
-  @ApiProperty({ default: null })
+  @IsString()
   public sapOrden?: string | null;
 
-  @ApiProperty({ default: 0.00 })
+  @IsNumber()
+  @IsNotEmpty()
   public itemNeto!: number;
 
-  @ApiProperty({ default: null })
+  @IsString()
   public sapTaxId?: string | null;
 
-  @ApiProperty({ default: null })
+  @IsString()
   public sapTaxDesc?: string | null;
 
-  @ApiProperty({ default: 0.00 })
+  @IsNumber()
+  @IsNotEmpty()
   public itemIva!: number;
 }
 
 // Impuestos Facturas
 export class ImpuestoFactura {
 
-  @ApiProperty()
+  @IsInt()
+  @IsNotEmpty()
   public posicion!: number;
 
-  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
   public sapTaxId!: string;
 
-  @ApiProperty({ default: null })
+  @IsString()
+  @IsEmpty()
   public sapTaxDesc?: string | null;
 
-  @ApiProperty({ default: 0.00 })
+  @IsNumber()
+  @IsNotEmpty()
   public totalImpuesto!: number;
 
-  @ApiProperty({ default: true })
+  @IsBoolean()
   public debeCalcularse?: boolean;
 
 }
@@ -76,80 +85,100 @@ export class LogFactura {
   @IsDate()
   public fechaLog!: Date;
 
-  @ApiProperty({ enum: LogFacturaStatus, default: 'CREADA' })
+  @IsString()
+  @IsEnum(DocStatus, 
+    {message: `El valor del statusLog es incorrecto: ${DocStatus}.`}
+  )
   public statusLog!: string;
 
-  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
   public userLog!: string;
 }
 
 export class CreateFacturaProveedorDto {
   
-  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
   public empresaId!: string;
 
-  @ApiProperty({default: null})
+  @IsString()
   public empresaDesc?: string;
 
-  @ApiProperty()
+  @IsString()
+  @IsNumberString({ no_symbols: true })
+  @Length(1, 10)
   public proveedorId!: string;
 
-  @ApiProperty({default: null})
+  @IsString()
   public proveedorDesc?: string;
 
-  @ApiProperty()
   @Type(() => Date)
   @IsDate()
   public fechaDoc!: Date;
 
-  @ApiProperty({ default: null })
   @Type(() => Date)
   public fechaCtble?: Date;
 
-  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
   public sapCbteId!: string;
 
-  @ApiProperty({default: null})
+  @IsString()
   public sapCbteDesc?: string;
 
-  @ApiProperty({ default: null })
+  @IsString()
   public numeroFactura?: string | null;
  
-  @ApiProperty({ default: 'ARS' })
+  @IsString()
+  @IsNotEmpty()
   public monedaDoc!: string;
  
-  @ApiProperty({ default: 0.00 })
+  @IsNumber()
   public monedaCotiz?: number;
 
-  @ApiProperty({ default: 0.00 })
+  @IsNumber()
   public totalNeto?: number;
   
-  @ApiProperty({ default: null })
+  @IsNumber()
+  @IsEmpty()
   public sapDocId?: string;
 
-  @ApiProperty({ default: null})
   @Type(() => Date)
+  @IsDate()
   public sapDocFecha?: Date;
 
-  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
   public areaAprobadoraId!: string;
 
-  @ApiProperty({default: null})
+  @IsString()
   public areaAprobadoraDesc?: string;
 
-  @ApiProperty({ enum: DocStatus, default: 'EN_CARGA' })
+  @IsString()
+  @IsEnum(DocStatus, 
+    {message: `El valor del docStatus es incorrecto: ${DocStatus}.`}
+  )
   public docStatus!: string;
 
   // Detalle Factura
-  @ApiProperty({ type: DetalleFactura, default: [] })
+  @Type(() => DetalleFactura)
+  @ValidateNested({ each: true })
   public detalle?: DetalleFactura[];
 
   // Impuestos Factura
-  @ApiProperty({ type: ImpuestoFactura, default: [] })
+  @Type(() => ImpuestoFactura)
+  @ValidateNested({ each: true })
   public impuestos?: ImpuestoFactura[];
 
   // Log Factura
-  @ApiProperty({ type: LogFactura, default: [] })
+  @Type(() => LogFactura)
+  @ValidateNested({ each: true })
   public log?: LogFactura[];
+
+  // SETTERS
+  setProveedorId() {
+    this.proveedorId = `0000000000${this.proveedorId}`.substr(0, 10);
+  }
 
 }

@@ -46,4 +46,5 @@ export declare class CreateFacturaProveedorDto {
     detalle?: DetalleFactura[];
     impuestos?: ImpuestoFactura[];
     log?: LogFactura[];
+    setProveedorId(): void;
 }

@@ -72,6 +72,7 @@ let FacturaProveedorController = class FacturaProveedorController {
         return rtnMessage;
     }
     async addFactura(infoUser, facturaProveedorDto) {
+        facturaProveedorDto.setProveedorId();
         return await this.facturaProveedorService.addFacturaProveedor(facturaProveedorDto);
     }
     async getAll(infoUser) {
@@ -243,7 +244,7 @@ __decorate([
     common_1.Post(),
     common_1.HttpCode(200),
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe())),
-    __param(1, common_1.Body()),
+    __param(1, common_1.Body(new common_1.ValidationPipe())),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, factura_proveedor_dto_1.CreateFacturaProveedorDto]),
     __metadata("design:returntype", Promise)
