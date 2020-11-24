@@ -2176,51 +2176,6 @@
         "signature": "e3cd60be3c4f95c43420be67eaa21637585b7c1a8129f9b39983bbd294f9513c",
         "affectsGlobalScope": false
       },
-      "../node_modules/@types/range-parser/index.d.ts": {
-        "version": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
-        "signature": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/qs/index.d.ts": {
-        "version": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
-        "signature": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/express-serve-static-core/index.d.ts": {
-        "version": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
-        "signature": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
-        "affectsGlobalScope": true
-      },
-      "../node_modules/@types/mime/index.d.ts": {
-        "version": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
-        "signature": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/serve-static/index.d.ts": {
-        "version": "a81ca93d000e36f987b91dd5b26a900aeae125bfbeda710b0369d04857c02932",
-        "signature": "a81ca93d000e36f987b91dd5b26a900aeae125bfbeda710b0369d04857c02932",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/connect/index.d.ts": {
-        "version": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
-        "signature": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/body-parser/index.d.ts": {
-        "version": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
-        "signature": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/express/index.d.ts": {
-        "version": "088d420a09a36d241f1ddbdcb553951c02ef0844014727a29712d2ced57edd22",
-        "signature": "088d420a09a36d241f1ddbdcb553951c02ef0844014727a29712d2ced57edd22",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/multer/index.d.ts": {
-        "version": "773d135a3bc375aa4e0c984e1b1167536fa0360749ef8c230433a56d64bc434a",
-        "signature": "773d135a3bc375aa4e0c984e1b1167536fa0360749ef8c230433a56d64bc434a",
-        "affectsGlobalScope": true
-      },
       "../node_modules/class-transformer/classtransformoptions.d.ts": {
         "version": "d3717ebff6037a2e7c72674f085393f58a6825e82a49ac8966234641d230c6b8",
         "signature": "d3717ebff6037a2e7c72674f085393f58a6825e82a49ac8966234641d230c6b8",
@@ -2279,6 +2234,56 @@
       "../node_modules/moment/ts3.1-typings/moment.d.ts": {
         "version": "f97edc4d3b4dd0b32766e9633086497565c37657fb591cc84a35864db4bc2fc5",
         "signature": "f97edc4d3b4dd0b32766e9633086497565c37657fb591cc84a35864db4bc2fc5",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/range-parser/index.d.ts": {
+        "version": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
+        "signature": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/qs/index.d.ts": {
+        "version": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
+        "signature": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/express-serve-static-core/index.d.ts": {
+        "version": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
+        "signature": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@types/mime/index.d.ts": {
+        "version": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
+        "signature": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/serve-static/index.d.ts": {
+        "version": "a81ca93d000e36f987b91dd5b26a900aeae125bfbeda710b0369d04857c02932",
+        "signature": "a81ca93d000e36f987b91dd5b26a900aeae125bfbeda710b0369d04857c02932",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/connect/index.d.ts": {
+        "version": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
+        "signature": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/body-parser/index.d.ts": {
+        "version": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
+        "signature": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/express/index.d.ts": {
+        "version": "088d420a09a36d241f1ddbdcb553951c02ef0844014727a29712d2ced57edd22",
+        "signature": "088d420a09a36d241f1ddbdcb553951c02ef0844014727a29712d2ced57edd22",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/multer/index.d.ts": {
+        "version": "773d135a3bc375aa4e0c984e1b1167536fa0360749ef8c230433a56d64bc434a",
+        "signature": "773d135a3bc375aa4e0c984e1b1167536fa0360749ef8c230433a56d64bc434a",
+        "affectsGlobalScope": true
+      },
+      "../src/factura-proveedor/one-file-opts.multer.ts": {
+        "version": "ad884c770c190be9a62850837bbfb4aa7a519c2d3bafaf5b5fad09cf688efb4d",
+        "signature": "1d869ecb6b02141249234964fcd77db41a5c33775f947db504e1226a947fa583",
         "affectsGlobalScope": false
       },
       "../node_modules/class-validator/types/validation/validationerror.d.ts": {
@@ -2902,8 +2907,8 @@
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.service.ts": {
-        "version": "70980c75894acef242ec8750efcc436733219f854d43f316a42ea19faf41c589",
-        "signature": "404fc16acb19630a840ef1ac0db52a1eccfefc6c6fcf0a4837cb9df9bcf92969",
+        "version": "295d98aa94e78addf2f687d7672c6c54bc6914f0715128b56aed9ad0d9d74838",
+        "signature": "5e9d396e352a45ca7396e2bf01d0f638450453902df74bc8cc48bbfc3f03ad3f",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/old/factura-proveedor.service.ts": {
@@ -2912,8 +2917,8 @@
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.controller.ts": {
-        "version": "7890cd43fc8fc1b39cb4eaac79113b98926113e6145e427477f440f9e0fe3334",
-        "signature": "13e5cbd81ea2af1392b0266fcb9471e97e93c0d2944cbc754785432b9804aa6d",
+        "version": "269d55af76ce4acfcc4e1a173593dbeb10b38831aa27ff451808b4a5d96f164a",
+        "signature": "4873b76d1641d94fb472b57bbfa9c356688c2f3a31a3ff86705beb7f01634fb6",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/old/factura-proveedor.controller.ts": {
@@ -2922,7 +2927,7 @@
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.module.ts": {
-        "version": "75092e2f3383c5a96c53a46decdeb12fa73f613e4a1e2fb91a89a8940f9bc577",
+        "version": "eb08232856198cc6a096d5e12b1998fb514ad9b9fd6bd436c813c2506b0b1aa2",
         "signature": "4d428e572027b542ea1ffc59f078d5a98bd7701c1e3e74bd2bebdfe342d59301",
         "affectsGlobalScope": false
       },
@@ -5917,14 +5922,13 @@
         "../src/factura-proveedor/factura-proveedor.service.ts",
         "../src/factura-proveedor/old/factura-proveedor-old.schema.ts",
         "../src/factura-proveedor/old/factura-proveedor.service.ts",
+        "../src/factura-proveedor/one-file-opts.multer.ts",
         "../src/models/user-auth.model.ts"
       ],
       "../src/factura-proveedor/factura-proveedor.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@nestjs/platform-express/index.d.ts",
-        "../node_modules/@types/multer/index.d.ts",
-        "../node_modules/@types/node/path.d.ts",
         "../src/environment/environment.settings.ts",
         "../src/factura-proveedor/factura-proveedor.controller.ts",
         "../src/factura-proveedor/factura-proveedor.schema.ts",
@@ -5944,6 +5948,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/bson/bson.d.ts",
         "../src/factura-proveedor/factura-proveedor.schema.ts"
       ],
       "../src/factura-proveedor/old/factura-imagen-old.schema.ts": [
@@ -5967,6 +5972,10 @@
         "../node_modules/bson/bson.d.ts",
         "../src/factura-proveedor/old/factura-imagen-old.schema.ts",
         "../src/factura-proveedor/old/factura-proveedor-old.schema.ts"
+      ],
+      "../src/factura-proveedor/one-file-opts.multer.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/multer/index.d.ts"
       ],
       "../src/interceptors/factura-proveedor.interceptor.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -8467,6 +8476,9 @@
         "../src/factura-proveedor/old/factura-imagen-old.schema.ts",
         "../src/factura-proveedor/old/factura-proveedor-old.schema.ts"
       ],
+      "../src/factura-proveedor/one-file-opts.multer.ts": [
+        "../node_modules/@types/multer/index.d.ts"
+      ],
       "../src/interceptors/factura-proveedor.interceptor.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/rxjs/index.d.ts"
@@ -9166,6 +9178,7 @@
       "../src/factura-proveedor/old/factura-proveedor-old.schema.ts",
       "../src/factura-proveedor/old/factura-proveedor.controller.ts",
       "../src/factura-proveedor/old/factura-proveedor.service.ts",
+      "../src/factura-proveedor/one-file-opts.multer.ts",
       "../src/interceptors/factura-proveedor.interceptor.ts",
       "../src/main.ts",
       "../src/models/centro-costo.model.ts",

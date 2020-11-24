@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Body, Controller, Get, HttpCode, Param, Patch, Post, RequestTimeoutException, Res, ServiceUnavailableException, UploadedFile, UseInterceptors, ValidationPipe } from '@nestjs/common';
+import { BadRequestException, Body, ConflictException, Controller, Get, HttpCode, Param, Patch, Post, Res, ServiceUnavailableException, UploadedFile, UseInterceptors, ValidationPipe } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express/multer/interceptors/file.interceptor';
 import { Types } from 'mongoose';
 import * as moment from 'moment';
@@ -7,6 +7,8 @@ import * as moment from 'moment';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('file-system');
 
+// Constant
+import { oneFileMemoryMulterOptions } from './one-file-opts.multer';
 //Decorators
 import { GetToken } from 'src/common/get-token.decorator';
 // Pipes
@@ -108,15 +110,59 @@ export class FacturaProveedorController {
   // Agregar el PDF a una factura y activar la misma para el proceso de aprobaciones
   @Patch('/:id/pdf')
   @HttpCode(200)
-  @UseInterceptors(FileInterceptor('pdfFile'))
+  @UseInterceptors(FileInterceptor('pdfFile', oneFileMemoryMulterOptions))
   async addFileToFactura(
     @GetToken(new ValidateTokenPipe()) infoUser: UserAuth,
     @Param('id') id: string,
-    @UploadedFile() pdfFile
+    @UploadedFile() pdfFile: Express.Multer.File
   ): Promise<{[key:string]: any}> {
-    console.log('*** id:', id);
-    console.log('*** pdfFile:', pdfFile);
-    return;
+
+    let rtnMessage: {[key:string]: any} = {};
+
+    // Verificar que exista el documento :id y leer el documento
+    await this.facturaProveedorService.findOne(id)
+    .then(async factura => {
+      
+      // Chequear el status de la factura
+      if ('CREADA,MODIFICADA'.indexOf(factura.docStatus) < 0) {
+        console.log('*** ERROR STATUS');
+        throw new ConflictException(`API-0050(E): el status de la factura no permite esta operación (status: ${factura.docStatus}).`);
+      } else {
+        // Armar el nombre de archivo
+        const fileName = `${factura.proveedorId}_${factura.fechaCtble.toISOString().split('T')[0]}_${factura.numeroFactura.trim()}.pdf`;
+        console.log('*** name:', fileName);
+        // Guardar el aarchivo en PUBLIC y actualizar la factura.
+        fs.writeFile(`${PUBLIC_PATH}/pdf/${fileName}`, pdfFile.buffer, (err: {[key: string]: any}) => {
+          if (err) {
+            console.log('*** ERROR 1:', err.message);          
+            throw new ServiceUnavailableException(`API-0049(E): no se pudo salvar el PDF para el id: ${id} (${err.message})`);
+          }
+        });
+        console.log('*** ok save file');
+        // Actualizar la factura
+        const toUpdate = {
+          pdfFile: fileName
+        }
+        await this.facturaProveedorService.patchFacturaProveedor(id, toUpdate)
+        .then( data => {
+          console.log()
+          rtnMessage = {
+            _id: id,
+            pdfFile: fileName,
+            message: 'El PDF fue guardado con éxito.'
+          };
+        })
+        .catch(error => {
+          console.log('*** ERROR 2:', error.message);          
+          throw new ServiceUnavailableException(error);
+        });
+      }
+    })
+    .catch((error) => {
+      throw new BadRequestException(`API-0048(E): id inexsitente (${id})`);
+    });
+
+    return rtnMessage;
   }
 
   // Traer todas las facturas
@@ -128,35 +174,38 @@ export class FacturaProveedorController {
   }
 
   // Show Pdf File
-  @Get('/pdf/:fileName')
-  public getPdfFile(
+  @Get('/:id/pdf')
+  public async getPdfFile(
     //@GetToken(new ValidateTokenPipe()) infoUser: UserAuth,
-    @Param('fileName') fileName: string,
+    @Param('id') id: string,
     @Res() res
-  ): void {
+  ): Promise<void> {
 
-    const fileRead = new Promise((resolve, reject) => {
-      fs.readFile(`${PUBLIC_PATH}/pdf/${fileName}`, (err, file) => {
-        if (err) {
-          reject(`Archivo inexistente: ${fileName}`);
-        } else {          
-          const stat = fs.statSync(`${PUBLIC_PATH}/pdf/${fileName}`);
-          res.setHeader('Content-Length', stat.size);
-          res.setHeader('Content-Type', 'application/pdf');
-          res.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
-          resolve(file);
-          // res.send(file);
-        };
+    // Buscar la factura por :id
+    await this.facturaProveedorService.findOne(id)
+    .then(async factura => {
+
+      const fileRead = new Promise((resolve, reject) => {
+        fs.readFile(`${PUBLIC_PATH}/pdf/${factura.pdfFile}`, (err, file) => {
+          if (err) {
+            reject(`Archivo inexistente: ${factura.pdfFile}`);
+          } else {          
+            const stat = fs.statSync(`${PUBLIC_PATH}/pdf/${factura.pdfFile}`);
+            res.setHeader('Content-Length', stat.size);
+            res.setHeader('Content-Type', 'application/pdf');
+            res.setHeader('Content-Disposition', `attachment; filename=${factura.pdfFile}`);
+            resolve(file);
+            // res.send(file);
+          };
+        });
       });
-    });
-
-    fileRead
+  
+      await fileRead
       .then(pdfFile => {
         res.send(pdfFile);
       })
       .catch(error => {
         // El archivo no existe
-        console.log('*** err', error);
         res.status(404).send({
           statusCode: 404,
           message: error,
@@ -164,6 +213,10 @@ export class FacturaProveedorController {
         });
         //Promise.reject(new NotFoundException(error));    //`Archivo inexistente: ${fileName}`);
       })
+    })
+    .catch((error) => {
+      throw new BadRequestException(`API-0048(E): id inexsitente (${id})`);
+    });
   }
 
   // Armar el documento con el nuevo formato

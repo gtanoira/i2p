@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const file_interceptor_1 = require("@nestjs/platform-express/multer/interceptors/file.interceptor");
 const moment = require("moment");
 const fs = require('file-system');
+const one_file_opts_multer_1 = require("./one-file-opts.multer");
 const get_token_decorator_1 = require("../common/get-token.decorator");
 const validate_token_pipe_1 = require("../common/validate-token.pipe");
 const environment_settings_1 = require("../environment/environment.settings");
@@ -82,40 +83,81 @@ let FacturaProveedorController = class FacturaProveedorController {
         });
     }
     async addFileToFactura(infoUser, id, pdfFile) {
-        console.log('*** id:', id);
-        console.log('*** pdfFile:', pdfFile);
-        return;
+        let rtnMessage = {};
+        await this.facturaProveedorService.findOne(id)
+            .then(async (factura) => {
+            if ('CREADA,MODIFICADA'.indexOf(factura.docStatus) < 0) {
+                console.log('*** ERROR STATUS');
+                throw new common_1.ConflictException(`API-0050(E): el status de la factura no permite esta operación (status: ${factura.docStatus}).`);
+            }
+            else {
+                const fileName = `${factura.proveedorId}_${factura.fechaCtble.toISOString().split('T')[0]}_${factura.numeroFactura.trim()}.pdf`;
+                console.log('*** name:', fileName);
+                fs.writeFile(`${environment_settings_1.PUBLIC_PATH}/pdf/${fileName}`, pdfFile.buffer, (err) => {
+                    if (err) {
+                        console.log('*** ERROR 1:', err.message);
+                        throw new common_1.ServiceUnavailableException(`API-0049(E): no se pudo salvar el PDF para el id: ${id} (${err.message})`);
+                    }
+                });
+                console.log('*** ok save file');
+                const toUpdate = {
+                    pdfFile: fileName
+                };
+                await this.facturaProveedorService.patchFacturaProveedor(id, toUpdate)
+                    .then(data => {
+                    console.log();
+                    rtnMessage = {
+                        _id: id,
+                        pdfFile: fileName,
+                        message: 'El PDF fue guardado con éxito.'
+                    };
+                })
+                    .catch(error => {
+                    console.log('*** ERROR 2:', error.message);
+                    throw new common_1.ServiceUnavailableException(error);
+                });
+            }
+        })
+            .catch((error) => {
+            throw new common_1.BadRequestException(`API-0048(E): id inexsitente (${id})`);
+        });
+        return rtnMessage;
     }
     async getAll(infoUser) {
         return await this.facturaProveedorService.findAll();
     }
-    getPdfFile(fileName, res) {
-        const fileRead = new Promise((resolve, reject) => {
-            fs.readFile(`${environment_settings_1.PUBLIC_PATH}/pdf/${fileName}`, (err, file) => {
-                if (err) {
-                    reject(`Archivo inexistente: ${fileName}`);
-                }
-                else {
-                    const stat = fs.statSync(`${environment_settings_1.PUBLIC_PATH}/pdf/${fileName}`);
-                    res.setHeader('Content-Length', stat.size);
-                    res.setHeader('Content-Type', 'application/pdf');
-                    res.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
-                    resolve(file);
-                }
-                ;
+    async getPdfFile(id, res) {
+        await this.facturaProveedorService.findOne(id)
+            .then(async (factura) => {
+            const fileRead = new Promise((resolve, reject) => {
+                fs.readFile(`${environment_settings_1.PUBLIC_PATH}/pdf/${factura.pdfFile}`, (err, file) => {
+                    if (err) {
+                        reject(`Archivo inexistente: ${factura.pdfFile}`);
+                    }
+                    else {
+                        const stat = fs.statSync(`${environment_settings_1.PUBLIC_PATH}/pdf/${factura.pdfFile}`);
+                        res.setHeader('Content-Length', stat.size);
+                        res.setHeader('Content-Type', 'application/pdf');
+                        res.setHeader('Content-Disposition', `attachment; filename=${factura.pdfFile}`);
+                        resolve(file);
+                    }
+                    ;
+                });
             });
-        });
-        fileRead
-            .then(pdfFile => {
-            res.send(pdfFile);
+            await fileRead
+                .then(pdfFile => {
+                res.send(pdfFile);
+            })
+                .catch(error => {
+                res.status(404).send({
+                    statusCode: 404,
+                    message: error,
+                    error: "Not found"
+                });
+            });
         })
-            .catch(error => {
-            console.log('*** err', error);
-            res.status(404).send({
-                statusCode: 404,
-                message: error,
-                error: "Not found"
-            });
+            .catch((error) => {
+            throw new common_1.BadRequestException(`API-0048(E): id inexsitente (${id})`);
         });
     }
     mapNewDoc(factura) {
@@ -259,7 +301,7 @@ __decorate([
 __decorate([
     common_1.Patch('/:id/pdf'),
     common_1.HttpCode(200),
-    common_1.UseInterceptors(file_interceptor_1.FileInterceptor('pdfFile')),
+    common_1.UseInterceptors(file_interceptor_1.FileInterceptor('pdfFile', one_file_opts_multer_1.oneFileMemoryMulterOptions)),
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe())),
     __param(1, common_1.Param('id')),
     __param(2, common_1.UploadedFile()),
@@ -275,12 +317,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], FacturaProveedorController.prototype, "getAll", null);
 __decorate([
-    common_1.Get('/pdf/:fileName'),
-    __param(0, common_1.Param('fileName')),
+    common_1.Get('/:id/pdf'),
+    __param(0, common_1.Param('id')),
     __param(1, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], FacturaProveedorController.prototype, "getPdfFile", null);
 FacturaProveedorController = __decorate([
     common_1.Controller('factura_proveedores'),
