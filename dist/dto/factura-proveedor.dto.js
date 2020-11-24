@@ -10,17 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateFacturaProveedorDto = exports.LogFactura = exports.ImpuestoFactura = exports.DetalleFactura = void 0;
-const swagger_1 = require("@nestjs/swagger");
 const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
 const constantes_model_1 = require("../models/constantes.model");
 class DetalleFactura {
 }
-__decorate([
-    class_validator_1.IsInt(),
-    class_validator_1.IsNotEmpty(),
-    __metadata("design:type", Number)
-], DetalleFactura.prototype, "posicion", void 0);
 __decorate([
     class_validator_1.IsString(),
     class_validator_1.IsNotEmpty(),
@@ -56,7 +50,6 @@ __decorate([
 ], DetalleFactura.prototype, "sapOrden", void 0);
 __decorate([
     class_validator_1.IsNumber(),
-    class_validator_1.IsNotEmpty(),
     __metadata("design:type", Number)
 ], DetalleFactura.prototype, "itemNeto", void 0);
 __decorate([
@@ -69,17 +62,11 @@ __decorate([
 ], DetalleFactura.prototype, "sapTaxDesc", void 0);
 __decorate([
     class_validator_1.IsNumber(),
-    class_validator_1.IsNotEmpty(),
     __metadata("design:type", Number)
 ], DetalleFactura.prototype, "itemIva", void 0);
 exports.DetalleFactura = DetalleFactura;
 class ImpuestoFactura {
 }
-__decorate([
-    class_validator_1.IsInt(),
-    class_validator_1.IsNotEmpty(),
-    __metadata("design:type", Number)
-], ImpuestoFactura.prototype, "posicion", void 0);
 __decorate([
     class_validator_1.IsString(),
     class_validator_1.IsNotEmpty(),
@@ -87,7 +74,6 @@ __decorate([
 ], ImpuestoFactura.prototype, "sapTaxId", void 0);
 __decorate([
     class_validator_1.IsString(),
-    class_validator_1.IsEmpty(),
     __metadata("design:type", String)
 ], ImpuestoFactura.prototype, "sapTaxDesc", void 0);
 __decorate([
@@ -95,15 +81,10 @@ __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", Number)
 ], ImpuestoFactura.prototype, "totalImpuesto", void 0);
-__decorate([
-    class_validator_1.IsBoolean(),
-    __metadata("design:type", Boolean)
-], ImpuestoFactura.prototype, "debeCalcularse", void 0);
 exports.ImpuestoFactura = ImpuestoFactura;
 class LogFactura {
 }
 __decorate([
-    swagger_1.ApiProperty(),
     class_transformer_1.Type(() => Date),
     class_validator_1.IsDate(),
     __metadata("design:type", Date)
@@ -120,9 +101,6 @@ __decorate([
 ], LogFactura.prototype, "userLog", void 0);
 exports.LogFactura = LogFactura;
 class CreateFacturaProveedorDto {
-    setProveedorId() {
-        this.proveedorId = `0000000000${this.proveedorId}`.substr(0, 10);
-    }
 }
 __decorate([
     class_validator_1.IsString(),
@@ -150,6 +128,7 @@ __decorate([
 ], CreateFacturaProveedorDto.prototype, "fechaDoc", void 0);
 __decorate([
     class_transformer_1.Type(() => Date),
+    class_validator_1.IsDate(),
     __metadata("design:type", Date)
 ], CreateFacturaProveedorDto.prototype, "fechaCtble", void 0);
 __decorate([
@@ -172,22 +151,13 @@ __decorate([
 ], CreateFacturaProveedorDto.prototype, "monedaDoc", void 0);
 __decorate([
     class_validator_1.IsNumber(),
+    class_validator_1.IsNotEmpty(),
     __metadata("design:type", Number)
 ], CreateFacturaProveedorDto.prototype, "monedaCotiz", void 0);
 __decorate([
     class_validator_1.IsNumber(),
     __metadata("design:type", Number)
 ], CreateFacturaProveedorDto.prototype, "totalNeto", void 0);
-__decorate([
-    class_validator_1.IsNumber(),
-    class_validator_1.IsEmpty(),
-    __metadata("design:type", String)
-], CreateFacturaProveedorDto.prototype, "sapDocId", void 0);
-__decorate([
-    class_transformer_1.Type(() => Date),
-    class_validator_1.IsDate(),
-    __metadata("design:type", Date)
-], CreateFacturaProveedorDto.prototype, "sapDocFecha", void 0);
 __decorate([
     class_validator_1.IsString(),
     class_validator_1.IsNotEmpty(),
@@ -198,8 +168,7 @@ __decorate([
     __metadata("design:type", String)
 ], CreateFacturaProveedorDto.prototype, "areaAprobadoraDesc", void 0);
 __decorate([
-    class_validator_1.IsString(),
-    class_validator_1.IsEnum(constantes_model_1.DocStatus, { message: `El valor del docStatus es incorrecto: ${constantes_model_1.DocStatus}.` }),
+    class_validator_1.IsOptional(),
     __metadata("design:type", String)
 ], CreateFacturaProveedorDto.prototype, "docStatus", void 0);
 __decorate([

@@ -1,18 +1,11 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { Expose, Type } from 'class-transformer';
-import { IsBoolean, IsDate, IsEmpty, IsEnum, IsInt, IsNotEmpty, IsNumber, IsNumberString, IsString, Length, ValidateNested } from 'class-validator';
-import { monitorEventLoopDelay } from 'perf_hooks';
+import { Type } from 'class-transformer';
+import { IsDate, IsEnum, IsNotEmpty, IsNumber, IsNumberString, IsOptional, IsString, Length, ValidateNested } from 'class-validator';
 
 // Models
 import { DocStatus } from 'src/models/constantes.model';
 
 // Detalle Factura
 export class DetalleFactura {
-
-  @IsInt()
-  @IsNotEmpty()
-  public posicion!: number;
-
   @IsString()
   @IsNotEmpty()
   public concepto!: string;
@@ -39,48 +32,34 @@ export class DetalleFactura {
   public sapOrden?: string | null;
 
   @IsNumber()
-  @IsNotEmpty()
-  public itemNeto!: number;
+  public itemNeto!: number | 0.00;
 
   @IsString()
-  public sapTaxId?: string | null;
+  public sapTaxId!: string | 'CX';
 
   @IsString()
   public sapTaxDesc?: string | null;
 
   @IsNumber()
-  @IsNotEmpty()
-  public itemIva!: number;
+  public itemIva!: number | 0.00;
 }
 
 // Impuestos Facturas
 export class ImpuestoFactura {
-
-  @IsInt()
-  @IsNotEmpty()
-  public posicion!: number;
-
   @IsString()
   @IsNotEmpty()
   public sapTaxId!: string;
 
   @IsString()
-  @IsEmpty()
   public sapTaxDesc?: string | null;
 
   @IsNumber()
   @IsNotEmpty()
   public totalImpuesto!: number;
-
-  @IsBoolean()
-  public debeCalcularse?: boolean;
-
 }
 
 // Log Facturas
 export class LogFactura {
-
-  @ApiProperty()
   @Type(() => Date)
   @IsDate()
   public fechaLog!: Date;
@@ -118,7 +97,8 @@ export class CreateFacturaProveedorDto {
   public fechaDoc!: Date;
 
   @Type(() => Date)
-  public fechaCtble?: Date;
+  @IsDate()
+  public fechaCtble!: Date;
 
   @IsString()
   @IsNotEmpty()
@@ -135,18 +115,11 @@ export class CreateFacturaProveedorDto {
   public monedaDoc!: string;
  
   @IsNumber()
-  public monedaCotiz?: number;
+  @IsNotEmpty()
+  public monedaCotiz!: number;
 
   @IsNumber()
   public totalNeto?: number;
-  
-  @IsNumber()
-  @IsEmpty()
-  public sapDocId?: string;
-
-  @Type(() => Date)
-  @IsDate()
-  public sapDocFecha?: Date;
 
   @IsString()
   @IsNotEmpty()
@@ -155,11 +128,8 @@ export class CreateFacturaProveedorDto {
   @IsString()
   public areaAprobadoraDesc?: string;
 
-  @IsString()
-  @IsEnum(DocStatus, 
-    {message: `El valor del docStatus es incorrecto: ${DocStatus}.`}
-  )
-  public docStatus!: string;
+  @IsOptional()
+  public docStatus?: string;
 
   // Detalle Factura
   @Type(() => DetalleFactura)
@@ -175,10 +145,5 @@ export class CreateFacturaProveedorDto {
   @Type(() => LogFactura)
   @ValidateNested({ each: true })
   public log?: LogFactura[];
-
-  // SETTERS
-  setProveedorId() {
-    this.proveedorId = `0000000000${this.proveedorId}`.substr(0, 10);
-  }
 
 }

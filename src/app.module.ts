@@ -16,7 +16,7 @@ import { FacturaProveedorModule } from './factura-proveedor/factura-proveedor.mo
 import { SociedadModule } from './sociedad/sociedad.module';
 import { AuthorizationsService } from './shared/authorizations.service';
 
-// Connection Options
+// MongoDB Connection Options (database)
 const connOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,

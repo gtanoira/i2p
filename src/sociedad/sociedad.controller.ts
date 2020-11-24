@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { BadRequestException, Body, Controller, Get, HttpCode, Param, Post, ValidationPipe } from '@nestjs/common';
+import { Body, ConflictException, Controller, Get, HttpCode, Post, ValidationPipe } from '@nestjs/common';
 // Services
 import { SociedadService } from './sociedad.service';
 // Models & Schemas
 import { Sociedad, SociedadDocument } from './sociedad.schema';
 import { UserAuth } from 'src/models/user-auth.model';
 // DTO's
-import { CreateOrdenDto } from 'src/dto/orden.dto';
 import { CreateSociedadDto } from 'src/dto/sociedad.dto';
 // Decorators & Pipes
 import { GetToken } from 'src/common/get-token.decorator';
 import { ValidateTokenPipe } from 'src/common/validate-token.pipe';
+import { from, Observable, of, throwError } from 'rxjs';
+import { catchError, concatMap, map, mergeMap, toArray } from 'rxjs/operators';
 
 @Controller('sociedades')
 export class SociedadController {
@@ -19,9 +20,6 @@ export class SociedadController {
     private sociedadService: SociedadService
   ) {}
 
-  /*
-      SOCIEDADES
-  */
   // Obtener todos los registros
   @Get()
   async findAll(
@@ -30,35 +28,31 @@ export class SociedadController {
     return await this.sociedadService.findAll();
   }
 
-  // Alta
+  // Alta de sociedades: se pueden envaiar multiples sociedades dentro de un array
   @Post()
   @HttpCode(200)
-  async addFactura(
+  addFactura(
     @GetToken(new ValidateTokenPipe) infoUser: UserAuth,
-    @Body(new ValidationPipe()) sociedadDto: CreateSociedadDto
-  ): Promise<SociedadDocument> {
-    return await this.sociedadService.addSociedad(sociedadDto)
-    .catch(error => {
-      throw new BadRequestException(error.message);
-    });
-  }
-  
-  /*
-      SOCIEDADES -> ORDENES
-  */
-  // Alta de ordenes para una sociedad
-  @Post('/:sociedadId/ordenes')
-  @HttpCode(200)
-  async addOrden(
-    @GetToken(new ValidateTokenPipe) infoUser: UserAuth,
-    @Param('sociedadId') sociedadId: string,
-    @Body(new ValidationPipe()) ordenDto: CreateOrdenDto 
-  ): Promise<SociedadDocument> {
-    return await this.sociedadService.addOrden(sociedadId, ordenDto)
-    .catch(error => {
-      throw new BadRequestException(error.message);
-    });
-  }
+    @Body(new ValidationPipe()) sociedadDto: CreateSociedadDto[]
+  ): Observable<SociedadDocument[]> {
 
+    const altaSociedades = from(sociedadDto).pipe(
+      concatMap(sociedad => {
+        return this.sociedadService.addSociedad(sociedad);
+      }),
+      catchError(
+        error => throwError(error.message)
+      )
+    );
+
+    return altaSociedades.pipe(
+      toArray(),
+      catchError(
+        error => {
+          throw new ConflictException(error);
+        }
+      )
+    );
+  }
 }
 

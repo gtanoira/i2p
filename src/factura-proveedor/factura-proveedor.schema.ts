@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Type } from 'class-transformer';
+import { Transform, Type } from 'class-transformer';
 import { Document, Types } from 'mongoose';
 
 // Models
@@ -7,9 +7,6 @@ import { DocStatus } from '../models/constantes.model';
 
 // Detalle Factura
 export class DetalleFactura {
-
-  @Prop()
-  public posicion!: number;
 
   @Prop()
   public concepto!: string;
@@ -52,9 +49,6 @@ export class DetalleFactura {
 export class ImpuestoFactura {
 
   @Prop()
-  public posicion!: number;
-
-  @Prop()
   public sapTaxId!: string;
 
   @Prop({ default: null })
@@ -62,9 +56,6 @@ export class ImpuestoFactura {
 
   @Prop({ default: 0.00 })
   public totalImpuesto!: number;
-
-  @Prop({ default: true })
-  public debeCalcularse?: boolean;
 
 }
 
@@ -95,7 +86,12 @@ export class FacturaProveedor {
   @Prop({default: null})
   public empresaDesc?: string;
 
-  @Prop()
+  @Prop({
+    set: (value: string) => {
+      const data = `0000000000${value.trim()}`;
+      return data.substr(data.length-10, data.length);
+    }
+  })
   public proveedorId!: string;
 
   @Prop({default: null})
@@ -104,8 +100,8 @@ export class FacturaProveedor {
   @Prop()
   public fechaDoc!: Date;
 
-  @Prop({ default: null })
-  public fechaCtble?: Date;
+  @Prop()
+  public fechaCtble!: Date;
 
   @Prop()
   public sapCbteId!: string;
@@ -119,8 +115,8 @@ export class FacturaProveedor {
   @Prop({ uppercase: true, match: /[A-Z]{3}/, default: 'ARS' })
   public monedaDoc!: string;
  
-  @Prop({ default: 0.00 })
-  public monedaCotiz?: number;
+  @Prop({ default: 1 })
+  public monedaCotiz!: number;
 
   @Prop({ default: 0.00 })
   public totalNeto?: number;
@@ -138,8 +134,8 @@ export class FacturaProveedor {
   @Prop({default: null})
   public areaAprobadoraDesc?: string;
 
-  @Prop({ enum: DocStatus, default: 'EN_CARGA' })
-  public docStatus!: string;
+  @Prop({ enum: DocStatus, default: 'CREADA' })
+  public docStatus?: string;
 
   @Prop({ default: null })
   public pdfFile?: string;

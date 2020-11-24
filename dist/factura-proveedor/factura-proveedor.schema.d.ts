@@ -1,6 +1,5 @@
 import { Document, Types } from 'mongoose';
 export declare class DetalleFactura {
-    posicion: number;
     concepto: string;
     descripcion?: string | null;
     mesServicio?: string;
@@ -15,11 +14,9 @@ export declare class DetalleFactura {
     itemIva: number;
 }
 export declare class ImpuestoFactura {
-    posicion: number;
     sapTaxId: string;
     sapTaxDesc?: string | null;
     totalImpuesto: number;
-    debeCalcularse?: boolean;
 }
 export declare class LogFactura {
     fechaLog: Date;
@@ -33,18 +30,18 @@ export declare class FacturaProveedor {
     proveedorId: string;
     proveedorDesc?: string;
     fechaDoc: Date;
-    fechaCtble?: Date;
+    fechaCtble: Date;
     sapCbteId: string;
     sapCbteDesc?: string;
     numeroFactura?: string | null;
     monedaDoc: string;
-    monedaCotiz?: number;
+    monedaCotiz: number;
     totalNeto?: number;
     sapDocId?: string;
     sapDocFecha?: Date;
     areaAprobadoraId: string;
     areaAprobadoraDesc?: string;
-    docStatus: string;
+    docStatus?: string;
     pdfFile?: string;
     detalle?: DetalleFactura[];
     impuestos?: ImpuestoFactura[];

@@ -1,5 +1,4 @@
 export declare class DetalleFactura {
-    posicion: number;
     concepto: string;
     descripcion?: string | null;
     mesServicio?: string;
@@ -8,17 +7,15 @@ export declare class DetalleFactura {
     sapCtaCtbleId?: string | null;
     sapCtaCtbleDesc?: string | null;
     sapOrden?: string | null;
-    itemNeto: number;
-    sapTaxId?: string | null;
+    itemNeto: number | 0.00;
+    sapTaxId: string | 'CX';
     sapTaxDesc?: string | null;
-    itemIva: number;
+    itemIva: number | 0.00;
 }
 export declare class ImpuestoFactura {
-    posicion: number;
     sapTaxId: string;
     sapTaxDesc?: string | null;
     totalImpuesto: number;
-    debeCalcularse?: boolean;
 }
 export declare class LogFactura {
     fechaLog: Date;
@@ -31,20 +28,17 @@ export declare class CreateFacturaProveedorDto {
     proveedorId: string;
     proveedorDesc?: string;
     fechaDoc: Date;
-    fechaCtble?: Date;
+    fechaCtble: Date;
     sapCbteId: string;
     sapCbteDesc?: string;
     numeroFactura?: string | null;
     monedaDoc: string;
-    monedaCotiz?: number;
+    monedaCotiz: number;
     totalNeto?: number;
-    sapDocId?: string;
-    sapDocFecha?: Date;
     areaAprobadoraId: string;
     areaAprobadoraDesc?: string;
-    docStatus: string;
+    docStatus?: string;
     detalle?: DetalleFactura[];
     impuestos?: ImpuestoFactura[];
     log?: LogFactura[];
-    setProveedorId(): void;
 }

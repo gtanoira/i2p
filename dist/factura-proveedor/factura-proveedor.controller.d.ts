@@ -1,4 +1,4 @@
-import { FacturaProveedor, FacturaProveedorDocument } from './factura-proveedor.schema';
+import { FacturaProveedor } from './factura-proveedor.schema';
 import { UserAuth } from 'src/models/user-auth.model';
 import { CreateFacturaProveedorDto } from '../dto/factura-proveedor.dto';
 import { FacturaProveedorService } from './factura-proveedor.service';
@@ -10,7 +10,12 @@ export declare class FacturaProveedorController {
     migrateFromOld(infoUser: UserAuth): Promise<{
         [key: string]: any;
     }>;
-    addFactura(infoUser: UserAuth, facturaProveedorDto: CreateFacturaProveedorDto): Promise<FacturaProveedorDocument>;
+    addFactura(infoUser: UserAuth, facturaProveedorDto: CreateFacturaProveedorDto): Promise<{
+        [key: string]: any;
+    }>;
+    addFileToFactura(infoUser: UserAuth, id: string, pdfFile: any): Promise<{
+        [key: string]: any;
+    }>;
     getAll(infoUser: UserAuth): Promise<FacturaProveedor[]>;
     getPdfFile(fileName: string, res: any): void;
     private mapNewDoc;
