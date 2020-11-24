@@ -24,8 +24,14 @@ let FacturaProveedorService = class FacturaProveedorService {
     async findAll() {
         return this.facturaProveedorModel.find();
     }
+    async findOne(id) {
+        return await this.facturaProveedorModel.findById(id).exec();
+    }
     async addFacturaProveedor(factura) {
         return this.facturaProveedorModel.create(factura);
+    }
+    async patchFacturaProveedor(id, datosActualizar) {
+        return await this.facturaProveedorModel.findOneAndUpdate({ _id: id }, { $set: datosActualizar }).exec();
     }
 };
 FacturaProveedorService = __decorate([
