@@ -9,6 +9,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FacturaProveedorModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
+const platform_express_1 = require("@nestjs/platform-express");
+const multer_1 = require("multer");
+const path_1 = require("path");
+const environment_settings_1 = require("../environment/environment.settings");
 const factura_proveedor_schema_1 = require("./factura-proveedor.schema");
 const factura_imagen_old_schema_1 = require("./old/factura-imagen-old.schema");
 const factura_proveedor_old_schema_1 = require("./old/factura-proveedor-old.schema");
@@ -16,6 +20,26 @@ const factura_proveedor_controller_1 = require("./factura-proveedor.controller")
 const factura_proveedor_controller_2 = require("./old/factura-proveedor.controller");
 const factura_proveedor_service_1 = require("./factura-proveedor.service");
 const factura_proveedor_service_2 = require("./old/factura-proveedor.service");
+const multerOptions = {
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype.match(/\/pdf$/)) {
+            cb(null, true);
+        }
+        else {
+            cb(new common_1.BadRequestException(`Unsupported file type ${path_1.extname(file.originalname)}`));
+        }
+    },
+    storage: multer_1.diskStorage({
+        destination: (req, file, cb) => {
+            const uploadPath = `${environment_settings_1.PUBLIC_PATH}/pdf`;
+            cb(null, uploadPath);
+        },
+        filename: (req, file, cb) => {
+            const fileName = `${req.body.proveedorId}_${req.body.fechaCtble}_${req.body.numeroFactura.trim()}.pdf`;
+            cb(null, fileName);
+        },
+    }),
+};
 let FacturaProveedorModule = class FacturaProveedorModule {
 };
 FacturaProveedorModule = __decorate([
@@ -27,7 +51,8 @@ FacturaProveedorModule = __decorate([
             mongoose_1.MongooseModule.forFeature([
                 { name: factura_proveedor_old_schema_1.FacturaProveedorOld.name, schema: factura_proveedor_old_schema_1.FacturaProveedorOldSchema },
                 { name: factura_imagen_old_schema_1.FacturaImagenOld.name, schema: factura_imagen_old_schema_1.FacturaImagenOldSchema }
-            ], 'i2p_old')
+            ], 'i2p_old'),
+            platform_express_1.MulterModule.register(multerOptions)
         ],
         controllers: [
             factura_proveedor_controller_1.FacturaProveedorController,

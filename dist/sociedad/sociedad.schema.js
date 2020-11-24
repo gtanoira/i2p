@@ -11,29 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SociedadSchema = exports.Sociedad = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const class_validator_1 = require("class-validator");
-const centro_costo_model_1 = require("../models/centro-costo.model");
-const orden_model_1 = require("../models/orden.model");
 let Sociedad = class Sociedad {
 };
 __decorate([
-    mongoose_1.Prop({ unique: true }),
-    class_validator_1.IsEmpty({ message: 'El id SAP de la sociedad no puede estar vacío.' }),
+    mongoose_1.Prop({ type: String, index: { unique: true } }),
     __metadata("design:type", String)
 ], Sociedad.prototype, "sapId", void 0);
 __decorate([
     mongoose_1.Prop(),
-    class_validator_1.IsEmpty({ message: 'El nombre de la sociendad no puede estar vacío' }),
     __metadata("design:type", String)
 ], Sociedad.prototype, "name", void 0);
-__decorate([
-    mongoose_1.Prop({ type: centro_costo_model_1.CentroCosto, _id: false }),
-    __metadata("design:type", Array)
-], Sociedad.prototype, "centroCostos", void 0);
-__decorate([
-    mongoose_1.Prop({ type: orden_model_1.Orden, _id: false }),
-    __metadata("design:type", Array)
-], Sociedad.prototype, "ordenes", void 0);
 Sociedad = __decorate([
     mongoose_1.Schema({
         collection: 'sociedades'

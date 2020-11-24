@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { from, Observable } from 'rxjs';
 
 // Models & Schemas
 import { Sociedad, SociedadDocument } from './sociedad.schema';
-import { Orden } from 'src/models/orden.model';
 
 @Injectable()
 export class SociedadService {
@@ -19,13 +19,8 @@ export class SociedadService {
   }
 
   // Grabar un nuevo doc
-  public addSociedad(sociedad: Sociedad): Promise<SociedadDocument> {
-    return this.sociedadModel.create(sociedad);
+  public addSociedad(sociedad: Sociedad): Observable<SociedadDocument> {
+    return from(this.sociedadModel.create(sociedad));
   }
 
-  // Agrgar una nueva orden a una sociedad
-  public addOrden(sociedad: string, orden: Orden): Promise<SociedadDocument> {
-    //return this.sociedadModel.update()
-    return null;
-  }
 }

@@ -10,9 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateSociedadDto = void 0;
-const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
-const orden_dto_1 = require("./orden.dto");
 class CreateSociedadDto {
 }
 __decorate([
@@ -25,15 +23,5 @@ __decorate([
     class_validator_1.IsNotEmpty({ message: 'El nombre de la sociedad no puede estar vacío.' }),
     __metadata("design:type", String)
 ], CreateSociedadDto.prototype, "name", void 0);
-__decorate([
-    class_transformer_1.Type(() => orden_dto_1.CreateOrdenDto),
-    class_validator_1.ValidateNested({ each: true }),
-    __metadata("design:type", Array)
-], CreateSociedadDto.prototype, "centroCostos", void 0);
-__decorate([
-    class_transformer_1.Type(() => orden_dto_1.CreateOrdenDto),
-    class_validator_1.ValidateNested({ each: true }),
-    __metadata("design:type", Array)
-], CreateSociedadDto.prototype, "ordenes", void 0);
 exports.CreateSociedadDto = CreateSociedadDto;
 //# sourceMappingURL=sociedad.dto.js.map

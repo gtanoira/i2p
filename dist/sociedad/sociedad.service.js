@@ -16,8 +16,8 @@ exports.SociedadService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
+const rxjs_1 = require("rxjs");
 const sociedad_schema_1 = require("./sociedad.schema");
-const orden_model_1 = require("../models/orden.model");
 let SociedadService = class SociedadService {
     constructor(sociedadModel) {
         this.sociedadModel = sociedadModel;
@@ -26,10 +26,7 @@ let SociedadService = class SociedadService {
         return this.sociedadModel.find().exec();
     }
     addSociedad(sociedad) {
-        return this.sociedadModel.create(sociedad);
-    }
-    addOrden(sociedad, orden) {
-        return null;
+        return rxjs_1.from(this.sociedadModel.create(sociedad));
     }
 };
 SociedadService = __decorate([

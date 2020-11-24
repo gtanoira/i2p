@@ -1542,7 +1542,7 @@
         "affectsGlobalScope": false
       },
       "../src/common/get-token.decorator.ts": {
-        "version": "5cdac66f3b2daab575e7a7682349ae13bbab1abf7272d60ad8a23d09eb8fcd5b",
+        "version": "306b3d40193412eb673677700f87c052eea635c1d831a6572126cc731465a98e",
         "signature": "8a80498551459fec235162c41b0ddeb26665225db2bb82b65bcadb4904be7f95",
         "affectsGlobalScope": false
       },
@@ -2091,6 +2091,136 @@
         "signature": "8b63649228f08d7668c7515c0846bd882b5a6c537ad561df02b97a8ff5658041",
         "affectsGlobalScope": false
       },
+      "../node_modules/@nestjs/core/adapters/http-adapter.d.ts": {
+        "version": "748dc5e30576ac07af1121893bb1beaafb0d7d0000142b69fae2b2995fc7f7f4",
+        "signature": "748dc5e30576ac07af1121893bb1beaafb0d7d0000142b69fae2b2995fc7f7f4",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/interfaces/serve-static-options.interface.d.ts": {
+        "version": "b87682ddc9e2c3714ca66991cdd86ff7e18cae6fd010742a93bd612a07d19697",
+        "signature": "b87682ddc9e2c3714ca66991cdd86ff7e18cae6fd010742a93bd612a07d19697",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/adapters/express-adapter.d.ts": {
+        "version": "7c9fb139cfddf0c42ca4a839f30bb78f13908774e48dbbbfbf69387af2ef6c13",
+        "signature": "7c9fb139cfddf0c42ca4a839f30bb78f13908774e48dbbbfbf69387af2ef6c13",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/adapters/index.d.ts": {
+        "version": "86bf2bfe29d0bc3fbc68e64c25ea6eab9bcb3c518ae941012ed75b1e87d391ae",
+        "signature": "86bf2bfe29d0bc3fbc68e64c25ea6eab9bcb3c518ae941012ed75b1e87d391ae",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/interfaces/nest-express-application.interface.d.ts": {
+        "version": "8b584341b20cfcdaf8e47f5b91b1d5bfae1cc1be94941b4ccec6cf07f1017950",
+        "signature": "8b584341b20cfcdaf8e47f5b91b1d5bfae1cc1be94941b4ccec6cf07f1017950",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/interfaces/index.d.ts": {
+        "version": "68a330d1246e3f0ed055b931ab6f4f9505d7c2db0560515f68c722c06541dc0d",
+        "signature": "68a330d1246e3f0ed055b931ab6f4f9505d7c2db0560515f68c722c06541dc0d",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/multer/interfaces/multer-options.interface.d.ts": {
+        "version": "8ae337fcd337d5ca179611dae780e7dbb45b3c0cbc6debc5067a4215e95cd873",
+        "signature": "8ae337fcd337d5ca179611dae780e7dbb45b3c0cbc6debc5067a4215e95cd873",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/multer/interceptors/any-files.interceptor.d.ts": {
+        "version": "00427e68be5cbfd0694c650ebf27dc9d5cb8ec62254ca5af0cd3e412595f8d09",
+        "signature": "00427e68be5cbfd0694c650ebf27dc9d5cb8ec62254ca5af0cd3e412595f8d09",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/multer/interceptors/file-fields.interceptor.d.ts": {
+        "version": "6a013828e3333e21fde3a4d1c7da0c41e8ce0218a98ad8e71025c2d437a2458b",
+        "signature": "6a013828e3333e21fde3a4d1c7da0c41e8ce0218a98ad8e71025c2d437a2458b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/multer/interceptors/file.interceptor.d.ts": {
+        "version": "fc1a967ceb559957a8fd153d364596d7c906440c401e9a1f0ef9cda62a92a937",
+        "signature": "fc1a967ceb559957a8fd153d364596d7c906440c401e9a1f0ef9cda62a92a937",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/multer/interceptors/files.interceptor.d.ts": {
+        "version": "fd09f594933708040bbab2ad98fdfd1f076209ff0d514cbc8ab50bc39f462619",
+        "signature": "fd09f594933708040bbab2ad98fdfd1f076209ff0d514cbc8ab50bc39f462619",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/multer/interceptors/index.d.ts": {
+        "version": "6db46ed9adeb732a2c46b05dd64a3fe85b2789065f1ef7668f583c61f1046a14",
+        "signature": "6db46ed9adeb732a2c46b05dd64a3fe85b2789065f1ef7668f583c61f1046a14",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/multer/interfaces/files-upload-module.interface.d.ts": {
+        "version": "7bb8a371f7790a421606678b50a943955bfc182beca2c42f8d1473cc2973fa12",
+        "signature": "7bb8a371f7790a421606678b50a943955bfc182beca2c42f8d1473cc2973fa12",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/multer/interfaces/index.d.ts": {
+        "version": "d8c1697db4bb3234ff3f8481545284992f1516bc712421b81ee3ef3f226ae112",
+        "signature": "d8c1697db4bb3234ff3f8481545284992f1516bc712421b81ee3ef3f226ae112",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/multer/multer.module.d.ts": {
+        "version": "549adfb8fb51148eeb2c0659941b3a508988ee0b00f325fbaae7e96bc4b3e4c9",
+        "signature": "549adfb8fb51148eeb2c0659941b3a508988ee0b00f325fbaae7e96bc4b3e4c9",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/multer/index.d.ts": {
+        "version": "e2c3c3ca3818d610599392a9431e60ec021c5d59262ecd616538484990f6e331",
+        "signature": "e2c3c3ca3818d610599392a9431e60ec021c5d59262ecd616538484990f6e331",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/platform-express/index.d.ts": {
+        "version": "e3cd60be3c4f95c43420be67eaa21637585b7c1a8129f9b39983bbd294f9513c",
+        "signature": "e3cd60be3c4f95c43420be67eaa21637585b7c1a8129f9b39983bbd294f9513c",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/range-parser/index.d.ts": {
+        "version": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
+        "signature": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/qs/index.d.ts": {
+        "version": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
+        "signature": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/express-serve-static-core/index.d.ts": {
+        "version": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
+        "signature": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@types/mime/index.d.ts": {
+        "version": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
+        "signature": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/serve-static/index.d.ts": {
+        "version": "a81ca93d000e36f987b91dd5b26a900aeae125bfbeda710b0369d04857c02932",
+        "signature": "a81ca93d000e36f987b91dd5b26a900aeae125bfbeda710b0369d04857c02932",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/connect/index.d.ts": {
+        "version": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
+        "signature": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/body-parser/index.d.ts": {
+        "version": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
+        "signature": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/express/index.d.ts": {
+        "version": "088d420a09a36d241f1ddbdcb553951c02ef0844014727a29712d2ced57edd22",
+        "signature": "088d420a09a36d241f1ddbdcb553951c02ef0844014727a29712d2ced57edd22",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/multer/index.d.ts": {
+        "version": "773d135a3bc375aa4e0c984e1b1167536fa0360749ef8c230433a56d64bc434a",
+        "signature": "773d135a3bc375aa4e0c984e1b1167536fa0360749ef8c230433a56d64bc434a",
+        "affectsGlobalScope": true
+      },
       "../node_modules/class-transformer/classtransformoptions.d.ts": {
         "version": "d3717ebff6037a2e7c72674f085393f58a6825e82a49ac8966234641d230c6b8",
         "signature": "d3717ebff6037a2e7c72674f085393f58a6825e82a49ac8966234641d230c6b8",
@@ -2127,13 +2257,13 @@
         "affectsGlobalScope": false
       },
       "../src/models/constantes.model.ts": {
-        "version": "a2f8dac4095ac13fe3bc729938fd45a8a7b23c8e11b55fab21fa47bf2cb55e83",
+        "version": "78ea853b2841dfd4e1f05e074e6db9badccc061a3887d99cd3252e49e2496e98",
         "signature": "735d0bcbcefb80e5a917dae6d231a4ff3bc256599a480132983479af56a23dd6",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.schema.ts": {
-        "version": "963cf076de4e7b2ab781e6f4ba72d4d92975bdc8b15c1f3f9c355ad497331176",
-        "signature": "9028f6b1357822b0151e41b4962570479417f53c9686ac8cbd83562764060edc",
+        "version": "ebe047a2ccf5b6045681b3185ecb460aa24f3d436c57f2a34d6e4959e616fc6d",
+        "signature": "1bb245e036d41ee543716f57befbec44ff90bf7e4fba3214ac2f98a04135b64b",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/old/factura-imagen-old.schema.ts": {
@@ -2149,191 +2279,6 @@
       "../node_modules/moment/ts3.1-typings/moment.d.ts": {
         "version": "f97edc4d3b4dd0b32766e9633086497565c37657fb591cc84a35864db4bc2fc5",
         "signature": "f97edc4d3b4dd0b32766e9633086497565c37657fb591cc84a35864db4bc2fc5",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-basic.decorator.d.ts": {
-        "version": "6ecc423e71318bafbd230e6059e082c377170dfc7e02fccfa600586f8604d452",
-        "signature": "6ecc423e71318bafbd230e6059e082c377170dfc7e02fccfa600586f8604d452",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-bearer.decorator.d.ts": {
-        "version": "772f9bdd2bf50c9c01b0506001545e9b878faa7394ad6e7d90b49b179a024584",
-        "signature": "772f9bdd2bf50c9c01b0506001545e9b878faa7394ad6e7d90b49b179a024584",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts": {
-        "version": "7042fea4affa85bd05c1c7c9a2e42773738e3aced630b1c7e8e6b48e90a48069",
-        "signature": "7042fea4affa85bd05c1c7c9a2e42773738e3aced630b1c7e8e6b48e90a48069",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/types/swagger-enum.type.d.ts": {
-        "version": "02dafa194c95b7c0293059512b8ea3bd95402c6e4bc8331dab7e92e842260c56",
-        "signature": "02dafa194c95b7c0293059512b8ea3bd95402c6e4bc8331dab7e92e842260c56",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-body.decorator.d.ts": {
-        "version": "10e0bec39a58664907f32d33b825155a4efea3e74e62bd57206bce35486891d6",
-        "signature": "10e0bec39a58664907f32d33b825155a4efea3e74e62bd57206bce35486891d6",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-consumes.decorator.d.ts": {
-        "version": "cd1ccdd9fd7980d43dfede5d42ee3d18064baed98b136089cf7c8221d562f058",
-        "signature": "cd1ccdd9fd7980d43dfede5d42ee3d18064baed98b136089cf7c8221d562f058",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-cookie.decorator.d.ts": {
-        "version": "d60f9a4fd1e734e7b79517f02622426ea1000deb7d6549dfdece043353691a4e",
-        "signature": "d60f9a4fd1e734e7b79517f02622426ea1000deb7d6549dfdece043353691a4e",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-exclude-endpoint.decorator.d.ts": {
-        "version": "403d28b5e5f8fcff795ac038902033ec5890143e950af45bd91a3ed231e8b59c",
-        "signature": "403d28b5e5f8fcff795ac038902033ec5890143e950af45bd91a3ed231e8b59c",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-extra-models.decorator.d.ts": {
-        "version": "999fa84c5df2d19909d68a43ce89a5dddfb30e526f7796ea995809a09f53e393",
-        "signature": "999fa84c5df2d19909d68a43ce89a5dddfb30e526f7796ea995809a09f53e393",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-header.decorator.d.ts": {
-        "version": "bfeb476eb0049185cb94c2bfcadb3ce1190554bbcf170d2bf7c68ed9bb00458e",
-        "signature": "bfeb476eb0049185cb94c2bfcadb3ce1190554bbcf170d2bf7c68ed9bb00458e",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-hide-property.decorator.d.ts": {
-        "version": "ae23a65a2b664ffe979b0a2a98842e10bdf3af67a356f14bbc9d77eb3ab13585",
-        "signature": "ae23a65a2b664ffe979b0a2a98842e10bdf3af67a356f14bbc9d77eb3ab13585",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-oauth2.decorator.d.ts": {
-        "version": "eccf6ad2a8624329653896e8dbd03f30756cbd902a81b5d3942d6cf0e1a21575",
-        "signature": "eccf6ad2a8624329653896e8dbd03f30756cbd902a81b5d3942d6cf0e1a21575",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-operation.decorator.d.ts": {
-        "version": "334ed2e25a7ebc8db8aac231bab5a5b57a1b6f8063186a92314f4ddf3d74d4e2",
-        "signature": "334ed2e25a7ebc8db8aac231bab5a5b57a1b6f8063186a92314f4ddf3d74d4e2",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-param.decorator.d.ts": {
-        "version": "5af015a9834e0f5cf56a9089ddf0ca87a56bd3f8ad0eb79c8cc95968aa867923",
-        "signature": "5af015a9834e0f5cf56a9089ddf0ca87a56bd3f8ad0eb79c8cc95968aa867923",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-produces.decorator.d.ts": {
-        "version": "62463aa3d299ae0cdc5473d2ac32213a05753c3adce87a8801c6d2b114a64116",
-        "signature": "62463aa3d299ae0cdc5473d2ac32213a05753c3adce87a8801c6d2b114a64116",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/interfaces/schema-object-metadata.interface.d.ts": {
-        "version": "c9c2eabaad71c534d7de16385977f95184fdf3ddd0339dadbd5d599488d94f90",
-        "signature": "c9c2eabaad71c534d7de16385977f95184fdf3ddd0339dadbd5d599488d94f90",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-property.decorator.d.ts": {
-        "version": "bdf0a372e233a8f5ab5daba2763ab8897e1044d735c1698a261b8e2ab08d8d13",
-        "signature": "bdf0a372e233a8f5ab5daba2763ab8897e1044d735c1698a261b8e2ab08d8d13",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-query.decorator.d.ts": {
-        "version": "e217963df120e4e87abaf374c5060ade29b9b81dafc81287b3710f95b49ffde0",
-        "signature": "e217963df120e4e87abaf374c5060ade29b9b81dafc81287b3710f95b49ffde0",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-response.decorator.d.ts": {
-        "version": "333bf50e91d113db1a244250890f72b5680ed2d0f75e9800cd44a43a780eaabe",
-        "signature": "333bf50e91d113db1a244250890f72b5680ed2d0f75e9800cd44a43a780eaabe",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-security.decorator.d.ts": {
-        "version": "f6b244e6e11ff78419f979c56e1c8eecd277c54fa932a1eae39f69530ed6b0ce",
-        "signature": "f6b244e6e11ff78419f979c56e1c8eecd277c54fa932a1eae39f69530ed6b0ce",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-use-tags.decorator.d.ts": {
-        "version": "fef736cfb404b4db9aa942f377dbbac6edb76d18aabd3b647713fa75da8939e9",
-        "signature": "fef736cfb404b4db9aa942f377dbbac6edb76d18aabd3b647713fa75da8939e9",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/api-extension.decorator.d.ts": {
-        "version": "45659c92e49dfca4601acc7e57fbb03a71513c69768984baf86ead8d20387a01",
-        "signature": "45659c92e49dfca4601acc7e57fbb03a71513c69768984baf86ead8d20387a01",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/decorators/index.d.ts": {
-        "version": "44d8e9e3978043513ea75120312cee0705a65355fd1253dab6de966adc0409bc",
-        "signature": "44d8e9e3978043513ea75120312cee0705a65355fd1253dab6de966adc0409bc",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/interfaces/swagger-custom-options.interface.d.ts": {
-        "version": "f247409326a7d8d7efe135867ed4123e79eeafe9a8e2d894fc3d39e8a2d02dc0",
-        "signature": "f247409326a7d8d7efe135867ed4123e79eeafe9a8e2d894fc3d39e8a2d02dc0",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/interfaces/swagger-document-options.interface.d.ts": {
-        "version": "88d4830f57f71112dc0a2e2068a827e7a6035b8b6ba38bd5e39cbda679afe024",
-        "signature": "88d4830f57f71112dc0a2e2068a827e7a6035b8b6ba38bd5e39cbda679afe024",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/interfaces/index.d.ts": {
-        "version": "8fc97ef271771dc6f81a9c846d007ac4f0cb5779e3f441c1de54dfda5046fe7b",
-        "signature": "8fc97ef271771dc6f81a9c846d007ac4f0cb5779e3f441c1de54dfda5046fe7b",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/document-builder.d.ts": {
-        "version": "8b764503654cce10e3570288daa5f7c51a33fce4050eb56df8d4fca9662b8bdf",
-        "signature": "8b764503654cce10e3570288daa5f7c51a33fce4050eb56df8d4fca9662b8bdf",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/swagger-module.d.ts": {
-        "version": "b64fec482d5c612291eebd81e32993663ee90a5dc05cfe43464e6ef5ee1cae73",
-        "signature": "b64fec482d5c612291eebd81e32993663ee90a5dc05cfe43464e6ef5ee1cae73",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/type-helpers/intersection-type.helper.d.ts": {
-        "version": "2dd9d764938d20a0613b89b14d7da644f7be4a70d22f18c3019254029d7a7a3c",
-        "signature": "2dd9d764938d20a0613b89b14d7da644f7be4a70d22f18c3019254029d7a7a3c",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/type-helpers/omit-type.helper.d.ts": {
-        "version": "021034a82ea821144b711eeba792f824f03d30b5cdb3b20a63e9bc5ad0531fdf",
-        "signature": "021034a82ea821144b711eeba792f824f03d30b5cdb3b20a63e9bc5ad0531fdf",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/type-helpers/partial-type.helper.d.ts": {
-        "version": "b251114717c08c462c1a8388155ded58cbdfbadc13488b775a4eaaa59863dc46",
-        "signature": "b251114717c08c462c1a8388155ded58cbdfbadc13488b775a4eaaa59863dc46",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/type-helpers/pick-type.helper.d.ts": {
-        "version": "a2e546426763a9d5d4b5b10b928fb312f8b76e581c8a985362cd04a01859e51a",
-        "signature": "a2e546426763a9d5d4b5b10b928fb312f8b76e581c8a985362cd04a01859e51a",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/type-helpers/index.d.ts": {
-        "version": "33bb0d96cea9782d701332e6b7390f8efae3af92fd3e2aa2ac45e4a610e705d6",
-        "signature": "33bb0d96cea9782d701332e6b7390f8efae3af92fd3e2aa2ac45e4a610e705d6",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/utils/get-schema-path.util.d.ts": {
-        "version": "ae3e98448468e46474d817b5ebe74db11ab22c2feb60e292d96ce1a4ee963623",
-        "signature": "ae3e98448468e46474d817b5ebe74db11ab22c2feb60e292d96ce1a4ee963623",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/utils/index.d.ts": {
-        "version": "f0a2fdee9e801ac9320a8660dd6b8a930bf8c5b658d390ae0feafdba8b633688",
-        "signature": "f0a2fdee9e801ac9320a8660dd6b8a930bf8c5b658d390ae0feafdba8b633688",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/dist/index.d.ts": {
-        "version": "7beb7f04f6186bdac5e622d44e4cac38d9f2b9fcad984b10d3762e369524dd77",
-        "signature": "7beb7f04f6186bdac5e622d44e4cac38d9f2b9fcad984b10d3762e369524dd77",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/swagger/index.d.ts": {
-        "version": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
-        "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "affectsGlobalScope": false
       },
       "../node_modules/class-validator/types/validation/validationerror.d.ts": {
@@ -2952,8 +2897,8 @@
         "affectsGlobalScope": false
       },
       "../src/dto/factura-proveedor.dto.ts": {
-        "version": "f83d941e7c50bab503967a9078ae3dab9ac22c4db84f796d936e21b378430df3",
-        "signature": "54c7cd59f727c83e62dcf6d6365848a863f7a37128707253ef68e2c772530a6a",
+        "version": "040d86de442c4023f75dac9d2789328811acb76f22fe16d63d63c0c254f0935f",
+        "signature": "deff391716bddea9884fce6639bc33d4d07ed3604b5677a5e0dd794c63230d93",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.service.ts": {
@@ -2966,24 +2911,9 @@
         "signature": "bc0158232e4effe5d840976f11036540046ec08946af8476f54172c8157c553f",
         "affectsGlobalScope": false
       },
-      "../node_modules/@types/cookiejar/index.d.ts": {
-        "version": "8d48b8f8a377ade8dd1f000625bc276eea067f2529cc9cafdf082d17142107d6",
-        "signature": "8d48b8f8a377ade8dd1f000625bc276eea067f2529cc9cafdf082d17142107d6",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/superagent/index.d.ts": {
-        "version": "022bb15c2fb40bb465a4511476b1796b9977e2bab463ffd8b2b3d1d1a56b00d1",
-        "signature": "022bb15c2fb40bb465a4511476b1796b9977e2bab463ffd8b2b3d1d1a56b00d1",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/supertest/index.d.ts": {
-        "version": "e6540dcaa31aadbd070bea91d31c387c3e03baf78ea56420e706ae77660ae45a",
-        "signature": "e6540dcaa31aadbd070bea91d31c387c3e03baf78ea56420e706ae77660ae45a",
-        "affectsGlobalScope": false
-      },
       "../src/factura-proveedor/factura-proveedor.controller.ts": {
-        "version": "c505db762b562ecc742203dacbbfa146fb336754e09634a043a8b50e409c65d4",
-        "signature": "e769a09242c4ee1f6022ebafe94308d21fc03189ea97d4201b13bb6cb1e9651f",
+        "version": "7890cd43fc8fc1b39cb4eaac79113b98926113e6145e427477f440f9e0fe3334",
+        "signature": "13e5cbd81ea2af1392b0266fcb9471e97e93c0d2944cbc754785432b9804aa6d",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/old/factura-proveedor.controller.ts": {
@@ -2992,48 +2922,28 @@
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.module.ts": {
-        "version": "4e7b49143cdef43ccc1ff618d66255461c017bca0316f9a6116db0d43ab65502",
+        "version": "75092e2f3383c5a96c53a46decdeb12fa73f613e4a1e2fb91a89a8940f9bc577",
         "signature": "4d428e572027b542ea1ffc59f078d5a98bd7701c1e3e74bd2bebdfe342d59301",
         "affectsGlobalScope": false
       },
-      "../src/models/centro-costo.model.ts": {
-        "version": "b400bbf3069cc1badeffa05bfe75a26f8be46ebc35fa4fca4a1cf9d5956d707f",
-        "signature": "3b44029eb4430d4f1a791fb1250914d0c1257857c323bd402c9787c087226daa",
-        "affectsGlobalScope": false
-      },
-      "../src/models/orden.model.ts": {
-        "version": "218ac9733adb72fa8a19b2044dd004bb13bafccb128a18c51c12c2415f980883",
-        "signature": "8a773ab74eb2b576c24e0c8f1bf36232a6aca0a2813474da8dd490c90c46f068",
-        "affectsGlobalScope": false
-      },
       "../src/sociedad/sociedad.schema.ts": {
-        "version": "4c9e7e88c512d446dc82b0611543a5c1c95036f391a4e08d214e67db1f3691cc",
-        "signature": "6328661ff5090e1ca7fd6c9d1db675a72f8b1fa89f87c71513041f1eb6467403",
+        "version": "18f6444f7746dda697e97b51a8c0f21ec10bdd51b7b73411bad731ad9a4a758a",
+        "signature": "edd3f2fd8dea7376a12a909e09a6ce42a21e0c6724af0d457ad14cec4c38f47d",
         "affectsGlobalScope": false
       },
       "../src/sociedad/sociedad.service.ts": {
-        "version": "edb0b9976c2d95c3d0efedcae880e372e3a5171a0a1506a85bf0d2c33334b61f",
-        "signature": "e2c32dd51d508c7e053ea5d8d6049768fa6eb2260a148cf5c19e50ce0c0a91ce",
-        "affectsGlobalScope": false
-      },
-      "../src/dto/orden.dto.ts": {
-        "version": "dfba0342334936b15c95c6c61f2057ca814772080f01f41f774f5fdcf391566e",
-        "signature": "c8fc764bddbc864a610a34700e154c53976617e4eb429c66789e5d953165bb0f",
-        "affectsGlobalScope": false
-      },
-      "../src/dto/centro-costo.dto.ts": {
-        "version": "71e763c5d0766f13ef6180c6626913fec2333df4b66b9e6d12fe197a51c1dd1d",
-        "signature": "dfd26188f91c0bf4f1e7304b4c85d33912722fc0141f0a9a14240bd91e7a9417",
+        "version": "2f58187b081a44c52be1ee36f4176dcf69bc238e20369a457c4219bafd3f95bb",
+        "signature": "33ba7ff8e4bed6930ee3cd40a27d653390d0ba109e555cf4abf3ee4a686b983d",
         "affectsGlobalScope": false
       },
       "../src/dto/sociedad.dto.ts": {
-        "version": "7f542d92e09f25119a570ef9f6ac6744387f49038dcefe2d69e59636e83b1968",
-        "signature": "868f1478be32ae61e5207beb68da7c6021ecb4c210abeed12ffdbad5137ec845",
+        "version": "3f873551518fb5aa43e21b03be158b536b9746fb1ee93c09434f7a6eb2a0d939",
+        "signature": "13e5487ee40ce0a7cd32d82b0be57d960f3b58e404d476b48eb283655421df96",
         "affectsGlobalScope": false
       },
       "../src/sociedad/sociedad.controller.ts": {
-        "version": "899f62700c81351b26d7ee7e5bbe2d0541a8c32f70546fda1ce096630bacc3eb",
-        "signature": "23ead55c8e18ca5c1a353a22f24783ca83ab69da8339256f8b9755fb3db92688",
+        "version": "88eca491e5eefaa1d99c9d7fb2e89b303ab6e7f9bd78aa148c46ec3e31de07b8",
+        "signature": "5c6b644d4479b489cb85d1d93301def0cfd66d3481b3efe21630d0fe2ea1470e",
         "affectsGlobalScope": false
       },
       "../src/sociedad/sociedad.module.ts": {
@@ -3042,13 +2952,8 @@
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
-        "version": "feb84ef6fcb54731e5ffb011461dd21ecf8bfa8c74c2d7d1230bb936a6bd87a3",
+        "version": "118d00388cbf250990c96aa8c0d2d65751eac0ecd9fbe445a3598fc4d0bcfbd3",
         "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/core/adapters/http-adapter.d.ts": {
-        "version": "748dc5e30576ac07af1121893bb1beaafb0d7d0000142b69fae2b2995fc7f7f4",
-        "signature": "748dc5e30576ac07af1121893bb1beaafb0d7d0000142b69fae2b2995fc7f7f4",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/core/adapters/index.d.ts": {
@@ -3226,19 +3131,34 @@
         "signature": "7b5ed961a0e03965299591d73de8b8c41e8a68105ff4fc07a240b0dfb94a5a3d",
         "affectsGlobalScope": false
       },
-      "../node_modules/@nestjs/platform-express/interfaces/serve-static-options.interface.d.ts": {
-        "version": "b87682ddc9e2c3714ca66991cdd86ff7e18cae6fd010742a93bd612a07d19697",
-        "signature": "b87682ddc9e2c3714ca66991cdd86ff7e18cae6fd010742a93bd612a07d19697",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/platform-express/interfaces/nest-express-application.interface.d.ts": {
-        "version": "8b584341b20cfcdaf8e47f5b91b1d5bfae1cc1be94941b4ccec6cf07f1017950",
-        "signature": "8b584341b20cfcdaf8e47f5b91b1d5bfae1cc1be94941b4ccec6cf07f1017950",
-        "affectsGlobalScope": false
-      },
       "../src/main.ts": {
         "version": "27ce3c436068c6d3744c04affc5a0b0fd02dc8b2e630af61d57d2f0673d19bfe",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
+        "affectsGlobalScope": false
+      },
+      "../src/dto/centro-costo.dto.ts": {
+        "version": "71e763c5d0766f13ef6180c6626913fec2333df4b66b9e6d12fe197a51c1dd1d",
+        "signature": "dfd26188f91c0bf4f1e7304b4c85d33912722fc0141f0a9a14240bd91e7a9417",
+        "affectsGlobalScope": false
+      },
+      "../src/dto/orden.dto.ts": {
+        "version": "dfba0342334936b15c95c6c61f2057ca814772080f01f41f774f5fdcf391566e",
+        "signature": "c8fc764bddbc864a610a34700e154c53976617e4eb429c66789e5d953165bb0f",
+        "affectsGlobalScope": false
+      },
+      "../src/interceptors/factura-proveedor.interceptor.ts": {
+        "version": "737be2874caaea94c25c61614946c2d213ce979b0fdd3049eca414af0b1ff0ae",
+        "signature": "7c2f001986242a1973996e8ba9faaefc20e39a79dcaaa31f59c20d881090ec6a",
+        "affectsGlobalScope": false
+      },
+      "../src/models/centro-costo.model.ts": {
+        "version": "b400bbf3069cc1badeffa05bfe75a26f8be46ebc35fa4fca4a1cf9d5956d707f",
+        "signature": "3b44029eb4430d4f1a791fb1250914d0c1257857c323bd402c9787c087226daa",
+        "affectsGlobalScope": false
+      },
+      "../src/models/orden.model.ts": {
+        "version": "218ac9733adb72fa8a19b2044dd004bb13bafccb128a18c51c12c2415f980883",
+        "signature": "8a773ab74eb2b576c24e0c8f1bf36232a6aca0a2813474da8dd490c90c46f068",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/anymatch/index.d.ts": {
@@ -3276,54 +3196,19 @@
         "signature": "7df3163944694feeac63067632a8dc2e2dea1350119ec8b43df277af69198369",
         "affectsGlobalScope": false
       },
-      "../node_modules/@types/connect/index.d.ts": {
-        "version": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
-        "signature": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/body-parser/index.d.ts": {
-        "version": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
-        "signature": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
-        "affectsGlobalScope": false
-      },
       "../node_modules/@types/bson/index.d.ts": {
         "version": "2d23edce1d4a3b33280970484e17ca87b03e2829d8677ae1501de18269f0498f",
         "signature": "2d23edce1d4a3b33280970484e17ca87b03e2829d8677ae1501de18269f0498f",
         "affectsGlobalScope": false
       },
+      "../node_modules/@types/cookiejar/index.d.ts": {
+        "version": "8d48b8f8a377ade8dd1f000625bc276eea067f2529cc9cafdf082d17142107d6",
+        "signature": "8d48b8f8a377ade8dd1f000625bc276eea067f2529cc9cafdf082d17142107d6",
+        "affectsGlobalScope": false
+      },
       "../node_modules/@types/eslint-visitor-keys/index.d.ts": {
         "version": "725d9be2fd48440256f4deb00649adffdbc5ecd282b09e89d4e200663792c34c",
         "signature": "725d9be2fd48440256f4deb00649adffdbc5ecd282b09e89d4e200663792c34c",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/range-parser/index.d.ts": {
-        "version": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
-        "signature": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/qs/index.d.ts": {
-        "version": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
-        "signature": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/express-serve-static-core/index.d.ts": {
-        "version": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
-        "signature": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
-        "affectsGlobalScope": true
-      },
-      "../node_modules/@types/mime/index.d.ts": {
-        "version": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
-        "signature": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/serve-static/index.d.ts": {
-        "version": "a81ca93d000e36f987b91dd5b26a900aeae125bfbeda710b0369d04857c02932",
-        "signature": "a81ca93d000e36f987b91dd5b26a900aeae125bfbeda710b0369d04857c02932",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/express/index.d.ts": {
-        "version": "088d420a09a36d241f1ddbdcb553951c02ef0844014727a29712d2ced57edd22",
-        "signature": "088d420a09a36d241f1ddbdcb553951c02ef0844014727a29712d2ced57edd22",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/graceful-fs/index.d.ts": {
@@ -3424,6 +3309,16 @@
       "../node_modules/@types/stack-utils/index.d.ts": {
         "version": "c6c4fea9acc55d5e38ff2b70d57ab0b5cdbd08f8bc5d7a226e322cea128c5b57",
         "signature": "c6c4fea9acc55d5e38ff2b70d57ab0b5cdbd08f8bc5d7a226e322cea128c5b57",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/superagent/index.d.ts": {
+        "version": "022bb15c2fb40bb465a4511476b1796b9977e2bab463ffd8b2b3d1d1a56b00d1",
+        "signature": "022bb15c2fb40bb465a4511476b1796b9977e2bab463ffd8b2b3d1d1a56b00d1",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/supertest/index.d.ts": {
+        "version": "e6540dcaa31aadbd070bea91d31c387c3e03baf78ea56420e706ae77660ae45a",
+        "signature": "e6540dcaa31aadbd070bea91d31c387c3e03baf78ea56420e706ae77660ae45a",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/tapable/index.d.ts": {
@@ -4223,109 +4118,69 @@
       "../node_modules/@nestjs/mongoose/index.d.ts": [
         "../node_modules/@nestjs/mongoose/dist/index.d.ts"
       ],
+      "../node_modules/@nestjs/platform-express/adapters/express-adapter.d.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/common/interfaces/external/cors-options.interface.d.ts",
+        "../node_modules/@nestjs/common/interfaces/nest-application-options.interface.d.ts",
+        "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
+        "../node_modules/@nestjs/platform-express/interfaces/serve-static-options.interface.d.ts"
+      ],
+      "../node_modules/@nestjs/platform-express/adapters/index.d.ts": [
+        "../node_modules/@nestjs/platform-express/adapters/express-adapter.d.ts"
+      ],
+      "../node_modules/@nestjs/platform-express/index.d.ts": [
+        "../node_modules/@nestjs/platform-express/adapters/index.d.ts",
+        "../node_modules/@nestjs/platform-express/interfaces/index.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/index.d.ts"
+      ],
+      "../node_modules/@nestjs/platform-express/interfaces/index.d.ts": [
+        "../node_modules/@nestjs/platform-express/interfaces/nest-express-application.interface.d.ts"
+      ],
       "../node_modules/@nestjs/platform-express/interfaces/nest-express-application.interface.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/platform-express/interfaces/serve-static-options.interface.d.ts"
       ],
-      "../node_modules/@nestjs/swagger/dist/decorators/api-body.decorator.d.ts": [
+      "../node_modules/@nestjs/platform-express/multer/index.d.ts": [
+        "../node_modules/@nestjs/platform-express/multer/interceptors/index.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/interfaces/index.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/multer.module.d.ts"
+      ],
+      "../node_modules/@nestjs/platform-express/multer/interceptors/any-files.interceptor.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts",
-        "../node_modules/@nestjs/swagger/dist/types/swagger-enum.type.d.ts"
+        "../node_modules/@nestjs/platform-express/multer/interfaces/multer-options.interface.d.ts"
       ],
-      "../node_modules/@nestjs/swagger/dist/decorators/api-header.decorator.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts",
-        "../node_modules/@nestjs/swagger/dist/types/swagger-enum.type.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/decorators/api-operation.decorator.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/decorators/api-param.decorator.d.ts": [
+      "../node_modules/@nestjs/platform-express/multer/interceptors/file-fields.interceptor.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts",
-        "../node_modules/@nestjs/swagger/dist/types/swagger-enum.type.d.ts"
+        "../node_modules/@nestjs/platform-express/multer/interfaces/multer-options.interface.d.ts"
       ],
-      "../node_modules/@nestjs/swagger/dist/decorators/api-property.decorator.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/interfaces/schema-object-metadata.interface.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/decorators/api-query.decorator.d.ts": [
+      "../node_modules/@nestjs/platform-express/multer/interceptors/file.interceptor.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts",
-        "../node_modules/@nestjs/swagger/dist/types/swagger-enum.type.d.ts"
+        "../node_modules/@nestjs/platform-express/multer/interfaces/multer-options.interface.d.ts"
       ],
-      "../node_modules/@nestjs/swagger/dist/decorators/api-response.decorator.d.ts": [
+      "../node_modules/@nestjs/platform-express/multer/interceptors/files.interceptor.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts"
+        "../node_modules/@nestjs/platform-express/multer/interfaces/multer-options.interface.d.ts"
       ],
-      "../node_modules/@nestjs/swagger/dist/decorators/index.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/decorators/api-basic.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-bearer.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-body.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-consumes.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-cookie.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-exclude-endpoint.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-extension.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-extra-models.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-header.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-hide-property.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-oauth2.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-operation.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-param.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-produces.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-property.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-query.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-response.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-security.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-use-tags.decorator.d.ts"
+      "../node_modules/@nestjs/platform-express/multer/interceptors/index.d.ts": [
+        "../node_modules/@nestjs/platform-express/multer/interceptors/any-files.interceptor.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/interceptors/file-fields.interceptor.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/interceptors/file.interceptor.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/interceptors/files.interceptor.d.ts"
       ],
-      "../node_modules/@nestjs/swagger/dist/document-builder.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/interfaces/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/index.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/decorators/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/document-builder.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/swagger-module.d.ts",
-        "../node_modules/@nestjs/swagger/dist/type-helpers/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/utils/index.d.ts",
-        "../node_modules/reflect-metadata/index.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/interfaces/index.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/swagger-custom-options.interface.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/swagger-document-options.interface.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/interfaces/schema-object-metadata.interface.d.ts": [
+      "../node_modules/@nestjs/platform-express/multer/interfaces/files-upload-module.interface.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts"
+        "../node_modules/@nestjs/common/interfaces/index.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/interfaces/multer-options.interface.d.ts"
       ],
-      "../node_modules/@nestjs/swagger/dist/swagger-module.d.ts": [
+      "../node_modules/@nestjs/platform-express/multer/interfaces/index.d.ts": [
+        "../node_modules/@nestjs/platform-express/multer/interfaces/files-upload-module.interface.d.ts"
+      ],
+      "../node_modules/@nestjs/platform-express/multer/interfaces/multer-options.interface.d.ts": [
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@nestjs/platform-express/multer/multer.module.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/index.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/type-helpers/index.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/type-helpers/intersection-type.helper.d.ts",
-        "../node_modules/@nestjs/swagger/dist/type-helpers/omit-type.helper.d.ts",
-        "../node_modules/@nestjs/swagger/dist/type-helpers/partial-type.helper.d.ts",
-        "../node_modules/@nestjs/swagger/dist/type-helpers/pick-type.helper.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/type-helpers/intersection-type.helper.d.ts": [
-        "../node_modules/@nestjs/common/index.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/type-helpers/omit-type.helper.d.ts": [
-        "../node_modules/@nestjs/common/index.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/type-helpers/partial-type.helper.d.ts": [
-        "../node_modules/@nestjs/common/index.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/type-helpers/pick-type.helper.d.ts": [
-        "../node_modules/@nestjs/common/index.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/utils/index.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/utils/get-schema-path.util.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/index.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/index.d.ts"
+        "../node_modules/@nestjs/platform-express/multer/interfaces/files-upload-module.interface.d.ts"
       ],
       "../node_modules/@types/babel__core/index.d.ts": [
         "../node_modules/@babel/parser/typings/babel-parser.d.ts",
@@ -4399,6 +4254,10 @@
         "../node_modules/@types/mongoose/index.d.ts",
         "../node_modules/@types/node/events.d.ts",
         "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts"
+      ],
+      "../node_modules/@types/multer/index.d.ts": [
+        "../node_modules/@types/express/index.d.ts",
         "../node_modules/@types/node/stream.d.ts"
       ],
       "../node_modules/@types/node/base.d.ts": [
@@ -6034,8 +5893,6 @@
         "../node_modules/class-validator/types/index.d.ts"
       ],
       "../src/dto/factura-proveedor.dto.ts": [
-        "../node_modules/@nestjs/swagger/index.d.ts",
-        "../node_modules/@types/node/perf_hooks.d.ts",
         "../node_modules/class-transformer/index.d.ts",
         "../node_modules/class-validator/types/index.d.ts",
         "../src/models/constantes.model.ts"
@@ -6045,15 +5902,12 @@
       ],
       "../src/dto/sociedad.dto.ts": [
         "../node_modules/class-transformer/index.d.ts",
-        "../node_modules/class-validator/types/index.d.ts",
-        "../src/dto/centro-costo.dto.ts",
-        "../src/dto/orden.dto.ts"
+        "../node_modules/class-validator/types/index.d.ts"
       ],
       "../src/factura-proveedor/factura-proveedor.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/interceptors/file.interceptor.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
-        "../node_modules/@types/node/dns.d.ts",
-        "../node_modules/@types/supertest/index.d.ts",
         "../node_modules/moment/ts3.1-typings/moment.d.ts",
         "../src/common/get-token.decorator.ts",
         "../src/common/validate-token.pipe.ts",
@@ -6068,6 +5922,10 @@
       "../src/factura-proveedor/factura-proveedor.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@nestjs/platform-express/index.d.ts",
+        "../node_modules/@types/multer/index.d.ts",
+        "../node_modules/@types/node/path.d.ts",
+        "../src/environment/environment.settings.ts",
         "../src/factura-proveedor/factura-proveedor.controller.ts",
         "../src/factura-proveedor/factura-proveedor.schema.ts",
         "../src/factura-proveedor/factura-proveedor.service.ts",
@@ -6110,6 +5968,11 @@
         "../src/factura-proveedor/old/factura-imagen-old.schema.ts",
         "../src/factura-proveedor/old/factura-proveedor-old.schema.ts"
       ],
+      "../src/interceptors/factura-proveedor.interceptor.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/rxjs/index.d.ts",
+        "../node_modules/rxjs/operators/index.d.ts"
+      ],
       "../src/main.ts": [
         "../node_modules/@nestjs/core/index.d.ts",
         "../node_modules/@nestjs/platform-express/interfaces/nest-express-application.interface.d.ts",
@@ -6134,9 +5997,10 @@
       ],
       "../src/sociedad/sociedad.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/rxjs/index.d.ts",
+        "../node_modules/rxjs/operators/index.d.ts",
         "../src/common/get-token.decorator.ts",
         "../src/common/validate-token.pipe.ts",
-        "../src/dto/orden.dto.ts",
         "../src/dto/sociedad.dto.ts",
         "../src/models/user-auth.model.ts",
         "../src/sociedad/sociedad.schema.ts",
@@ -6151,16 +6015,13 @@
       ],
       "../src/sociedad/sociedad.schema.ts": [
         "../node_modules/@nestjs/mongoose/index.d.ts",
-        "../node_modules/@types/mongoose/index.d.ts",
-        "../node_modules/class-validator/types/index.d.ts",
-        "../src/models/centro-costo.model.ts",
-        "../src/models/orden.model.ts"
+        "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/sociedad/sociedad.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
-        "../src/models/orden.model.ts",
+        "../node_modules/rxjs/index.d.ts",
         "../src/sociedad/sociedad.schema.ts"
       ]
     },
@@ -6841,109 +6702,69 @@
       "../node_modules/@nestjs/mongoose/index.d.ts": [
         "../node_modules/@nestjs/mongoose/dist/index.d.ts"
       ],
+      "../node_modules/@nestjs/platform-express/adapters/express-adapter.d.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/common/interfaces/external/cors-options.interface.d.ts",
+        "../node_modules/@nestjs/common/interfaces/nest-application-options.interface.d.ts",
+        "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
+        "../node_modules/@nestjs/platform-express/interfaces/serve-static-options.interface.d.ts"
+      ],
+      "../node_modules/@nestjs/platform-express/adapters/index.d.ts": [
+        "../node_modules/@nestjs/platform-express/adapters/express-adapter.d.ts"
+      ],
+      "../node_modules/@nestjs/platform-express/index.d.ts": [
+        "../node_modules/@nestjs/platform-express/adapters/index.d.ts",
+        "../node_modules/@nestjs/platform-express/interfaces/index.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/index.d.ts"
+      ],
+      "../node_modules/@nestjs/platform-express/interfaces/index.d.ts": [
+        "../node_modules/@nestjs/platform-express/interfaces/nest-express-application.interface.d.ts"
+      ],
       "../node_modules/@nestjs/platform-express/interfaces/nest-express-application.interface.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/platform-express/interfaces/serve-static-options.interface.d.ts"
       ],
-      "../node_modules/@nestjs/swagger/dist/decorators/api-body.decorator.d.ts": [
+      "../node_modules/@nestjs/platform-express/multer/index.d.ts": [
+        "../node_modules/@nestjs/platform-express/multer/interceptors/index.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/interfaces/index.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/multer.module.d.ts"
+      ],
+      "../node_modules/@nestjs/platform-express/multer/interceptors/any-files.interceptor.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts",
-        "../node_modules/@nestjs/swagger/dist/types/swagger-enum.type.d.ts"
+        "../node_modules/@nestjs/platform-express/multer/interfaces/multer-options.interface.d.ts"
       ],
-      "../node_modules/@nestjs/swagger/dist/decorators/api-header.decorator.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts",
-        "../node_modules/@nestjs/swagger/dist/types/swagger-enum.type.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/decorators/api-operation.decorator.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/decorators/api-param.decorator.d.ts": [
+      "../node_modules/@nestjs/platform-express/multer/interceptors/file-fields.interceptor.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts",
-        "../node_modules/@nestjs/swagger/dist/types/swagger-enum.type.d.ts"
+        "../node_modules/@nestjs/platform-express/multer/interfaces/multer-options.interface.d.ts"
       ],
-      "../node_modules/@nestjs/swagger/dist/decorators/api-property.decorator.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/interfaces/schema-object-metadata.interface.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/decorators/api-query.decorator.d.ts": [
+      "../node_modules/@nestjs/platform-express/multer/interceptors/file.interceptor.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts",
-        "../node_modules/@nestjs/swagger/dist/types/swagger-enum.type.d.ts"
+        "../node_modules/@nestjs/platform-express/multer/interfaces/multer-options.interface.d.ts"
       ],
-      "../node_modules/@nestjs/swagger/dist/decorators/api-response.decorator.d.ts": [
+      "../node_modules/@nestjs/platform-express/multer/interceptors/files.interceptor.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts"
+        "../node_modules/@nestjs/platform-express/multer/interfaces/multer-options.interface.d.ts"
       ],
-      "../node_modules/@nestjs/swagger/dist/decorators/index.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/decorators/api-basic.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-bearer.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-body.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-consumes.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-cookie.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-exclude-endpoint.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-extension.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-extra-models.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-header.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-hide-property.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-oauth2.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-operation.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-param.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-produces.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-property.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-query.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-response.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-security.decorator.d.ts",
-        "../node_modules/@nestjs/swagger/dist/decorators/api-use-tags.decorator.d.ts"
+      "../node_modules/@nestjs/platform-express/multer/interceptors/index.d.ts": [
+        "../node_modules/@nestjs/platform-express/multer/interceptors/any-files.interceptor.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/interceptors/file-fields.interceptor.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/interceptors/file.interceptor.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/interceptors/files.interceptor.d.ts"
       ],
-      "../node_modules/@nestjs/swagger/dist/document-builder.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/interfaces/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/index.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/decorators/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/document-builder.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/swagger-module.d.ts",
-        "../node_modules/@nestjs/swagger/dist/type-helpers/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/utils/index.d.ts",
-        "../node_modules/reflect-metadata/index.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/interfaces/index.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/swagger-custom-options.interface.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/swagger-document-options.interface.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/interfaces/schema-object-metadata.interface.d.ts": [
+      "../node_modules/@nestjs/platform-express/multer/interfaces/files-upload-module.interface.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts"
+        "../node_modules/@nestjs/common/interfaces/index.d.ts",
+        "../node_modules/@nestjs/platform-express/multer/interfaces/multer-options.interface.d.ts"
       ],
-      "../node_modules/@nestjs/swagger/dist/swagger-module.d.ts": [
+      "../node_modules/@nestjs/platform-express/multer/interfaces/index.d.ts": [
+        "../node_modules/@nestjs/platform-express/multer/interfaces/files-upload-module.interface.d.ts"
+      ],
+      "../node_modules/@nestjs/platform-express/multer/interfaces/multer-options.interface.d.ts": [
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@nestjs/platform-express/multer/multer.module.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/swagger/dist/interfaces/index.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/type-helpers/index.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/type-helpers/intersection-type.helper.d.ts",
-        "../node_modules/@nestjs/swagger/dist/type-helpers/omit-type.helper.d.ts",
-        "../node_modules/@nestjs/swagger/dist/type-helpers/partial-type.helper.d.ts",
-        "../node_modules/@nestjs/swagger/dist/type-helpers/pick-type.helper.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/type-helpers/intersection-type.helper.d.ts": [
-        "../node_modules/@nestjs/common/index.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/type-helpers/omit-type.helper.d.ts": [
-        "../node_modules/@nestjs/common/index.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/type-helpers/partial-type.helper.d.ts": [
-        "../node_modules/@nestjs/common/index.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/type-helpers/pick-type.helper.d.ts": [
-        "../node_modules/@nestjs/common/index.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/dist/utils/index.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/utils/get-schema-path.util.d.ts"
-      ],
-      "../node_modules/@nestjs/swagger/index.d.ts": [
-        "../node_modules/@nestjs/swagger/dist/index.d.ts"
+        "../node_modules/@nestjs/platform-express/multer/interfaces/files-upload-module.interface.d.ts"
       ],
       "../node_modules/@types/babel__core/index.d.ts": [
         "../node_modules/@babel/parser/typings/babel-parser.d.ts",
@@ -7017,6 +6838,10 @@
         "../node_modules/@types/mongoose/index.d.ts",
         "../node_modules/@types/node/events.d.ts",
         "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts"
+      ],
+      "../node_modules/@types/multer/index.d.ts": [
+        "../node_modules/@types/express/index.d.ts",
         "../node_modules/@types/node/stream.d.ts"
       ],
       "../node_modules/@types/node/base.d.ts": [
@@ -8611,10 +8436,6 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/models/user-auth.model.ts"
       ],
-      "../src/dto/sociedad.dto.ts": [
-        "../src/dto/centro-costo.dto.ts",
-        "../src/dto/orden.dto.ts"
-      ],
       "../src/factura-proveedor/factura-proveedor.controller.ts": [
         "../src/dto/factura-proveedor.dto.ts",
         "../src/factura-proveedor/factura-proveedor.schema.ts",
@@ -8646,26 +8467,28 @@
         "../src/factura-proveedor/old/factura-imagen-old.schema.ts",
         "../src/factura-proveedor/old/factura-proveedor-old.schema.ts"
       ],
+      "../src/interceptors/factura-proveedor.interceptor.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/rxjs/index.d.ts"
+      ],
       "../src/shared/authorizations.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/rxjs/index.d.ts",
         "../src/models/user-auth.model.ts"
       ],
       "../src/sociedad/sociedad.controller.ts": [
-        "../src/dto/orden.dto.ts",
+        "../node_modules/rxjs/index.d.ts",
         "../src/dto/sociedad.dto.ts",
         "../src/models/user-auth.model.ts",
         "../src/sociedad/sociedad.schema.ts",
         "../src/sociedad/sociedad.service.ts"
       ],
       "../src/sociedad/sociedad.schema.ts": [
-        "../node_modules/@types/mongoose/index.d.ts",
-        "../src/models/centro-costo.model.ts",
-        "../src/models/orden.model.ts"
+        "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/sociedad/sociedad.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
-        "../src/models/orden.model.ts",
+        "../node_modules/rxjs/index.d.ts",
         "../src/sociedad/sociedad.schema.ts"
       ]
     },
@@ -8859,45 +8682,22 @@
       "../node_modules/@nestjs/mongoose/dist/utils/index.d.ts",
       "../node_modules/@nestjs/mongoose/dist/utils/raw.util.d.ts",
       "../node_modules/@nestjs/mongoose/index.d.ts",
+      "../node_modules/@nestjs/platform-express/adapters/express-adapter.d.ts",
+      "../node_modules/@nestjs/platform-express/adapters/index.d.ts",
+      "../node_modules/@nestjs/platform-express/index.d.ts",
+      "../node_modules/@nestjs/platform-express/interfaces/index.d.ts",
       "../node_modules/@nestjs/platform-express/interfaces/nest-express-application.interface.d.ts",
       "../node_modules/@nestjs/platform-express/interfaces/serve-static-options.interface.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-basic.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-bearer.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-body.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-consumes.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-cookie.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-exclude-endpoint.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-extension.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-extra-models.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-header.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-hide-property.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-oauth2.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-operation.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-param.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-produces.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-property.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-query.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-response.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-security.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/api-use-tags.decorator.d.ts",
-      "../node_modules/@nestjs/swagger/dist/decorators/index.d.ts",
-      "../node_modules/@nestjs/swagger/dist/document-builder.d.ts",
-      "../node_modules/@nestjs/swagger/dist/index.d.ts",
-      "../node_modules/@nestjs/swagger/dist/interfaces/index.d.ts",
-      "../node_modules/@nestjs/swagger/dist/interfaces/open-api-spec.interface.d.ts",
-      "../node_modules/@nestjs/swagger/dist/interfaces/schema-object-metadata.interface.d.ts",
-      "../node_modules/@nestjs/swagger/dist/interfaces/swagger-custom-options.interface.d.ts",
-      "../node_modules/@nestjs/swagger/dist/interfaces/swagger-document-options.interface.d.ts",
-      "../node_modules/@nestjs/swagger/dist/swagger-module.d.ts",
-      "../node_modules/@nestjs/swagger/dist/type-helpers/index.d.ts",
-      "../node_modules/@nestjs/swagger/dist/type-helpers/intersection-type.helper.d.ts",
-      "../node_modules/@nestjs/swagger/dist/type-helpers/omit-type.helper.d.ts",
-      "../node_modules/@nestjs/swagger/dist/type-helpers/partial-type.helper.d.ts",
-      "../node_modules/@nestjs/swagger/dist/type-helpers/pick-type.helper.d.ts",
-      "../node_modules/@nestjs/swagger/dist/types/swagger-enum.type.d.ts",
-      "../node_modules/@nestjs/swagger/dist/utils/get-schema-path.util.d.ts",
-      "../node_modules/@nestjs/swagger/dist/utils/index.d.ts",
-      "../node_modules/@nestjs/swagger/index.d.ts",
+      "../node_modules/@nestjs/platform-express/multer/index.d.ts",
+      "../node_modules/@nestjs/platform-express/multer/interceptors/any-files.interceptor.d.ts",
+      "../node_modules/@nestjs/platform-express/multer/interceptors/file-fields.interceptor.d.ts",
+      "../node_modules/@nestjs/platform-express/multer/interceptors/file.interceptor.d.ts",
+      "../node_modules/@nestjs/platform-express/multer/interceptors/files.interceptor.d.ts",
+      "../node_modules/@nestjs/platform-express/multer/interceptors/index.d.ts",
+      "../node_modules/@nestjs/platform-express/multer/interfaces/files-upload-module.interface.d.ts",
+      "../node_modules/@nestjs/platform-express/multer/interfaces/index.d.ts",
+      "../node_modules/@nestjs/platform-express/multer/interfaces/multer-options.interface.d.ts",
+      "../node_modules/@nestjs/platform-express/multer/multer.module.d.ts",
       "../node_modules/@types/anymatch/index.d.ts",
       "../node_modules/@types/babel__core/index.d.ts",
       "../node_modules/@types/babel__generator/index.d.ts",
@@ -8921,6 +8721,7 @@
       "../node_modules/@types/mime/index.d.ts",
       "../node_modules/@types/mongodb/index.d.ts",
       "../node_modules/@types/mongoose/index.d.ts",
+      "../node_modules/@types/multer/index.d.ts",
       "../node_modules/@types/node/assert.d.ts",
       "../node_modules/@types/node/async_hooks.d.ts",
       "../node_modules/@types/node/base.d.ts",
@@ -9365,6 +9166,7 @@
       "../src/factura-proveedor/old/factura-proveedor-old.schema.ts",
       "../src/factura-proveedor/old/factura-proveedor.controller.ts",
       "../src/factura-proveedor/old/factura-proveedor.service.ts",
+      "../src/interceptors/factura-proveedor.interceptor.ts",
       "../src/main.ts",
       "../src/models/centro-costo.model.ts",
       "../src/models/constantes.model.ts",

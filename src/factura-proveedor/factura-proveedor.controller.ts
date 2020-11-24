@@ -1,8 +1,9 @@
-import { Body, Controller, Get, HttpCode, NotFoundException, Param, Patch, Post, Res, ServiceUnavailableException, ValidationPipe } from '@nestjs/common';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Body, Controller, Get, HttpCode, Param, Patch, Post, RequestTimeoutException, Res, ServiceUnavailableException, UploadedFile, UseInterceptors, ValidationPipe } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express/multer/interceptors/file.interceptor';
+import { Types } from 'mongoose';
 import * as moment from 'moment';
 
-// import * as fs from 'file-system';
-// import { fs } from 'file-system';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('file-system');
 
@@ -11,7 +12,7 @@ import { GetToken } from 'src/common/get-token.decorator';
 // Pipes
 import { ValidateTokenPipe } from 'src/common/validate-token.pipe';
 // Environment
-import { PUBLIC_PATH, PUBLIC_URL } from 'src/environment/environment.settings';
+import { PUBLIC_PATH } from 'src/environment/environment.settings';
 // Schemas & Models
 import { DetalleFactura, FacturaProveedor, FacturaProveedorDocument, ImpuestoFactura, LogFactura } from './factura-proveedor.schema';
 import { FacturaProveedorOld } from './old/factura-proveedor-old.schema';
@@ -21,9 +22,6 @@ import { CreateFacturaProveedorDto } from '../dto/factura-proveedor.dto';
 // Services
 import { FacturaProveedorService } from './factura-proveedor.service';
 import { FacturaProveedorOldService } from './old/factura-proveedor.service';
-import { Types } from 'mongoose';
-import { Response } from 'supertest';
-import { Resolver } from 'dns';
 
 @Controller('factura_proveedores')
 export class FacturaProveedorController {
@@ -92,12 +90,33 @@ export class FacturaProveedorController {
   // Alta de facturas
   @Post()
   @HttpCode(200)
+  // @UseInterceptors(FileInterceptor('pdfFile'))
   async addFactura(
     @GetToken(new ValidateTokenPipe()) infoUser: UserAuth,  
     @Body(new ValidationPipe()) facturaProveedorDto: CreateFacturaProveedorDto
-  ): Promise<FacturaProveedorDocument> {
-    facturaProveedorDto.setProveedorId(); // completa con 0 (ceros) a izq.
-    return await this.facturaProveedorService.addFacturaProveedor(facturaProveedorDto);
+    // @UploadedFile() pdfFile
+  ): Promise<{[key:string]: any}> {
+    return await this.facturaProveedorService.addFacturaProveedor(facturaProveedorDto)
+    .then(factura => {
+      return {
+        _id: factura._id,
+        message: "factura creada con éxito."
+      }
+    });
+  }
+
+  // Agregar el PDF a una factura y activar la misma para el proceso de aprobaciones
+  @Patch('/:id/pdf')
+  @HttpCode(200)
+  @UseInterceptors(FileInterceptor('pdfFile'))
+  async addFileToFactura(
+    @GetToken(new ValidateTokenPipe()) infoUser: UserAuth,
+    @Param('id') id: string,
+    @UploadedFile() pdfFile
+  ): Promise<{[key:string]: any}> {
+    console.log('*** id:', id);
+    console.log('*** pdfFile:', pdfFile);
+    return;
   }
 
   // Traer todas las facturas
@@ -152,9 +171,8 @@ export class FacturaProveedorController {
 
     // Armar los Detalles Factura
     const detalleFactura: DetalleFactura[] = [];
-    factura.detail.forEach((detalle, index) => {
+    factura.detail.forEach((detalle) => {
       detalleFactura.push({
-        posicion: index + 1,
         concepto: detalle.concept,
         descripcion: detalle.description,
         mesServicio: detalle.servicemonth,
@@ -172,9 +190,8 @@ export class FacturaProveedorController {
 
     // Armar los Impuestos Factura
     const impuestoFactura: ImpuestoFactura[] = [];
-    factura.detailtax.forEach((impuesto, index) => {
+    factura.detailtax.forEach((impuesto) => {
       impuestoFactura.push({
-        posicion: index + 1,
         sapTaxId: impuesto.taxcode?.split(/\:/)[0],
         sapTaxDesc: impuesto.taxcode?.split(/\:/)[1],
         totalImpuesto: +this.validateNumber(impuesto.taxamount)//Decimal128.fromString(this.validateNumber(impuesto.taxamount)),
@@ -255,15 +272,13 @@ export class FacturaProveedorController {
     }
   }
 
-  // Convertir el statusLog de Logs Factura
+  // Convertir el statusLog de cada Logs Factura
   private toLogStatus(action: string): string {
     switch (action) {
       case 'Aprobado':
         return 'APROBADA';
       case 'Creada':
         return 'CREADA';
-      case 'Rechazado':
-        return 'RECHAZADA';
       case 'Rechazado':
         return 'RECHAZADA';
       default:
@@ -275,11 +290,11 @@ export class FacturaProveedorController {
   private toDocStatus(action: string): string {
     switch (action) {
       case 'PENDIENTE':
-        return 'EN_APROBACION';
+        return 'EN_PROCESO';
       case 'ENVIADA A SAP':
-        return 'EN_SAP';
+        return 'ENVIADA_SAP';
       default:
-        return 'EN_CARGA';
+        return 'EN_PROCESO';
     };
   }
 

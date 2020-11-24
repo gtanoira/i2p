@@ -18,10 +18,6 @@ class DetalleFactura {
 }
 __decorate([
     mongoose_1.Prop(),
-    __metadata("design:type", Number)
-], DetalleFactura.prototype, "posicion", void 0);
-__decorate([
-    mongoose_1.Prop(),
     __metadata("design:type", String)
 ], DetalleFactura.prototype, "concepto", void 0);
 __decorate([
@@ -73,10 +69,6 @@ class ImpuestoFactura {
 }
 __decorate([
     mongoose_1.Prop(),
-    __metadata("design:type", Number)
-], ImpuestoFactura.prototype, "posicion", void 0);
-__decorate([
-    mongoose_1.Prop(),
     __metadata("design:type", String)
 ], ImpuestoFactura.prototype, "sapTaxId", void 0);
 __decorate([
@@ -87,10 +79,6 @@ __decorate([
     mongoose_1.Prop({ default: 0.00 }),
     __metadata("design:type", Number)
 ], ImpuestoFactura.prototype, "totalImpuesto", void 0);
-__decorate([
-    mongoose_1.Prop({ default: true }),
-    __metadata("design:type", Boolean)
-], ImpuestoFactura.prototype, "debeCalcularse", void 0);
 exports.ImpuestoFactura = ImpuestoFactura;
 class LogFactura {
 }
@@ -122,7 +110,12 @@ __decorate([
     __metadata("design:type", String)
 ], FacturaProveedor.prototype, "empresaDesc", void 0);
 __decorate([
-    mongoose_1.Prop(),
+    mongoose_1.Prop({
+        set: (value) => {
+            const data = `0000000000${value.trim()}`;
+            return data.substr(data.length - 10, data.length);
+        }
+    }),
     __metadata("design:type", String)
 ], FacturaProveedor.prototype, "proveedorId", void 0);
 __decorate([
@@ -134,7 +127,7 @@ __decorate([
     __metadata("design:type", Date)
 ], FacturaProveedor.prototype, "fechaDoc", void 0);
 __decorate([
-    mongoose_1.Prop({ default: null }),
+    mongoose_1.Prop(),
     __metadata("design:type", Date)
 ], FacturaProveedor.prototype, "fechaCtble", void 0);
 __decorate([
@@ -154,7 +147,7 @@ __decorate([
     __metadata("design:type", String)
 ], FacturaProveedor.prototype, "monedaDoc", void 0);
 __decorate([
-    mongoose_1.Prop({ default: 0.00 }),
+    mongoose_1.Prop({ default: 1 }),
     __metadata("design:type", Number)
 ], FacturaProveedor.prototype, "monedaCotiz", void 0);
 __decorate([
@@ -179,7 +172,7 @@ __decorate([
     __metadata("design:type", String)
 ], FacturaProveedor.prototype, "areaAprobadoraDesc", void 0);
 __decorate([
-    mongoose_1.Prop({ enum: constantes_model_1.DocStatus, default: 'EN_CARGA' }),
+    mongoose_1.Prop({ enum: constantes_model_1.DocStatus, default: 'CREADA' }),
     __metadata("design:type", String)
 ], FacturaProveedor.prototype, "docStatus", void 0);
 __decorate([

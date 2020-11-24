@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FacturaProveedorController = void 0;
 const common_1 = require("@nestjs/common");
+const file_interceptor_1 = require("@nestjs/platform-express/multer/interceptors/file.interceptor");
 const moment = require("moment");
 const fs = require('file-system');
 const get_token_decorator_1 = require("../common/get-token.decorator");
@@ -72,8 +73,18 @@ let FacturaProveedorController = class FacturaProveedorController {
         return rtnMessage;
     }
     async addFactura(infoUser, facturaProveedorDto) {
-        facturaProveedorDto.setProveedorId();
-        return await this.facturaProveedorService.addFacturaProveedor(facturaProveedorDto);
+        return await this.facturaProveedorService.addFacturaProveedor(facturaProveedorDto)
+            .then(factura => {
+            return {
+                _id: factura._id,
+                message: "factura creada con éxito."
+            };
+        });
+    }
+    async addFileToFactura(infoUser, id, pdfFile) {
+        console.log('*** id:', id);
+        console.log('*** pdfFile:', pdfFile);
+        return;
     }
     async getAll(infoUser) {
         return await this.facturaProveedorService.findAll();
@@ -109,10 +120,9 @@ let FacturaProveedorController = class FacturaProveedorController {
     }
     mapNewDoc(factura) {
         const detalleFactura = [];
-        factura.detail.forEach((detalle, index) => {
+        factura.detail.forEach((detalle) => {
             var _a, _b;
             detalleFactura.push({
-                posicion: index + 1,
                 concepto: detalle.concept,
                 descripcion: detalle.description,
                 mesServicio: detalle.servicemonth,
@@ -128,10 +138,9 @@ let FacturaProveedorController = class FacturaProveedorController {
             });
         });
         const impuestoFactura = [];
-        factura.detailtax.forEach((impuesto, index) => {
+        factura.detailtax.forEach((impuesto) => {
             var _a, _b;
             impuestoFactura.push({
-                posicion: index + 1,
                 sapTaxId: (_a = impuesto.taxcode) === null || _a === void 0 ? void 0 : _a.split(/\:/)[0],
                 sapTaxDesc: (_b = impuesto.taxcode) === null || _b === void 0 ? void 0 : _b.split(/\:/)[1],
                 totalImpuesto: +this.validateNumber(impuesto.taxamount)
@@ -206,8 +215,6 @@ let FacturaProveedorController = class FacturaProveedorController {
                 return 'CREADA';
             case 'Rechazado':
                 return 'RECHAZADA';
-            case 'Rechazado':
-                return 'RECHAZADA';
             default:
                 return 'MODIFICADA';
         }
@@ -216,11 +223,11 @@ let FacturaProveedorController = class FacturaProveedorController {
     toDocStatus(action) {
         switch (action) {
             case 'PENDIENTE':
-                return 'EN_APROBACION';
+                return 'EN_PROCESO';
             case 'ENVIADA A SAP':
-                return 'EN_SAP';
+                return 'ENVIADA_SAP';
             default:
-                return 'EN_CARGA';
+                return 'EN_PROCESO';
         }
         ;
     }
@@ -249,6 +256,17 @@ __decorate([
     __metadata("design:paramtypes", [Object, factura_proveedor_dto_1.CreateFacturaProveedorDto]),
     __metadata("design:returntype", Promise)
 ], FacturaProveedorController.prototype, "addFactura", null);
+__decorate([
+    common_1.Patch('/:id/pdf'),
+    common_1.HttpCode(200),
+    common_1.UseInterceptors(file_interceptor_1.FileInterceptor('pdfFile')),
+    __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe())),
+    __param(1, common_1.Param('id')),
+    __param(2, common_1.UploadedFile()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String, Object]),
+    __metadata("design:returntype", Promise)
+], FacturaProveedorController.prototype, "addFileToFactura", null);
 __decorate([
     common_1.Get(),
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe())),
