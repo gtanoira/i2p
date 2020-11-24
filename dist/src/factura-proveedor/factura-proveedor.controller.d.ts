@@ -18,7 +18,7 @@ export declare class FacturaProveedorController {
         [key: string]: any;
     }>;
     getAll(infoUser: UserAuth): Promise<FacturaProveedor[]>;
-    getPdfFile(id: string, res: any): Promise<void>;
+    getPdfFile(infoUser: UserAuth, id: string, res: any): Promise<void>;
     private mapNewDoc;
     private savePdfFile;
     private validateNumber;

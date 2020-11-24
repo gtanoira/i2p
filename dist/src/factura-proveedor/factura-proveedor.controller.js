@@ -18,7 +18,6 @@ const file_interceptor_1 = require("@nestjs/platform-express/multer/interceptors
 const moment = require("moment");
 const fs = require('file-system');
 const one_file_opts_multer_1 = require("./one-file-opts.multer");
-const constantes_model_1 = require("src/models/constantes.model");
 const get_token_decorator_1 = require("src/common/get-token.decorator");
 const validate_token_pipe_1 = require("src/common/validate-token.pipe");
 const environment_settings_1 = require("src/environment/environment.settings");
@@ -88,8 +87,7 @@ let FacturaProveedorController = class FacturaProveedorController {
             .catch((error) => {
             throw new common_1.BadRequestException(`API-0048(E): id inexsitente (${id})`);
         });
-        if (`${constantes_model_1.DocStatus.CREADA},${constantes_model_1.DocStatus.MODIFICADA}`.indexOf(factura.docStatus) < 0) {
-            console.log('*** ERROR STATUS');
+        if (`CREADA,MODIFICADA`.indexOf(factura.docStatus) < 0) {
             throw new common_1.ConflictException(`API-0050(E): el status de la factura no permite esta operación (status: ${factura.docStatus}).`);
         }
         else {
@@ -101,7 +99,7 @@ let FacturaProveedorController = class FacturaProveedorController {
             });
             const toUpdate = {
                 pdfFile: fileName,
-                docStatus: constantes_model_1.DocStatus.EN_PROCESO
+                docStatus: 'EN_PROCESO'
             };
             await this.facturaProveedorService.patchFacturaProveedor(id, toUpdate)
                 .then(data => {
@@ -121,7 +119,7 @@ let FacturaProveedorController = class FacturaProveedorController {
     async getAll(infoUser) {
         return await this.facturaProveedorService.findAll();
     }
-    async getPdfFile(id, res) {
+    async getPdfFile(infoUser, id, res) {
         await this.facturaProveedorService.findOne(id)
             .then(async (factura) => {
             const fileRead = new Promise((resolve, reject) => {
@@ -313,10 +311,11 @@ __decorate([
 ], FacturaProveedorController.prototype, "getAll", null);
 __decorate([
     common_1.Get('/:id/pdf'),
-    __param(0, common_1.Param('id')),
-    __param(1, common_1.Res()),
+    __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe())),
+    __param(1, common_1.Param('id')),
+    __param(2, common_1.Res()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [Object, String, Object]),
     __metadata("design:returntype", Promise)
 ], FacturaProveedorController.prototype, "getPdfFile", null);
 FacturaProveedorController = __decorate([

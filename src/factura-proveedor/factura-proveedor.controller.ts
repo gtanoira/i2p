@@ -127,8 +127,7 @@ export class FacturaProveedorController {
     });
       
     // Chequear el status de la factura
-    if (`${DocStatus.CREADA},${DocStatus.MODIFICADA}`.indexOf(factura.docStatus) < 0) {
-      console.log('*** ERROR STATUS');
+    if (`CREADA,MODIFICADA`.indexOf(factura.docStatus) < 0) {
       throw new ConflictException(`API-0050(E): el status de la factura no permite esta operación (status: ${factura.docStatus}).`);
     } else {
       // Armar el nombre de archivo
@@ -142,7 +141,7 @@ export class FacturaProveedorController {
       // Actualizar la factura
       const toUpdate = {
         pdfFile: fileName,
-        docStatus: DocStatus.EN_PROCESO
+        docStatus: 'EN_PROCESO'
       }
       await this.facturaProveedorService.patchFacturaProveedor(id, toUpdate)
       .then( data => {
@@ -171,7 +170,7 @@ export class FacturaProveedorController {
   // Show Pdf File
   @Get('/:id/pdf')
   public async getPdfFile(
-    //@GetToken(new ValidateTokenPipe()) infoUser: UserAuth,
+    @GetToken(new ValidateTokenPipe()) infoUser: UserAuth,
     @Param('id') id: string,
     @Res() res
   ): Promise<void> {
