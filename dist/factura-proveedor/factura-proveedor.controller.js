@@ -18,6 +18,7 @@ const file_interceptor_1 = require("@nestjs/platform-express/multer/interceptors
 const moment = require("moment");
 const fs = require('file-system');
 const one_file_opts_multer_1 = require("./one-file-opts.multer");
+const constantes_model_1 = require("../models/constantes.model");
 const get_token_decorator_1 = require("../common/get-token.decorator");
 const validate_token_pipe_1 = require("../common/validate-token.pipe");
 const environment_settings_1 = require("../environment/environment.settings");
@@ -84,43 +85,38 @@ let FacturaProveedorController = class FacturaProveedorController {
     }
     async addFileToFactura(infoUser, id, pdfFile) {
         let rtnMessage = {};
-        await this.facturaProveedorService.findOne(id)
-            .then(async (factura) => {
-            if ('CREADA,MODIFICADA'.indexOf(factura.docStatus) < 0) {
-                console.log('*** ERROR STATUS');
-                throw new common_1.ConflictException(`API-0050(E): el status de la factura no permite esta operación (status: ${factura.docStatus}).`);
-            }
-            else {
-                const fileName = `${factura.proveedorId}_${factura.fechaCtble.toISOString().split('T')[0]}_${factura.numeroFactura.trim()}.pdf`;
-                console.log('*** name:', fileName);
-                fs.writeFile(`${environment_settings_1.PUBLIC_PATH}/pdf/${fileName}`, pdfFile.buffer, (err) => {
-                    if (err) {
-                        console.log('*** ERROR 1:', err.message);
-                        throw new common_1.ServiceUnavailableException(`API-0049(E): no se pudo salvar el PDF para el id: ${id} (${err.message})`);
-                    }
-                });
-                console.log('*** ok save file');
-                const toUpdate = {
-                    pdfFile: fileName
-                };
-                await this.facturaProveedorService.patchFacturaProveedor(id, toUpdate)
-                    .then(data => {
-                    console.log();
-                    rtnMessage = {
-                        _id: id,
-                        pdfFile: fileName,
-                        message: 'El PDF fue guardado con éxito.'
-                    };
-                })
-                    .catch(error => {
-                    console.log('*** ERROR 2:', error.message);
-                    throw new common_1.ServiceUnavailableException(error);
-                });
-            }
-        })
+        const factura = await this.facturaProveedorService.findOne(id)
             .catch((error) => {
             throw new common_1.BadRequestException(`API-0048(E): id inexsitente (${id})`);
         });
+        if (`${constantes_model_1.DocStatus.CREADA},${constantes_model_1.DocStatus.MODIFICADA}`.indexOf(factura.docStatus) < 0) {
+            console.log('*** ERROR STATUS');
+            throw new common_1.ConflictException(`API-0050(E): el status de la factura no permite esta operación (status: ${factura.docStatus}).`);
+        }
+        else {
+            const fileName = `${factura.proveedorId}_${factura.fechaCtble.toISOString().split('T')[0]}_${factura.numeroFactura.trim()}.pdf`;
+            fs.writeFile(`${environment_settings_1.PUBLIC_PATH}/pdf/${fileName}`, pdfFile.buffer, (err) => {
+                if (err) {
+                    throw new common_1.ServiceUnavailableException(`API-0049(E): no se pudo salvar el PDF para el id: ${id} (${err.message})`);
+                }
+            });
+            const toUpdate = {
+                pdfFile: fileName,
+                docStatus: constantes_model_1.DocStatus.EN_PROCESO
+            };
+            await this.facturaProveedorService.patchFacturaProveedor(id, toUpdate)
+                .then(data => {
+                console.log();
+                rtnMessage = {
+                    _id: id,
+                    pdfFile: fileName,
+                    message: 'El PDF fue guardado con éxito.'
+                };
+            })
+                .catch(error => {
+                throw new common_1.ServiceUnavailableException(error);
+            });
+        }
         return rtnMessage;
     }
     async getAll(infoUser) {

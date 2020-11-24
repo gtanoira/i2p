@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Controller, Get, Patch } from '@nestjs/common';
 import { AreaAprobadora } from './area-aprobadora.schema';
 
