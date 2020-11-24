@@ -1,5 +1,5 @@
 // DocStatus: indica en qué proceso se encuentra la factura del proveedor
-export enum DocStatus {
+export const DocStatus = [
   'CREADA', 
   'MODIFICADA',
   'EN_PROCESO',
@@ -8,7 +8,7 @@ export enum DocStatus {
   'ENVIADA_SAP',
   'FINALIZADA',
   'ANULADA'
-};
+];
 
 /*
   CREADA: significa que la factura fue dada de alta, pero NO empezó el circuito de aprobación.
