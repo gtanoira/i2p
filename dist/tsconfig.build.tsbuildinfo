@@ -2077,7 +2077,7 @@
         "affectsGlobalScope": false
       },
       "../src/area-aprobadora/area-aprobadora.controller.ts": {
-        "version": "68fd9ec47509522749ef3d9d1f4412cab5570a8d01c07b70045bc2ab7b3e5f08",
+        "version": "c0aa9c251154a46ccb8b96af1e451f9b3e954a8f97fbfd8eda53aef24b7161bf",
         "signature": "2cff2bb58648a661daf11fa5d32acd7362b42d63ca76cc0d508752e531c7e368",
         "affectsGlobalScope": false
       },
@@ -2212,12 +2212,12 @@
         "affectsGlobalScope": false
       },
       "../src/models/constantes.model.ts": {
-        "version": "78ea853b2841dfd4e1f05e074e6db9badccc061a3887d99cd3252e49e2496e98",
-        "signature": "735d0bcbcefb80e5a917dae6d231a4ff3bc256599a480132983479af56a23dd6",
+        "version": "8635661496fa60dfb36c41c2f09ebb6322bd5bab74ad5ed4538dbebb6b6e2016",
+        "signature": "9810969e0369827e6f3c9e581f5b4652e7e02e151b99c65e1b35e89bf7d4a3a6",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.schema.ts": {
-        "version": "ebe047a2ccf5b6045681b3185ecb460aa24f3d436c57f2a34d6e4959e616fc6d",
+        "version": "7df74b2589afcbbc7ee15b0175383264bc45075c554439d0074f7cb1d0a07444",
         "signature": "1bb245e036d41ee543716f57befbec44ff90bf7e4fba3214ac2f98a04135b64b",
         "affectsGlobalScope": false
       },
@@ -2907,7 +2907,7 @@
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.service.ts": {
-        "version": "295d98aa94e78addf2f687d7672c6c54bc6914f0715128b56aed9ad0d9d74838",
+        "version": "090a44568f029500d1d48cca8097bb64a920d0f2bda23a7fc4bb06647b7979f4",
         "signature": "5e9d396e352a45ca7396e2bf01d0f638450453902df74bc8cc48bbfc3f03ad3f",
         "affectsGlobalScope": false
       },
@@ -2917,7 +2917,7 @@
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.controller.ts": {
-        "version": "269d55af76ce4acfcc4e1a173593dbeb10b38831aa27ff451808b4a5d96f164a",
+        "version": "27bb7e4b58729898cf01b51c83d7feb123b0d77562a022910095a349d1c4f645",
         "signature": "4873b76d1641d94fb472b57bbfa9c356688c2f3a31a3ff86705beb7f01634fb6",
         "affectsGlobalScope": false
       },
@@ -2942,7 +2942,7 @@
         "affectsGlobalScope": false
       },
       "../src/dto/sociedad.dto.ts": {
-        "version": "3f873551518fb5aa43e21b03be158b536b9746fb1ee93c09434f7a6eb2a0d939",
+        "version": "325da69d791a6ca2a5569e8abb2c2f9ff93c08cac32e27e7c7b2562882823dd7",
         "signature": "13e5487ee40ce0a7cd32d82b0be57d960f3b58e404d476b48eb283655421df96",
         "affectsGlobalScope": false
       },
@@ -5906,7 +5906,6 @@
         "../node_modules/class-validator/types/index.d.ts"
       ],
       "../src/dto/sociedad.dto.ts": [
-        "../node_modules/class-transformer/index.d.ts",
         "../node_modules/class-validator/types/index.d.ts"
       ],
       "../src/factura-proveedor/factura-proveedor.controller.ts": [
@@ -5923,6 +5922,7 @@
         "../src/factura-proveedor/old/factura-proveedor-old.schema.ts",
         "../src/factura-proveedor/old/factura-proveedor.service.ts",
         "../src/factura-proveedor/one-file-opts.multer.ts",
+        "../src/models/constantes.model.ts",
         "../src/models/user-auth.model.ts"
       ],
       "../src/factura-proveedor/factura-proveedor.module.ts": [
@@ -5948,7 +5948,6 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
-        "../node_modules/bson/bson.d.ts",
         "../src/factura-proveedor/factura-proveedor.schema.ts"
       ],
       "../src/factura-proveedor/old/factura-imagen-old.schema.ts": [

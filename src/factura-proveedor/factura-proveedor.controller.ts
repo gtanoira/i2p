@@ -9,6 +9,7 @@ const fs = require('file-system');
 
 // Constant
 import { oneFileMemoryMulterOptions } from './one-file-opts.multer';
+import { DocStatus } from 'src/models/constantes.model';
 //Decorators
 import { GetToken } from 'src/common/get-token.decorator';
 // Pipes
@@ -120,48 +121,42 @@ export class FacturaProveedorController {
     let rtnMessage: {[key:string]: any} = {};
 
     // Verificar que exista el documento :id y leer el documento
-    await this.facturaProveedorService.findOne(id)
-    .then(async factura => {
-      
-      // Chequear el status de la factura
-      if ('CREADA,MODIFICADA'.indexOf(factura.docStatus) < 0) {
-        console.log('*** ERROR STATUS');
-        throw new ConflictException(`API-0050(E): el status de la factura no permite esta operación (status: ${factura.docStatus}).`);
-      } else {
-        // Armar el nombre de archivo
-        const fileName = `${factura.proveedorId}_${factura.fechaCtble.toISOString().split('T')[0]}_${factura.numeroFactura.trim()}.pdf`;
-        console.log('*** name:', fileName);
-        // Guardar el aarchivo en PUBLIC y actualizar la factura.
-        fs.writeFile(`${PUBLIC_PATH}/pdf/${fileName}`, pdfFile.buffer, (err: {[key: string]: any}) => {
-          if (err) {
-            console.log('*** ERROR 1:', err.message);          
-            throw new ServiceUnavailableException(`API-0049(E): no se pudo salvar el PDF para el id: ${id} (${err.message})`);
-          }
-        });
-        console.log('*** ok save file');
-        // Actualizar la factura
-        const toUpdate = {
-          pdfFile: fileName
-        }
-        await this.facturaProveedorService.patchFacturaProveedor(id, toUpdate)
-        .then( data => {
-          console.log()
-          rtnMessage = {
-            _id: id,
-            pdfFile: fileName,
-            message: 'El PDF fue guardado con éxito.'
-          };
-        })
-        .catch(error => {
-          console.log('*** ERROR 2:', error.message);          
-          throw new ServiceUnavailableException(error);
-        });
-      }
-    })
+    const factura = await this.facturaProveedorService.findOne(id)
     .catch((error) => {
       throw new BadRequestException(`API-0048(E): id inexsitente (${id})`);
     });
-
+      
+    // Chequear el status de la factura
+    if (`${DocStatus.CREADA},${DocStatus.MODIFICADA}`.indexOf(factura.docStatus) < 0) {
+      console.log('*** ERROR STATUS');
+      throw new ConflictException(`API-0050(E): el status de la factura no permite esta operación (status: ${factura.docStatus}).`);
+    } else {
+      // Armar el nombre de archivo
+      const fileName = `${factura.proveedorId}_${factura.fechaCtble.toISOString().split('T')[0]}_${factura.numeroFactura.trim()}.pdf`;
+      // Guardar el aarchivo en PUBLIC y actualizar la factura.
+      fs.writeFile(`${PUBLIC_PATH}/pdf/${fileName}`, pdfFile.buffer, (err: {[key: string]: any}) => {
+        if (err) {
+          throw new ServiceUnavailableException(`API-0049(E): no se pudo salvar el PDF para el id: ${id} (${err.message})`);
+        }
+      });
+      // Actualizar la factura
+      const toUpdate = {
+        pdfFile: fileName,
+        docStatus: DocStatus.EN_PROCESO
+      }
+      await this.facturaProveedorService.patchFacturaProveedor(id, toUpdate)
+      .then( data => {
+        console.log()
+        rtnMessage = {
+          _id: id,
+          pdfFile: fileName,
+          message: 'El PDF fue guardado con éxito.'
+        };
+      })
+      .catch(error => {
+        throw new ServiceUnavailableException(error);
+      });
+    }
     return rtnMessage;
   }
 

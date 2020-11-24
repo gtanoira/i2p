@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Transform, Type } from 'class-transformer';
+import { Type } from 'class-transformer';
 import { Document, Types } from 'mongoose';
 
 // Models
