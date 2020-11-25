@@ -17,9 +17,9 @@ export declare class FacturaProveedorController {
     addFileToFactura(infoUser: UserAuth, id: string, pdfFile: Express.Multer.File): Promise<{
         [key: string]: any;
     }>;
-    getAll(infoUser: UserAuth, params: any): Promise<FacturaProveedor[]>;
     countFacturas(infoUser: UserAuth): Promise<number>;
     getPdfFile(infoUser: UserAuth, id: string, res: any): Promise<void>;
+    getAll(infoUser: UserAuth, params: any): Promise<FacturaProveedor[]>;
     private mapNewDoc;
     private savePdfFile;
     private validateNumber;
