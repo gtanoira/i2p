@@ -129,51 +129,58 @@ export class FacturaProveedorController {
 
     // Verificar que exista el documento :id y leer el documento
     const factura = await this.facturaProveedorService.findOne(id)
-    .catch((error) => {
+    .then(data => {
+      return data;
+    })
+    .catch(() => {
       throw new BadRequestException(`API-0048(E): id inexsitente (${id})`);
     });
-      
-    // Chequear el status de la factura
-    if (`CREADA,MODIFICADA`.indexOf(factura.docStatus) < 0) {
-      throw new ConflictException(`API-0050(E): el status de la factura no permite esta operación (status: ${factura.docStatus}).`);
+    
+    if (factura == null) {
+      throw new BadRequestException(`API-0048(E): id inexsitente (${id})`);
     } else {
-      // Armar el nombre de archivo
-      const fileName = `${factura.proveedorId}_${factura.fechaCtble.toISOString().split('T')[0]}_${factura.numeroFactura.trim()}.pdf`;
-      // Guardar el aarchivo en PUBLIC y actualizar la factura.
-      fs.writeFile(`${PUBLIC_PATH}/pdf/${fileName}`, pdfFile.buffer, (err: {[key: string]: any}) => {
-        if (err) {
-          throw new ServiceUnavailableException(`API-0049(E): no se pudo salvar el PDF para el id: ${id} (${err.message})`);
-        }
-      });
-      // Actualizar la factura
-      const toUpdate = {
-        pdfFile: fileName,
-        docStatus: factura.docStatus === 'CREADA' ? 'EN_PROCESO' : factura.docStatus
-      };
-
-      // Crear LOG
-      const newLog: LogFactura = {
-        userLog: `${infoUser.user}${infoUser.isSuperUser() ? ' (SUPERUSER)' : ''}`,
-        fechaLog: moment().toDate(),
-        statusLog: factura.docStatus === 'CREADA' ? 'EN_PROCESO' : factura.docStatus,
-        description: 'Se actualizó el archivo PDF de la factura.'
-      };
-      toUpdate['log'] = [ ...factura.log, newLog ];
-
-      // Grabar
-      await this.facturaProveedorService.patchFacturaProveedor(id, toUpdate)
-      .then( data => {
-        rtnMessage = {
-          _id: id,
+      // Chequear el status de la factura
+      if (`CREADA,MODIFICADA`.indexOf(factura.docStatus) < 0) {
+        throw new ConflictException(`API-0050(E): el status de la factura no permite esta operación (status: ${factura.docStatus}).`);
+      } else {
+        // Armar el nombre de archivo
+        const fileName = `${factura.proveedorId}_${factura.fechaCtble.toISOString().split('T')[0]}_${factura.numeroFactura.trim()}.pdf`;
+        // Guardar el aarchivo en PUBLIC y actualizar la factura.
+        fs.writeFile(`${PUBLIC_PATH}/pdf/${fileName}`, pdfFile.buffer, (err: {[key: string]: any}) => {
+          if (err) {
+            throw new ServiceUnavailableException(`API-0049(E): no se pudo salvar el PDF para el id: ${id} (${err.message})`);
+          }
+        });
+        // Actualizar la factura
+        const toUpdate = {
           pdfFile: fileName,
-          message: 'El PDF fue guardado con éxito.'
+          docStatus: factura.docStatus === 'CREADA' ? 'EN_PROCESO' : factura.docStatus
         };
-      })
-      .catch(error => {
-        throw new ServiceUnavailableException(error);
-      });
+
+        // Crear LOG
+        const newLog: LogFactura = {
+          userLog: `${infoUser.user}${infoUser.isSuperUser() ? ' (SUPERUSER)' : ''}`,
+          fechaLog: moment().toDate(),
+          statusLog: factura.docStatus === 'CREADA' ? 'EN_PROCESO' : factura.docStatus,
+          description: 'Se actualizó el archivo PDF de la factura.'
+        };
+        toUpdate['log'] = [ ...factura.log, newLog ];
+
+        // Grabar
+        await this.facturaProveedorService.patchFacturaProveedor(id, toUpdate)
+        .then( data => {
+          rtnMessage = {
+            _id: id,
+            pdfFile: fileName,
+            message: 'El PDF fue guardado con éxito.'
+          };
+        })
+        .catch(error => {
+          throw new ServiceUnavailableException(error);
+        });
+      }
+      return rtnMessage;
     }
-    return rtnMessage;
   }
 
   // Traer todas las facturas

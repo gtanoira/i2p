@@ -33,7 +33,7 @@ export class FacturaProveedorService {
   }
   
   // Traer un registro 
-  async findOne(id: string): Promise<FacturaProveedor> {
+  async findOne(id: string): Promise<FacturaProveedorDocument> {
     return await this.facturaProveedorModel.findById(id).exec();
   }
 

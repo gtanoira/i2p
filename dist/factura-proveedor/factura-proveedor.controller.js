@@ -92,43 +92,51 @@ let FacturaProveedorController = class FacturaProveedorController {
     async addFileToFactura(infoUser, id, pdfFile) {
         let rtnMessage = {};
         const factura = await this.facturaProveedorService.findOne(id)
-            .catch((error) => {
+            .then(data => {
+            return data;
+        })
+            .catch(() => {
             throw new common_1.BadRequestException(`API-0048(E): id inexsitente (${id})`);
         });
-        if (`CREADA,MODIFICADA`.indexOf(factura.docStatus) < 0) {
-            throw new common_1.ConflictException(`API-0050(E): el status de la factura no permite esta operación (status: ${factura.docStatus}).`);
+        if (factura == null) {
+            throw new common_1.BadRequestException(`API-0048(E): id inexsitente (${id})`);
         }
         else {
-            const fileName = `${factura.proveedorId}_${factura.fechaCtble.toISOString().split('T')[0]}_${factura.numeroFactura.trim()}.pdf`;
-            fs.writeFile(`${environment_settings_1.PUBLIC_PATH}/pdf/${fileName}`, pdfFile.buffer, (err) => {
-                if (err) {
-                    throw new common_1.ServiceUnavailableException(`API-0049(E): no se pudo salvar el PDF para el id: ${id} (${err.message})`);
-                }
-            });
-            const toUpdate = {
-                pdfFile: fileName,
-                docStatus: factura.docStatus === 'CREADA' ? 'EN_PROCESO' : factura.docStatus
-            };
-            const newLog = {
-                userLog: `${infoUser.user}${infoUser.isSuperUser() ? ' (SUPERUSER)' : ''}`,
-                fechaLog: moment().toDate(),
-                statusLog: factura.docStatus === 'CREADA' ? 'EN_PROCESO' : factura.docStatus,
-                description: 'Se actualizó el archivo PDF de la factura.'
-            };
-            toUpdate['log'] = [...factura.log, newLog];
-            await this.facturaProveedorService.patchFacturaProveedor(id, toUpdate)
-                .then(data => {
-                rtnMessage = {
-                    _id: id,
+            if (`CREADA,MODIFICADA`.indexOf(factura.docStatus) < 0) {
+                throw new common_1.ConflictException(`API-0050(E): el status de la factura no permite esta operación (status: ${factura.docStatus}).`);
+            }
+            else {
+                const fileName = `${factura.proveedorId}_${factura.fechaCtble.toISOString().split('T')[0]}_${factura.numeroFactura.trim()}.pdf`;
+                fs.writeFile(`${environment_settings_1.PUBLIC_PATH}/pdf/${fileName}`, pdfFile.buffer, (err) => {
+                    if (err) {
+                        throw new common_1.ServiceUnavailableException(`API-0049(E): no se pudo salvar el PDF para el id: ${id} (${err.message})`);
+                    }
+                });
+                const toUpdate = {
                     pdfFile: fileName,
-                    message: 'El PDF fue guardado con éxito.'
+                    docStatus: factura.docStatus === 'CREADA' ? 'EN_PROCESO' : factura.docStatus
                 };
-            })
-                .catch(error => {
-                throw new common_1.ServiceUnavailableException(error);
-            });
+                const newLog = {
+                    userLog: `${infoUser.user}${infoUser.isSuperUser() ? ' (SUPERUSER)' : ''}`,
+                    fechaLog: moment().toDate(),
+                    statusLog: factura.docStatus === 'CREADA' ? 'EN_PROCESO' : factura.docStatus,
+                    description: 'Se actualizó el archivo PDF de la factura.'
+                };
+                toUpdate['log'] = [...factura.log, newLog];
+                await this.facturaProveedorService.patchFacturaProveedor(id, toUpdate)
+                    .then(data => {
+                    rtnMessage = {
+                        _id: id,
+                        pdfFile: fileName,
+                        message: 'El PDF fue guardado con éxito.'
+                    };
+                })
+                    .catch(error => {
+                    throw new common_1.ServiceUnavailableException(error);
+                });
+            }
+            return rtnMessage;
         }
-        return rtnMessage;
     }
     async getAll(infoUser, params) {
         const page = params.page ? params.page : 0;
