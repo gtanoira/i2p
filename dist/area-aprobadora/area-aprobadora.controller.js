@@ -68,14 +68,14 @@ __decorate([
     common_1.Patch('/migrate'),
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [user_auth_model_1.UserAuth]),
     __metadata("design:returntype", Promise)
 ], AreaAprobadoraController.prototype, "migrateFromOld", null);
 __decorate([
     common_1.Get(),
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [user_auth_model_1.UserAuth]),
     __metadata("design:returntype", Promise)
 ], AreaAprobadoraController.prototype, "findAll", null);
 AreaAprobadoraController = __decorate([

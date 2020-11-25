@@ -22,6 +22,7 @@ export declare class LogFactura {
     fechaLog: Date;
     statusLog: string;
     userLog: string;
+    description?: string;
 }
 export declare class FacturaProveedor {
     migration_id?: Types.ObjectId;

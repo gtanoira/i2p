@@ -21,6 +21,7 @@ const one_file_opts_multer_1 = require("./one-file-opts.multer");
 const get_token_decorator_1 = require("src/common/get-token.decorator");
 const validate_token_pipe_1 = require("src/common/validate-token.pipe");
 const environment_settings_1 = require("src/environment/environment.settings");
+const user_auth_model_1 = require("src/models/user-auth.model");
 const factura_proveedor_dto_1 = require("../dto/factura-proveedor.dto");
 const factura_proveedor_service_1 = require("./factura-proveedor.service");
 const factura_proveedor_service_2 = require("./old/factura-proveedor.service");
@@ -73,7 +74,14 @@ let FacturaProveedorController = class FacturaProveedorController {
         return rtnMessage;
     }
     async addFactura(infoUser, facturaProveedorDto) {
-        return await this.facturaProveedorService.addFacturaProveedor(facturaProveedorDto)
+        const newLog = {
+            fechaLog: moment().toDate(),
+            userLog: `${infoUser.user}${infoUser.isSuperUser() ? ' (SUPERUSER)' : ''}`,
+            statusLog: 'CREADA',
+            description: 'Se creó una nueva factura.'
+        };
+        const newFactura = Object.assign(Object.assign({}, facturaProveedorDto), { log: [newLog] });
+        return await this.facturaProveedorService.addFacturaProveedor(newFactura)
             .then(factura => {
             return {
                 _id: factura._id,
@@ -99,11 +107,17 @@ let FacturaProveedorController = class FacturaProveedorController {
             });
             const toUpdate = {
                 pdfFile: fileName,
-                docStatus: 'EN_PROCESO'
+                docStatus: factura.docStatus === 'CREADA' ? 'EN_PROCESO' : factura.docStatus
             };
+            const newLog = {
+                userLog: `${infoUser.user}${infoUser.isSuperUser() ? ' (SUPERUSER)' : ''}`,
+                fechaLog: moment().toDate(),
+                statusLog: factura.docStatus === 'CREADA' ? 'EN_PROCESO' : factura.docStatus,
+                description: 'Se actualizó el archivo PDF de la factura.'
+            };
+            toUpdate['log'] = [...factura.log, newLog];
             await this.facturaProveedorService.patchFacturaProveedor(id, toUpdate)
                 .then(data => {
-                console.log();
                 rtnMessage = {
                     _id: id,
                     pdfFile: fileName,
@@ -279,7 +293,7 @@ __decorate([
     common_1.Patch('/migrate'),
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe())),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [user_auth_model_1.UserAuth]),
     __metadata("design:returntype", Promise)
 ], FacturaProveedorController.prototype, "migrateFromOld", null);
 __decorate([
@@ -288,7 +302,8 @@ __decorate([
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe())),
     __param(1, common_1.Body(new common_1.ValidationPipe())),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, factura_proveedor_dto_1.CreateFacturaProveedorDto]),
+    __metadata("design:paramtypes", [user_auth_model_1.UserAuth,
+        factura_proveedor_dto_1.CreateFacturaProveedorDto]),
     __metadata("design:returntype", Promise)
 ], FacturaProveedorController.prototype, "addFactura", null);
 __decorate([
@@ -299,14 +314,14 @@ __decorate([
     __param(1, common_1.Param('id')),
     __param(2, common_1.UploadedFile()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String, Object]),
+    __metadata("design:paramtypes", [user_auth_model_1.UserAuth, String, Object]),
     __metadata("design:returntype", Promise)
 ], FacturaProveedorController.prototype, "addFileToFactura", null);
 __decorate([
     common_1.Get(),
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe())),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [user_auth_model_1.UserAuth]),
     __metadata("design:returntype", Promise)
 ], FacturaProveedorController.prototype, "getAll", null);
 __decorate([
@@ -315,7 +330,7 @@ __decorate([
     __param(1, common_1.Param('id')),
     __param(2, common_1.Res()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String, Object]),
+    __metadata("design:paramtypes", [user_auth_model_1.UserAuth, String, Object]),
     __metadata("design:returntype", Promise)
 ], FacturaProveedorController.prototype, "getPdfFile", null);
 FacturaProveedorController = __decorate([

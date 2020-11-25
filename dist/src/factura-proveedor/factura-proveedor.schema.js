@@ -94,6 +94,10 @@ __decorate([
     mongoose_1.Prop(),
     __metadata("design:type", String)
 ], LogFactura.prototype, "userLog", void 0);
+__decorate([
+    mongoose_1.Prop(),
+    __metadata("design:type", String)
+], LogFactura.prototype, "description", void 0);
 exports.LogFactura = LogFactura;
 let FacturaProveedor = class FacturaProveedor {
 };

@@ -16,6 +16,7 @@ exports.AreaAprobadoraController = void 0;
 const common_1 = require("@nestjs/common");
 const area_aprobadora_service_1 = require("./area-aprobadora.service");
 const area_aprobadora_service_2 = require("./old/area-aprobadora.service");
+const user_auth_model_1 = require("src/models/user-auth.model");
 const get_token_decorator_1 = require("src/common/get-token.decorator");
 const validate_token_pipe_1 = require("src/common/validate-token.pipe");
 let AreaAprobadoraController = class AreaAprobadoraController {
@@ -67,14 +68,14 @@ __decorate([
     common_1.Patch('/migrate'),
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [user_auth_model_1.UserAuth]),
     __metadata("design:returntype", Promise)
 ], AreaAprobadoraController.prototype, "migrateFromOld", null);
 __decorate([
     common_1.Get(),
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [user_auth_model_1.UserAuth]),
     __metadata("design:returntype", Promise)
 ], AreaAprobadoraController.prototype, "findAll", null);
 AreaAprobadoraController = __decorate([

@@ -23,7 +23,7 @@ export class FacturaProveedorService {
   }
   
   // Grabar un nuevo doc
-  async addFacturaProveedor(factura: FacturaProveedor) {
+  async addFacturaProveedor(factura: FacturaProveedor): Promise<FacturaProveedorDocument> {
     return this.facturaProveedorModel.create(factura);
   }
 

@@ -24,11 +24,7 @@ let AuthorizationsService = class AuthorizationsService {
             authorization: token
         };
         return this.http.get(`${environment_settings_1.LOGIN_CENTRAL_SERVER}/api2/validatesession/invoice2pay`, { headers }).pipe(operators_1.map(infoUser => {
-            return {
-                user: infoUser.data.user,
-                fullName: infoUser.data.fullName,
-                authorizations: infoUser.data.authorizations ? infoUser.data.authorizations : {}
-            };
+            return new user_auth_model_1.UserAuth(infoUser.data.user, infoUser.data.fullName, infoUser.data.authorizations ? infoUser.data.authorizations : {});
         }), operators_1.catchError(error => {
             return rxjs_1.throwError(error.response.data.message.toString());
         }));
