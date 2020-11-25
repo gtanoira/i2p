@@ -8,4 +8,5 @@ export declare class UserAuth {
         [key: string]: any;
     });
     isSuperUser(): boolean;
+    hasRole(role: string): boolean;
 }

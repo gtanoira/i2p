@@ -130,8 +130,13 @@ let FacturaProveedorController = class FacturaProveedorController {
         }
         return rtnMessage;
     }
-    async getAll(infoUser) {
-        return await this.facturaProveedorService.findAll();
+    async getAll(infoUser, params) {
+        const page = params.page ? params.page : 0;
+        const recsPerPage = params.recsPerPage ? params.recsPerPage : 0;
+        return await this.facturaProveedorService.findAll(page, recsPerPage);
+    }
+    async countFacturas(infoUser) {
+        return await this.facturaProveedorService.countFacturas();
     }
     async getPdfFile(infoUser, id, res) {
         await this.facturaProveedorService.findOne(id)
@@ -318,12 +323,23 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], FacturaProveedorController.prototype, "addFileToFactura", null);
 __decorate([
-    common_1.Get(),
+    common_1.Get([
+        '/',
+        '/:page/:recsPerPage'
+    ]),
+    __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe())),
+    __param(1, common_1.Param()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [user_auth_model_1.UserAuth, Object]),
+    __metadata("design:returntype", Promise)
+], FacturaProveedorController.prototype, "getAll", null);
+__decorate([
+    common_1.Get('/count'),
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe())),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [user_auth_model_1.UserAuth]),
     __metadata("design:returntype", Promise)
-], FacturaProveedorController.prototype, "getAll", null);
+], FacturaProveedorController.prototype, "countFacturas", null);
 __decorate([
     common_1.Get('/:id/pdf'),
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe())),

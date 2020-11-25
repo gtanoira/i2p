@@ -19,6 +19,18 @@ class UserAuth {
         }
         return false;
     }
+    hasRole(role) {
+        const auths = this.authorizations;
+        if (!auths)
+            return false;
+        if (auths.role && typeof auths.role === 'string') {
+            return auths.role.indexOf(role) < 0 ? false : true;
+        }
+        if (auths.role && typeof auths.role === 'object') {
+            return auths.role.includes(role);
+        }
+        return false;
+    }
 }
 exports.UserAuth = UserAuth;
 ;
