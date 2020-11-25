@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SociedadController = void 0;
 const common_1 = require("@nestjs/common");
 const sociedad_service_1 = require("./sociedad.service");
+const user_auth_model_1 = require("src/models/user-auth.model");
 const get_token_decorator_1 = require("src/common/get-token.decorator");
 const validate_token_pipe_1 = require("src/common/validate-token.pipe");
 const rxjs_1 = require("rxjs");
@@ -39,7 +40,7 @@ __decorate([
     common_1.Get(),
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [user_auth_model_1.UserAuth]),
     __metadata("design:returntype", Promise)
 ], SociedadController.prototype, "findAll", null);
 __decorate([
@@ -48,7 +49,7 @@ __decorate([
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe)),
     __param(1, common_1.Body(new common_1.ValidationPipe())),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Array]),
+    __metadata("design:paramtypes", [user_auth_model_1.UserAuth, Array]),
     __metadata("design:returntype", rxjs_1.Observable)
 ], SociedadController.prototype, "addFactura", null);
 SociedadController = __decorate([

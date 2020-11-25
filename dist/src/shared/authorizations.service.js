@@ -14,6 +14,7 @@ const common_1 = require("@nestjs/common");
 const rxjs_1 = require("rxjs");
 const operators_1 = require("rxjs/operators");
 const environment_settings_1 = require("src/environment/environment.settings");
+const user_auth_model_1 = require("src/models/user-auth.model");
 let AuthorizationsService = class AuthorizationsService {
     constructor(http) {
         this.http = http;
@@ -23,11 +24,7 @@ let AuthorizationsService = class AuthorizationsService {
             authorization: token
         };
         return this.http.get(`${environment_settings_1.LOGIN_CENTRAL_SERVER}/api2/validatesession/invoice2pay`, { headers }).pipe(operators_1.map(infoUser => {
-            return {
-                user: infoUser.data.user,
-                fullName: infoUser.data.fullName,
-                authorizations: infoUser.data.authorizations ? infoUser.data.authorizations : {}
-            };
+            return new user_auth_model_1.UserAuth(infoUser.data.user, infoUser.data.fullName, infoUser.data.authorizations ? infoUser.data.authorizations : {});
         }), operators_1.catchError(error => {
             return rxjs_1.throwError(error.response.data.message.toString());
         }));

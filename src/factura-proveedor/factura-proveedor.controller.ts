@@ -9,7 +9,6 @@ const fs = require('file-system');
 
 // Constant
 import { oneFileMemoryMulterOptions } from './one-file-opts.multer';
-import { DocStatus } from 'src/models/constantes.model';
 //Decorators
 import { GetToken } from 'src/common/get-token.decorator';
 // Pipes
@@ -99,7 +98,15 @@ export class FacturaProveedorController {
     @Body(new ValidationPipe()) facturaProveedorDto: CreateFacturaProveedorDto
     // @UploadedFile() pdfFile
   ): Promise<{[key:string]: any}> {
-    return await this.facturaProveedorService.addFacturaProveedor(facturaProveedorDto)
+    // Crear un LOG
+    const newLog: LogFactura = {
+      fechaLog: moment().toDate(),
+      userLog: `${infoUser.user}${infoUser.isSuperUser() ? ' (SUPERUSER)' : ''}`,
+      statusLog: 'CREADA',
+      description: 'Se creó una nueva factura.'
+    };
+    const newFactura = { ...facturaProveedorDto, log: [newLog] };
+    return await this.facturaProveedorService.addFacturaProveedor(newFactura)
     .then(factura => {
       return {
         _id: factura._id,
@@ -141,11 +148,21 @@ export class FacturaProveedorController {
       // Actualizar la factura
       const toUpdate = {
         pdfFile: fileName,
-        docStatus: 'EN_PROCESO'
-      }
+        docStatus: factura.docStatus === 'CREADA' ? 'EN_PROCESO' : factura.docStatus
+      };
+
+      // Crear LOG
+      const newLog: LogFactura = {
+        userLog: `${infoUser.user}${infoUser.isSuperUser() ? ' (SUPERUSER)' : ''}`,
+        fechaLog: moment().toDate(),
+        statusLog: factura.docStatus === 'CREADA' ? 'EN_PROCESO' : factura.docStatus,
+        description: 'Se actualizó el archivo PDF de la factura.'
+      };
+      toUpdate['log'] = [ ...factura.log, newLog ];
+
+      // Grabar
       await this.facturaProveedorService.patchFacturaProveedor(id, toUpdate)
       .then( data => {
-        console.log()
         rtnMessage = {
           _id: id,
           pdfFile: fileName,

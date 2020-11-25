@@ -21,11 +21,11 @@ export class AuthorizationsService {
     };
     return this.http.get<UserAuth | never>(`${LOGIN_CENTRAL_SERVER}/api2/validatesession/invoice2pay`, { headers }).pipe(
       map(infoUser => {
-        return {
-          user: infoUser.data.user,
-          fullName: infoUser.data.fullName,
-          authorizations: infoUser.data.authorizations ? infoUser.data.authorizations : {}
-        };
+        return new UserAuth(
+          infoUser.data.user,
+          infoUser.data.fullName,
+          infoUser.data.authorizations ? infoUser.data.authorizations : {}
+        )
       }),
       catchError(
         error =>{

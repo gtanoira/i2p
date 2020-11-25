@@ -70,6 +70,9 @@ export class LogFactura {
 
   @Prop()
   public userLog!: string;
+  
+  @Prop()
+  public description?: string;
 }
 
 @Schema({

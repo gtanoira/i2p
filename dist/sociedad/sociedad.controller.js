@@ -41,7 +41,7 @@ __decorate([
     common_1.Get(),
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [user_auth_model_1.UserAuth]),
     __metadata("design:returntype", Promise)
 ], SociedadController.prototype, "findAll", null);
 __decorate([
@@ -50,7 +50,7 @@ __decorate([
     __param(0, get_token_decorator_1.GetToken(new validate_token_pipe_1.ValidateTokenPipe)),
     __param(1, common_1.Body(new common_1.ValidationPipe())),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Array]),
+    __metadata("design:paramtypes", [user_auth_model_1.UserAuth, Array]),
     __metadata("design:returntype", rxjs_1.Observable)
 ], SociedadController.prototype, "addFactura", null);
 SociedadController = __decorate([
