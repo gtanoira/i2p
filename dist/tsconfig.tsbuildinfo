@@ -1757,8 +1757,8 @@
         "affectsGlobalScope": false
       },
       "../src/models/user-auth.model.ts": {
-        "version": "405f972605446577cf93e091d37eb613f487b62fc822e91a446198561aaa7a03",
-        "signature": "bd9f1bd10fecd368e06b751f68541dcc38901aca765131cce6ae8eb08b298daf",
+        "version": "b5e592899e2fd313b6faf5d5fd37969309fce6d1afd629c8b77b9d3fc58f61de",
+        "signature": "211fe101a73c84000d6901b2767b74c7e599fec1e87a5548abd60c516edfc7b0",
         "affectsGlobalScope": false
       },
       "../src/common/get-token.decorator.ts": {
@@ -3122,8 +3122,8 @@
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.service.ts": {
-        "version": "84176820861d1660a3ba4fcaa6f7f829c352f892a5880491327765ca10bf0403",
-        "signature": "5e9d396e352a45ca7396e2bf01d0f638450453902df74bc8cc48bbfc3f03ad3f",
+        "version": "dc01485ed88cdc0b09800a6e8f52ccad41ed482ebc54273b86d31ff53711f8d7",
+        "signature": "04a1b40579946b5a67033ae7ef080cb1b2248ba5dabd812eac25de3676e70a83",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/old/factura-proveedor.service.ts": {
@@ -3132,8 +3132,8 @@
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.controller.ts": {
-        "version": "e27a51d0f23a586799390f46400f1e604649b12e98395a9d78ec196c6b075469",
-        "signature": "731370537b5c3267bb82bc4e711e9224c984c892fb02540f19c384d684a55aad",
+        "version": "f3cd3b7c2e0a3ee738d01d026979f9b7f750c4e395628cf641ee3e65b60941d5",
+        "signature": "00d2ccce2d062315908ac03abd00d643bb7f8d1e0757fc691e12065d4e97eaf0",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/old/factura-proveedor.controller.ts": {

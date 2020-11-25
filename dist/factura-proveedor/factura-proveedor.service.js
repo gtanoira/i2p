@@ -21,14 +21,24 @@ let FacturaProveedorService = class FacturaProveedorService {
     constructor(facturaProveedorModel) {
         this.facturaProveedorModel = facturaProveedorModel;
     }
-    async findAll() {
-        return this.facturaProveedorModel.find();
+    async addFacturaProveedor(factura) {
+        return this.facturaProveedorModel.create(factura);
+    }
+    async countFacturas() {
+        return this.facturaProveedorModel.count({});
+    }
+    async findAll(page, recsPerPage) {
+        if (page === 0 || recsPerPage === 0) {
+            return this.facturaProveedorModel.find().exec();
+        }
+        else {
+            const pagina = (page - 1) * recsPerPage;
+            console.log('*** skip, limit:', pagina, recsPerPage);
+            return this.facturaProveedorModel.find().skip(pagina).limit(Math.abs(recsPerPage)).exec();
+        }
     }
     async findOne(id) {
         return await this.facturaProveedorModel.findById(id).exec();
-    }
-    async addFacturaProveedor(factura) {
-        return this.facturaProveedorModel.create(factura);
     }
     async patchFacturaProveedor(id, datosActualizar) {
         return await this.facturaProveedorModel.findOneAndUpdate({ _id: id }, { $set: datosActualizar }).exec();

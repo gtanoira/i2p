@@ -177,11 +177,25 @@ export class FacturaProveedorController {
   }
 
   // Traer todas las facturas
-  @Get()
+  @Get([
+    '/',
+    '/:page/:recsPerPage'
+  ])
   async getAll(
-    @GetToken(new ValidateTokenPipe()) infoUser: UserAuth
+    @GetToken(new ValidateTokenPipe()) infoUser: UserAuth,
+    @Param() params
   ): Promise<FacturaProveedor[]> {
-    return await this.facturaProveedorService.findAll();
+    const page = params.page ? params.page : 0;
+    const recsPerPage = params.recsPerPage ? params.recsPerPage : 0;
+    return await this.facturaProveedorService.findAll(page, recsPerPage);
+  }
+
+  // Devolver la cantidad de facturas existentes en la BDatos
+  @Get('/count')
+  async countFacturas(
+    @GetToken(new ValidateTokenPipe()) infoUser: UserAuth,
+  ): Promise<number> {
+    return await this.facturaProveedorService.countFacturas();
   }
 
   // Show Pdf File

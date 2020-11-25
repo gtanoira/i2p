@@ -3,9 +3,10 @@ import { FacturaProveedor, FacturaProveedorDocument } from './factura-proveedor.
 export declare class FacturaProveedorService {
     private facturaProveedorModel;
     constructor(facturaProveedorModel: Model<FacturaProveedorDocument>);
-    findAll(): Promise<FacturaProveedor[]>;
-    findOne(id: string): Promise<FacturaProveedor>;
     addFacturaProveedor(factura: FacturaProveedor): Promise<FacturaProveedorDocument>;
+    countFacturas(): Promise<number>;
+    findAll(page: number, recsPerPage: number): Promise<FacturaProveedor[]>;
+    findOne(id: string): Promise<FacturaProveedor>;
     patchFacturaProveedor(id: string, datosActualizar: {
         [key: string]: any;
     }): Promise<FacturaProveedorDocument>;
