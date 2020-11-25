@@ -33,7 +33,6 @@ let FacturaProveedorService = class FacturaProveedorService {
         }
         else {
             const pagina = (page - 1) * recsPerPage;
-            console.log('*** skip, limit:', pagina, recsPerPage);
             return this.facturaProveedorModel.find().skip(pagina).limit(Math.abs(recsPerPage)).exec();
         }
     }

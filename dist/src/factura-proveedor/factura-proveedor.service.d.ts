@@ -6,7 +6,7 @@ export declare class FacturaProveedorService {
     addFacturaProveedor(factura: FacturaProveedor): Promise<FacturaProveedorDocument>;
     countFacturas(): Promise<number>;
     findAll(page: number, recsPerPage: number): Promise<FacturaProveedor[]>;
-    findOne(id: string): Promise<FacturaProveedor>;
+    findOne(id: string): Promise<FacturaProveedorDocument>;
     patchFacturaProveedor(id: string, datosActualizar: {
         [key: string]: any;
     }): Promise<FacturaProveedorDocument>;

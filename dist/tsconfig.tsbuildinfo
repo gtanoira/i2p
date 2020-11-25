@@ -3122,8 +3122,8 @@
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.service.ts": {
-        "version": "dc01485ed88cdc0b09800a6e8f52ccad41ed482ebc54273b86d31ff53711f8d7",
-        "signature": "04a1b40579946b5a67033ae7ef080cb1b2248ba5dabd812eac25de3676e70a83",
+        "version": "fa51156e5dcc8080ec94a3b14c8d5bc324f4c07f1889ba88f677819deaedb94a",
+        "signature": "42b8c60c746a797fc8abf19ce58ffaed91e59b3ebe19a43d3cd3c2216fb7b495",
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/old/factura-proveedor.service.ts": {
@@ -3132,7 +3132,7 @@
         "affectsGlobalScope": false
       },
       "../src/factura-proveedor/factura-proveedor.controller.ts": {
-        "version": "f3cd3b7c2e0a3ee738d01d026979f9b7f750c4e395628cf641ee3e65b60941d5",
+        "version": "94e95568ac1bc9afe2b473c53d569cc3e4ed528ca7273c50a26fa9a6f6cdb149",
         "signature": "00d2ccce2d062315908ac03abd00d643bb7f8d1e0757fc691e12065d4e97eaf0",
         "affectsGlobalScope": false
       },
