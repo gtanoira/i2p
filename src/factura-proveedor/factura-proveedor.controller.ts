@@ -183,20 +183,6 @@ export class FacturaProveedorController {
     }
   }
 
-  // Traer todas las facturas
-  @Get([
-    '/',
-    '/:page/:recsPerPage'
-  ])
-  async getAll(
-    @GetToken(new ValidateTokenPipe()) infoUser: UserAuth,
-    @Param() params
-  ): Promise<FacturaProveedor[]> {
-    const page = params.page ? params.page : 0;
-    const recsPerPage = params.recsPerPage ? params.recsPerPage : 0;
-    return await this.facturaProveedorService.findAll(page, recsPerPage);
-  }
-
   // Devolver la cantidad de facturas existentes en la BDatos
   @Get('/count')
   async countFacturas(
@@ -249,6 +235,20 @@ export class FacturaProveedorController {
     .catch((error) => {
       throw new BadRequestException(`API-0048(E): id inexsitente (${id})`);
     });
+  }
+
+  // Traer todas las facturas
+  @Get([
+    '/',
+    '/:page/:recsPerPage'
+  ])
+  async getAll(
+    @GetToken(new ValidateTokenPipe()) infoUser: UserAuth,
+    @Param() params
+  ): Promise<FacturaProveedor[]> {
+    const page = params.page ? params.page : 0;
+    const recsPerPage = params.recsPerPage ? params.recsPerPage : 0;
+    return await this.facturaProveedorService.findAll(page, recsPerPage);
   }
 
   // Armar el documento con el nuevo formato
