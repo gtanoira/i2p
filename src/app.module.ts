@@ -9,12 +9,12 @@ import { AppController } from './app.controller';
 
 // Services
 import { AppService } from './app.service';
+import { AuthorizationsService } from './shared/authorizations.service';
 
 // Modules
 import { AreaAprobadoraModule } from './area-aprobadora/area-aprobadora.module';
 import { FacturaProveedorModule } from './factura-proveedor/factura-proveedor.module';
 import { SociedadModule } from './sociedad/sociedad.module';
-import { AuthorizationsService } from './shared/authorizations.service';
 
 // MongoDB Connection Options (database)
 const connOptions = {
@@ -40,7 +40,7 @@ const connOptions = {
     AreaAprobadoraModule,
     FacturaProveedorModule,
     HttpModule,
-    SociedadModule,
+    SociedadModule
   ],
   controllers: [
     AppController
