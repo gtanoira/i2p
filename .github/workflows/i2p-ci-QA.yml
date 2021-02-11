@@ -1,0 +1,36 @@
+name: I2p CI in QA
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+
+  # Build de environment where to run and compile de application
+  build:
+    
+    # Run on the Claxson Servers
+    runs-on: self-hosted
+
+    steps:
+
+      # Checks-out the repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Configure Node.js 10.x
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 10.x
+          # token: ${{ github.token }}
+
+      - name: npm install, build
+        run:
+          npm install
+          npm run build --if-present
