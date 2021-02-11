@@ -29,4 +29,3 @@ export const I2P_OLD = 'mongodb://invoice:Inv.1984@admapps02:27017/invoice2pay';
 // Public folder
 export const PUBLIC_URL = `http://localhost:${SERVER_PORT}/public`;
 export const PUBLIC_PATH = './public';
-
