@@ -1,6 +1,6 @@
 # I2P - Directorios a excluir
 /node_modules
-/dist/environment
+/dist
 /public/pdf/*
 
 # I2P - Archivos a excluir
