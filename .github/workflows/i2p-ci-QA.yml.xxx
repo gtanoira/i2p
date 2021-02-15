@@ -21,13 +21,9 @@ jobs:
 
     steps:
 
-      # Checks-out the repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      - name: Configure Node.js 10.x
-        uses: actions/setup-node@v2.1.4
-        with:
-          node-version: 10.x
+      # Make a git pull of the repo into the server
+      - run:
+          screen -r hgdw
           # token: ${{ github.token }}
 
       - name: npm install, build
