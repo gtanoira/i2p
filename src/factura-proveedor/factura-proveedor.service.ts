@@ -4,6 +4,13 @@ import { Model } from 'mongoose';
 
 // Schemas
 import { FacturaProveedor, FacturaProveedorDocument } from './factura-proveedor.schema';
+// Models & Interfaces
+interface getAllParams {
+  pageNo?: number,
+  recsPage?: number,
+  sortField?: string,
+  sortDirection?: string
+};
 
 @Injectable()
 export class FacturaProveedorService {
@@ -23,12 +30,25 @@ export class FacturaProveedorService {
   }
   
   // Traer todos los registros
-  async findAll(page: number, recsPerPage: number): Promise<FacturaProveedor[]> {
-    if (page === 0 || recsPerPage === 0) {
-      return this.facturaProveedorModel.find().exec();
+  async getRecords({
+    pageNo = 1,
+    recsPage = 10000,
+    sortField = '',
+    sortDirection = 'ASC'
+  }: getAllParams):Promise<FacturaProveedor[]> {
+    if (pageNo <= 0 || recsPage <= 0) {
+      return [];
     } else {
-      const pagina = (page - 1) * recsPerPage;
-      return this.facturaProveedorModel.find().skip(pagina).limit(Math.abs(recsPerPage)).exec();
+      const pagina = (pageNo - 1) * recsPage;
+      const orderBy = sortDirection && 'ASC,DESC'.indexOf(sortDirection.toUpperCase()) > 0 ? sortDirection.toUpperCase() : `ASC`;
+      const sorting = {};
+      sorting[sortField] = orderBy;
+      console.log(pageNo, recsPage, pagina, orderBy, sorting)
+      return this.facturaProveedorModel.find()
+      .sort(sorting)
+      .skip(pagina)
+      .limit(Math.abs(recsPage))
+      .exec();
     }
   }
   

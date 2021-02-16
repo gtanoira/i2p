@@ -15,7 +15,7 @@ export const EMAIL_SERVER_SETTINGS = {
 export const SAPGW_SERVER = 'http://clxsapjgw02:8080/ClxWebService';
 
 // Login Central Server
-export const LOGIN_CENTRAL_SERVER = 'http://localhost:8000';  // 'http://logincentraldev.claxson.com';
+export const LOGIN_CENTRAL_SERVER = 'http://logincentraldev.claxson.com';  // 'http://localhost:8000';  // 
 
 // Default PORT
 export const SERVER_PORT = 4700;
