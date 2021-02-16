@@ -1,5 +1,22 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { BadRequestException, Body, ConflictException, Controller, Get, HttpCode, Param, Patch, Post, Res, ServiceUnavailableException, UploadedFile, UseInterceptors, ValidationPipe } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  ConflictException,
+  Controller,
+  Get,
+  HttpCode,
+  Param,
+  Patch,
+  Post,
+  Query,
+  Req,
+  Res,
+  ServiceUnavailableException,
+  UploadedFile,
+  UseInterceptors,
+  ValidationPipe
+} from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express/multer/interceptors/file.interceptor';
 import { Types } from 'mongoose';
 import * as moment from 'moment';
@@ -237,18 +254,32 @@ export class FacturaProveedorController {
     });
   }
 
-  // Traer todas las facturas
+  // Obtener facturas
   @Get([
-    '/',
-    '/:page/:recsPerPage'
+    '/'
   ])
   async getAll(
     @GetToken(new ValidateTokenPipe()) infoUser: UserAuth,
-    @Param() params
+    @Query('page_no') pageNo: number,
+    @Query('recs_page') recsPage: number,
+    @Query('sort_field') sortField: string,
+    @Query('sort_direction') sortDirection: string,
+    @Req() req  
   ): Promise<FacturaProveedor[]> {
-    const page = params.page ? params.page : 0;
-    const recsPerPage = params.recsPerPage ? params.recsPerPage : 0;
-    return await this.facturaProveedorService.findAll(page, recsPerPage);
+    console.log(`${req.method} ${req.url}`);
+    return await this.facturaProveedorService.getRecords({
+      pageNo: pageNo && pageNo > 0 ? pageNo : 1,
+      recsPage: recsPage && recsPage > 0 ? recsPage : 10000,
+      sortField: sortField ? sortField : '',
+      sortDirection: sortDirection && 'asc,desc'.indexOf(sortDirection.toLowerCase()) >= 0 ? sortDirection.toUpperCase() : 'ASC'
+    })
+    .then(data => {
+      return data;
+    })
+    .catch(error => {
+      console.log(error);
+      throw new ServiceUnavailableException({'message': error.message});
+    });
   }
 
   // Armar el documento con el nuevo formato
