@@ -1,3 +1,27 @@
+/**
+ * ROLES:
+ * Existen varios tipo de roles en el sistema:
+ *   CARGADOR: puede cargar facturas de su área.
+ *   VISUALIZADOR: puede ver facturas de todas las áreas.
+ *   GERENTE: es el que aprueba las facturas de su área
+ *   DIRECTOR: es el que aprueba las facturas de su área
+ *   VP
+ *   GTEGRAL
+ *   ADMINISTRADOR: encargado de enviar las facturas a SAP. Administra el backend.
+ *   PAGADOR: encargado de cargar y enviar las retenciones efectuadas a las facturas (esto se realiza después de enviar las facturas a SAP).
+ *   SUPERUSER: superusuario, tiene todos los poderes
+ * 
+ * Los roles de un usuario se proveen a través del sistema LOGIN CENTRAL, al loguearse el usuario al sistema.
+ * También pueden obtenerse ejecutando la api /api2/validatesession/<sistema, ej.: invoice2pay>
+ * Estos roles vienen como parte de la info del usuario en un objeto JSON:
+ *   {
+ *     ...
+ *     authorizations: {
+ *       role: 'CARGADOR,ADMINISTADOR,etc..'
+ *     }
+ *  }
+
+ */
 export class UserAuth {
   user: string;
   fullName: string;
