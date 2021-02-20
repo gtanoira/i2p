@@ -2,10 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
+// Models
+import { UserAuth } from 'src/models/user-auth.model';
+
 // Schemas
 import { FacturaProveedor, FacturaProveedorDocument } from './factura-proveedor.schema';
 // Models & Interfaces
 interface getAllParams {
+  infoUser: UserAuth,
   pageNo?: number,
   recsPage?: number,
   sortField?: string,
@@ -31,6 +35,7 @@ export class FacturaProveedorService {
   
   // Traer todos los registros
   async getRecords({
+    infoUser = new UserAuth('NoUser', null, {}),
     pageNo = 1,
     recsPage = 10000,
     sortField = '',
@@ -39,12 +44,23 @@ export class FacturaProveedorService {
     if (pageNo <= 0 || recsPage <= 0) {
       return [];
     } else {
+      // Armar el query para traer las facturas dependiendo del usuario
+      if (infoUser.user === 'NoUser' || !infoUser.authorizations.areasAprobadoras) return [];
+      //const findQuery = `{areaAprobadoraId: { $in: ${infoUser.authorizations.areasAprobadoras.toString()}}}`;
+      const findQuery = {
+        'areaAprobadoraId': {
+          '$in': infoUser.authorizations.areasAprobadoras
+        }
+      };
       const pagina = (pageNo - 1) * recsPage;
       const orderBy = sortDirection && 'ASC,DESC'.indexOf(sortDirection.toUpperCase()) > 0 ? sortDirection.toUpperCase() : `ASC`;
       const sorting = {};
-      sorting[sortField] = orderBy;
-      console.log(pageNo, recsPage, pagina, orderBy, sorting)
-      return this.facturaProveedorModel.find()
+      if (sortField !== '' && sortField !== null) {
+        sorting[sortField] = orderBy;
+      }
+      console.log(infoUser);
+      console.log(pageNo, recsPage, pagina, orderBy, sorting, findQuery)
+      return this.facturaProveedorModel.find(findQuery)
       .sort(sorting)
       .skip(pagina)
       .limit(Math.abs(recsPage))
