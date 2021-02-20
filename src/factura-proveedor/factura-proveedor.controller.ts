@@ -208,6 +208,35 @@ export class FacturaProveedorController {
     return await this.facturaProveedorService.countFacturas();
   }
 
+  // Obtener facturas
+  @Get([
+    '/'
+  ])
+  async getAll(
+    @GetToken(new ValidateTokenPipe()) infoUser: UserAuth,
+    @Query('page_no') pageNo: number,
+    @Query('recs_page') recsPage: number,
+    @Query('sort_field') sortField: string,
+    @Query('sort_direction') sortDirection: string,
+    @Req() req  
+  ): Promise<FacturaProveedor[]> {
+    console.log(`${req.method} ${req.url}`);
+    return await this.facturaProveedorService.getRecords({
+      infoUser,
+      pageNo: pageNo && pageNo > 0 ? pageNo : 1,
+      recsPage: recsPage && recsPage > 0 ? recsPage : 10000,
+      sortField: sortField ? sortField : '',
+      sortDirection: sortDirection && 'asc,desc'.indexOf(sortDirection.toLowerCase()) >= 0 ? sortDirection.toUpperCase() : 'ASC'
+    })
+    .then(data => {
+      return data;
+    })
+    .catch(error => {
+      console.log(error);
+      throw new ServiceUnavailableException({'message': error.message});
+    });
+  }
+
   // Show Pdf File
   @Get('/:id/pdf')
   public async getPdfFile(
@@ -251,34 +280,6 @@ export class FacturaProveedorController {
     })
     .catch((error) => {
       throw new BadRequestException(`API-0048(E): id inexsitente (${id})`);
-    });
-  }
-
-  // Obtener facturas
-  @Get([
-    '/'
-  ])
-  async getAll(
-    @GetToken(new ValidateTokenPipe()) infoUser: UserAuth,
-    @Query('page_no') pageNo: number,
-    @Query('recs_page') recsPage: number,
-    @Query('sort_field') sortField: string,
-    @Query('sort_direction') sortDirection: string,
-    @Req() req  
-  ): Promise<FacturaProveedor[]> {
-    console.log(`${req.method} ${req.url}`);
-    return await this.facturaProveedorService.getRecords({
-      pageNo: pageNo && pageNo > 0 ? pageNo : 1,
-      recsPage: recsPage && recsPage > 0 ? recsPage : 10000,
-      sortField: sortField ? sortField : '',
-      sortDirection: sortDirection && 'asc,desc'.indexOf(sortDirection.toLowerCase()) >= 0 ? sortDirection.toUpperCase() : 'ASC'
-    })
-    .then(data => {
-      return data;
-    })
-    .catch(error => {
-      console.log(error);
-      throw new ServiceUnavailableException({'message': error.message});
     });
   }
 
