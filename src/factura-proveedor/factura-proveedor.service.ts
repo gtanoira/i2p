@@ -4,6 +4,9 @@ import { Model } from 'mongoose';
 
 // Models
 import { UserAuth } from 'src/models/user-auth.model';
+// Roles
+import { UserRoles } from 'src/models/user.roles';
+
 
 // Schemas
 import { FacturaProveedor, FacturaProveedorDocument } from './factura-proveedor.schema';
@@ -30,14 +33,23 @@ export class FacturaProveedorService {
   
   // Grabar un nuevo doc
   async countFacturas(infoUser = new UserAuth('NoUser', null, {})): Promise<number> {
-    // Armar el query para traer las facturas dependiendo del usuario
-    if (infoUser.user === 'NoUser' || !infoUser.authorizations.areasAprobadoras) return 0;
-    const findQuery = {
+    return this.facturaProveedorModel.count(this.createQuery(infoUser));
+  }
+
+  // Crear el query para el filtrado de las facturas
+  private createQuery(infoUser: UserAuth): {[key: string]: any} {
+    // Validar si es SUPERUSER
+    if(infoUser.authorizations.role && infoUser.authorizations.role === UserRoles.SUPERUSER) return {};
+    // Validar que existan los datos necesarios
+    if (infoUser.user === 'NoUser' ||
+        !infoUser.authorizations.role ||
+        !infoUser.authorizations.areasAprobadoras
+       ) return {'_id': 'XXXXXXXXXXXX'};
+    return {
       'areaAprobadoraId': {
         '$in': infoUser.authorizations.areasAprobadoras
       }
     };
-    return this.facturaProveedorModel.count(findQuery);
   }
   
   // Traer todos los registros
@@ -51,22 +63,14 @@ export class FacturaProveedorService {
     if (pageNo <= 0 || recsPage <= 0) {
       return [];
     } else {
-      // Armar el query para traer las facturas dependiendo del usuario
-      if (infoUser.user === 'NoUser' || !infoUser.authorizations.areasAprobadoras) return [];
-      const findQuery = {
-        'areaAprobadoraId': {
-          '$in': infoUser.authorizations.areasAprobadoras
-        }
-      };
       const pagina = (pageNo - 1) * recsPage;
       const orderBy = sortDirection && 'ASC,DESC'.indexOf(sortDirection.toUpperCase()) > 0 ? sortDirection.toUpperCase() : `ASC`;
       const sorting = {};
       if (sortField !== '' && sortField !== null) {
         sorting[sortField] = orderBy;
       }
-      console.log(infoUser);
-      console.log(pageNo, recsPage, pagina, orderBy, sorting, findQuery)
-      return this.facturaProveedorModel.find(findQuery)
+      console.log(pageNo, recsPage, pagina, orderBy, sorting, this.createQuery(infoUser))
+      return this.facturaProveedorModel.find(this.createQuery(infoUser))
       .sort(sorting)
       .skip(pagina)
       .limit(Math.abs(recsPage))
