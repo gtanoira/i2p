@@ -29,8 +29,15 @@ export class FacturaProveedorService {
   }
   
   // Grabar un nuevo doc
-  async countFacturas(): Promise<number> {
-    return this.facturaProveedorModel.count({});
+  async countFacturas(infoUser = new UserAuth('NoUser', null, {})): Promise<number> {
+    // Armar el query para traer las facturas dependiendo del usuario
+    if (infoUser.user === 'NoUser' || !infoUser.authorizations.areasAprobadoras) return 0;
+    const findQuery = {
+      'areaAprobadoraId': {
+        '$in': infoUser.authorizations.areasAprobadoras
+      }
+    };
+    return this.facturaProveedorModel.count(findQuery);
   }
   
   // Traer todos los registros
@@ -46,7 +53,6 @@ export class FacturaProveedorService {
     } else {
       // Armar el query para traer las facturas dependiendo del usuario
       if (infoUser.user === 'NoUser' || !infoUser.authorizations.areasAprobadoras) return [];
-      //const findQuery = `{areaAprobadoraId: { $in: ${infoUser.authorizations.areasAprobadoras.toString()}}}`;
       const findQuery = {
         'areaAprobadoraId': {
           '$in': infoUser.authorizations.areasAprobadoras
