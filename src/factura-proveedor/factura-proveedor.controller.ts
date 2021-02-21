@@ -205,7 +205,7 @@ export class FacturaProveedorController {
   async countFacturas(
     @GetToken(new ValidateTokenPipe()) infoUser: UserAuth,
   ): Promise<number> {
-    return await this.facturaProveedorService.countFacturas();
+    return await this.facturaProveedorService.countFacturas(infoUser);
   }
 
   // Obtener facturas
