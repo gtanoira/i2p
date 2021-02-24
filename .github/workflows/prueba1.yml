@@ -12,8 +12,6 @@ jobs:
     runs-on: ubuntu 16.04.x
 
     steps:
-      - name: Deploy I2P over Claxson Server
-      - run: pwd
-      - run: cd /opt/webapps/i2p
-      - run: pwd
-      
+    - run: pwd
+    - run: cd /opt/webapps/i2p
+    - run: pwd      
