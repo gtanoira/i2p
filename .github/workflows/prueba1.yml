@@ -13,6 +13,7 @@ jobs:
 
     steps:
       - name: Deploy I2P over Claxson Server
-      - run: |
-        cd /opt/webapps/i2p
-        pwd
+      - run: pwd
+      - run: cd /opt/webapps/i2p
+      - run: pwd
+      
