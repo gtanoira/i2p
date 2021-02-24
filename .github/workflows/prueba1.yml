@@ -1,4 +1,4 @@
-name: I2p CI in QA
+name: Prueba 1
 
 # Controls when the action will run. 
 on:
@@ -12,7 +12,5 @@ jobs:
     runs-on: ubuntu 16.04.x
 
     steps:
-      - name: Deploy I2P over Claxson Server
-      - run: |
-        cd /opt/webapps/i2p
-        pwd
+    - run: cd /opt/webapps/i2p
+    - run: pwd
