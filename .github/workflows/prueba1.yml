@@ -13,5 +13,7 @@ jobs:
 
     steps:
     - run: pwd
+    - run: ping localhost -c 5
+    - run: ping admapps01 -c 5
     - run: cd /opt/webapps/i2p
     - run: pwd      
