@@ -12,8 +12,8 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - run: pwd
-    - run: ping localhost -c 5
-    - run: ping admapps01 -c 5
     - run: cd /opt/webapps/i2p
-    - run: pwd      
+    - run: pm2 stop i2p
+    - run: git pull
+    - run: npm run build
+    - run: pm2 start i2p
