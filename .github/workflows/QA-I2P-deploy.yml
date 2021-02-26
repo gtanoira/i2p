@@ -8,7 +8,7 @@ jobs:
 
     steps:
       # stop backend server
-      - run: pm2 stop i2p_2
+      - run: pm2 stop i2p
 
       # Build the app
       - uses: actions/checkout@v2
@@ -21,4 +21,4 @@ jobs:
       - run: npm run build
 
       # Restart backend server
-      - run: pm2 restart i2p_2
+      - run: pm2 start i2p

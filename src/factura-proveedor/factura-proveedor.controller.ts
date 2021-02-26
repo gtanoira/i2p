@@ -225,6 +225,7 @@ export class FacturaProveedorController {
     let totRecords = 0;
     await this.facturaProveedorService.countFacturas(infoUser)
       .then(count => totRecords = count).catch(() => totRecords = 0);
+    console.log('*** totFacturas:', totRecords);
     // Obtener las facturas
     return await this.facturaProveedorService.getRecords({
       infoUser,
