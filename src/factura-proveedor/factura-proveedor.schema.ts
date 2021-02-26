@@ -159,3 +159,8 @@ export class FacturaProveedor {
 
 export type FacturaProveedorDocument = FacturaProveedor & Document;
 export const FacturaProveedorSchema = SchemaFactory.createForClass(FacturaProveedor);
+
+export type FacturaProveedorToResponse = {
+  totalFacturas: number,
+  facturas: FacturaProveedor[]
+};
