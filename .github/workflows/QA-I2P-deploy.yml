@@ -1,0 +1,24 @@
+name: Deploy I2P in QA
+on: [push]
+
+jobs:
+  build:
+    #  Run in Claxson Server admapps02 in /opt/actions-runner/_work/i2p
+    runs-on: self-hosted
+
+    steps:
+      # stop backend server
+      - run: pm2 stop i2p_2
+
+      # Build the app
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 12.x
+      - run: npm i
+
+      # Compile app
+      - run: npm run build
+
+      # Restart backend server
+      - run: pm2 restart i2p_2
