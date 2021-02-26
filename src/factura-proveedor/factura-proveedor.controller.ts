@@ -33,7 +33,7 @@ import { ValidateTokenPipe } from 'src/common/validate-token.pipe';
 // Environment
 import { PUBLIC_PATH } from 'src/environment/environment.settings';
 // Schemas & Models
-import { DetalleFactura, FacturaProveedor, FacturaProveedorDocument, ImpuestoFactura, LogFactura } from './factura-proveedor.schema';
+import { DetalleFactura, FacturaProveedor, FacturaProveedorDocument, FacturaProveedorToResponse, ImpuestoFactura, LogFactura } from './factura-proveedor.schema';
 import { FacturaProveedorOld } from './old/factura-proveedor-old.schema';
 import { UserAuth } from 'src/models/user-auth.model';
 // DTOs
@@ -219,8 +219,13 @@ export class FacturaProveedorController {
     @Query('sort_field') sortField: string,
     @Query('sort_direction') sortDirection: string,
     @Req() req  
-  ): Promise<FacturaProveedor[]> {
+  ): Promise<FacturaProveedorToResponse> {
     console.log(`${req.method} ${req.url}`);
+    // Obtener la cantidad de facturas
+    let totRecords = 0;
+    await this.facturaProveedorService.countFacturas(infoUser)
+      .then(count => totRecords = count).catch(() => totRecords = 0);
+    // Obtener las facturas
     return await this.facturaProveedorService.getRecords({
       infoUser,
       pageNo: pageNo && pageNo > 0 ? pageNo : 1,
@@ -229,7 +234,10 @@ export class FacturaProveedorController {
       sortDirection: sortDirection && 'asc,desc'.indexOf(sortDirection.toLowerCase()) >= 0 ? sortDirection.toUpperCase() : 'ASC'
     })
     .then(data => {
-      return data;
+      return {
+        totalFacturas: totRecords,
+        facturas: data
+      };
     })
     .catch(error => {
       console.log(error);

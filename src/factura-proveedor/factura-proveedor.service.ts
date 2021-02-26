@@ -33,7 +33,7 @@ export class FacturaProveedorService {
   
   // Grabar un nuevo doc
   async countFacturas(infoUser = new UserAuth('NoUser', null, {})): Promise<number> {
-    return this.facturaProveedorModel.count(this.createQuery(infoUser));
+    return this.facturaProveedorModel.countDocuments(this.createQuery(infoUser));
   }
 
   // Crear el query para el filtrado de las facturas
