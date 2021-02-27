@@ -16,7 +16,8 @@ interface getAllParams {
   pageNo?: number,
   recsPage?: number,
   sortField?: string,
-  sortDirection?: string
+  sortDirection?: string,
+  proveedorId: string
 };
 
 @Injectable()
@@ -58,19 +59,27 @@ export class FacturaProveedorService {
     pageNo = 1,
     recsPage = 10000,
     sortField = '',
-    sortDirection = 'ASC'
+    sortDirection = 'ASC',
+    proveedorId = ''
   }: getAllParams):Promise<FacturaProveedor[]> {
     if (pageNo <= 0 || recsPage <= 0) {
       return [];
     } else {
       const pagina = (pageNo - 1) * recsPage;
       const orderBy = sortDirection && 'ASC,DESC'.indexOf(sortDirection.toUpperCase()) > 0 ? sortDirection.toUpperCase() : `ASC`;
+      // Sorting
       const sorting = {};
       if (sortField !== '' && sortField !== null) {
         sorting[sortField] = orderBy;
       }
-      console.log(pageNo, recsPage, pagina, orderBy, sorting, this.createQuery(infoUser))
+      // Query by Proveedor
+      const proveedor = {};
+      if (proveedorId !== '' && proveedorId !== null) {
+        proveedor['proveedorId'] = proveedorId;
+      }
+      // Get the records
       return this.facturaProveedorModel.find(this.createQuery(infoUser))
+      .where(proveedor)
       .sort(sorting)
       .skip(pagina)
       .limit(Math.abs(recsPage))
