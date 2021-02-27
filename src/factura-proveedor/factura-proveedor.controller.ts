@@ -218,25 +218,22 @@ export class FacturaProveedorController {
     @Query('recs_page') recsPage: number,
     @Query('sort_field') sortField: string,
     @Query('sort_direction') sortDirection: string,
+    @Query('proveedor_id') proveedorId: string,
     @Req() req  
   ): Promise<FacturaProveedorToResponse> {
     console.log(`${req.method} ${req.url}`);
-    // Obtener la cantidad de facturas
-    let totRecords = 0;
-    await this.facturaProveedorService.countFacturas(infoUser)
-      .then(count => totRecords = count).catch(() => totRecords = 0);
-    console.log('*** totFacturas:', totRecords);
     // Obtener las facturas
     return await this.facturaProveedorService.getRecords({
       infoUser,
       pageNo: pageNo && pageNo > 0 ? pageNo : 1,
       recsPage: recsPage && recsPage > 0 ? recsPage : 10000,
       sortField: sortField ? sortField : '',
-      sortDirection: sortDirection && 'asc,desc'.indexOf(sortDirection.toLowerCase()) >= 0 ? sortDirection.toUpperCase() : 'ASC'
+      sortDirection: sortDirection && 'asc,desc'.indexOf(sortDirection.toLowerCase()) >= 0 ? sortDirection.toUpperCase() : 'ASC',
+      proveedorId
     })
     .then(data => {
       return {
-        totalFacturas: totRecords,
+        totalFacturas: data.length,
         facturas: data
       };
     })
