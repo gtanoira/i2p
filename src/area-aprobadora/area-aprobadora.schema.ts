@@ -4,8 +4,6 @@ import { Document } from 'mongoose';
 // Models
 import { Proveedor } from '../models/proveedor.model';
 
-export type AreaAprobadoraDocument = AreaAprobadora & Document;
-
 @Schema({
   collection: 'area_aprobadoras'
 })
@@ -21,4 +19,5 @@ export class AreaAprobadora {
   public proveedores!: Proveedor[]
 }
 
+export type AreaAprobadoraDocument = AreaAprobadora & Document;
 export const AreaAprobadoraSchema = SchemaFactory.createForClass(AreaAprobadora);
