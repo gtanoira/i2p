@@ -219,6 +219,7 @@ export class FacturaProveedorController {
     @Query('sort_field') sortField: string,
     @Query('sort_direction') sortDirection: string,
     @Query('proveedor_id') proveedorId: string,
+    @Query('search') search: string,
     @Req() req  
   ): Promise<FacturaProveedorToResponse> {
     console.log(`${req.method} ${req.url}`);
@@ -229,7 +230,8 @@ export class FacturaProveedorController {
       recsPage: recsPage && recsPage > 0 ? recsPage : 10000,
       sortField: sortField ? sortField : '',
       sortDirection: sortDirection && 'asc,desc'.indexOf(sortDirection.toLowerCase()) >= 0 ? sortDirection.toUpperCase() : 'ASC',
-      proveedorId
+      proveedorId,
+      search
     })
     .then(data => {
       return {
