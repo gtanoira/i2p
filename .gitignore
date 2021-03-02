@@ -1,10 +1,10 @@
 # I2P - Directorios a excluir
-/environment
+/src/environment
 /node_modules
 /dist
-/public/pdf/*
 
 # I2P - Archivos a excluir
+/public/pdf/*
 
 # Logs
 logs
