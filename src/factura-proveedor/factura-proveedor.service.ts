@@ -17,7 +17,8 @@ interface getAllParams {
   recsPage?: number,
   sortField?: string,
   sortDirection?: string,
-  proveedorId: string
+  proveedorId: string,
+  search: string
 };
 
 @Injectable()
@@ -60,7 +61,8 @@ export class FacturaProveedorService {
     recsPage = 10000,
     sortField = '',
     sortDirection = 'ASC',
-    proveedorId = ''
+    proveedorId = '',
+    search = ''
   }: getAllParams):Promise<FacturaProveedor[]> {
     if (pageNo <= 0 || recsPage <= 0) {
       return [];
@@ -77,6 +79,9 @@ export class FacturaProveedorService {
       if (proveedorId !== '' && proveedorId !== null) {
         proveedor['proveedorId'] = proveedorId;
       }
+      // Query by search
+      const search = {};
+      
       // Get the records
       return this.facturaProveedorModel.find(this.createQuery(infoUser))
       .where(proveedor)
