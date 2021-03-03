@@ -6,7 +6,7 @@ import { Document } from 'mongoose';
 export class DetalleAprobaciones {
 
   @Prop({ type: Int32 })
-  public nivel!: number;
+  public prioridad!: number;
 
   @Prop({ uppercase: true })
   public areaAprobadoraId!: string;
@@ -14,11 +14,11 @@ export class DetalleAprobaciones {
   @Prop({default: null})
   public role!: string;
   
-  @Prop()
-  public fechaAprobacion?: Date;
+  @Prop({default: null})
+  public fechaAprobado?: Date;
   
-  @Prop()
-  public userAprobacion?: string;
+  @Prop({default: null})
+  public userAprobado?: string;
 }
 
 @Schema({
