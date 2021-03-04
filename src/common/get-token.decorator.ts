@@ -13,6 +13,9 @@ export const GetToken = createParamDecorator(
     // Obtener el token del request
     const token = request.headers.authorization;
 
+    // Log del request
+    console.log(`${new Date().toLocaleString('es-ar')}, ${request.method} ${request.url}`);
+
     return token ? token : null;
   },
 );

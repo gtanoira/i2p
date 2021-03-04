@@ -21,4 +21,9 @@ export class AreaAprobadoraService {
   async addAreaAprobadora(area: AreaAprobadora) {
     return this.areaAprobadoraModel.create(area);
   }
+
+  // Obtener un solo registro
+  async findOneRecord(area: string): Promise<AreaAprobadora> {
+    return this.areaAprobadoraModel.findOne({id: area});
+  }
 }

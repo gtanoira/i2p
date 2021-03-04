@@ -2,6 +2,9 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Int32 } from 'bson';
 import { Document } from 'mongoose';
 
+// Models
+import { UserRoles } from 'src/models/user.roles';
+
 // Detalle de aprobaciones
 export class DetalleAprobaciones {
 
@@ -11,7 +14,7 @@ export class DetalleAprobaciones {
   @Prop({ uppercase: true })
   public areaAprobadoraId!: string;
 
-  @Prop({default: null})
+  @Prop({default: UserRoles.CARGADOR})
   public role!: string;
   
   @Prop({default: null})
@@ -40,7 +43,7 @@ export class EsquemaAprobacion {
 
   // Detalle Esquema
   @Prop({ type: DetalleAprobaciones, _id: false })
-  public detalle?: DetalleAprobaciones[];
+  public detalleAprobaciones?: DetalleAprobaciones[];
 }
 
 export type EsquemaAprobacionDocument = EsquemaAprobacion & Document;

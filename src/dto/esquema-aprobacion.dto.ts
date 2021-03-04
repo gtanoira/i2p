@@ -1,126 +1,48 @@
 import { Type } from 'class-transformer';
-import { IsDate, IsEnum, IsNotEmpty, IsNumber, IsNumberString, IsOptional, IsString, Length, ValidateNested } from 'class-validator';
+import { 
+  IsDate,
+  IsEnum,
+  IsInt,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  Min,
+  ValidateNested
+} from 'class-validator';
+import { UserRoles } from 'src/models/user.roles';
 
-// Models
-import { DocStatus } from 'src/models/constantes.model';
+// Detalle de aprobaciones
+export class DetalleEsquema {
 
-// Detalle Factura
-export class DetalleFactura {
-  @IsString()
-  @IsNotEmpty()
-  public concepto!: string;
-
-  @IsString()
-  public descripcion?: string | null;
+  @IsInt()
+  @Min(1)
+  public prioridad!: number;
   
   @IsString()
-  public mesServicio?: string;
-
-  @IsString()
-  public sapCentroCostoId?: string | null;
-
-  @IsString()
-  public sapCentroCostoDesc?: string | null;
-
-  @IsString()
-  public sapCtaCtbleId?: string | null;
-
-  @IsString()
-  public sapCtaCtbleDesc?: string | null;
-
-  @IsString()
-  public sapOrden?: string | null;
-
-  @IsNumber()
-  public itemNeto!: number | 0.00;
-
-  @IsString()
-  public sapTaxId!: string | 'CX';
-
-  @IsString()
-  public sapTaxDesc?: string | null;
-
-  @IsNumber()
-  public itemIva!: number | 0.00;
-}
-
-// Impuestos Facturas
-export class ImpuestoFactura {
+  @IsNotEmpty()
+  public areaAprobadoraId!: string;
+  
   @IsString()
   @IsNotEmpty()
-  public sapTaxId!: string;
-
-  @IsString()
-  public sapTaxDesc?: string | null;
-
-  @IsNumber()
-  @IsNotEmpty()
-  public totalImpuesto!: number;
-}
-
-// Log Facturas
-export class LogFactura {
+  @IsEnum(UserRoles, 
+    {message: `El valor del role es incorrecto.`}
+  )
+  public role!: string;
+  
+  @IsOptional()
   @Type(() => Date)
   @IsDate()
-  public fechaLog!: Date;
+  public fechaAprobado?: Date;
 
-  @IsString()
-  @IsEnum(DocStatus, 
-    {message: `El valor del statusLog es incorrecto: ${DocStatus}.`}
-  )
-  public statusLog!: string;
-
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
-  public userLog!: string;
+  public userAprobado?: string;
 }
 
 export class EsquemaAprobacionDto {
   
-  @IsString()
-  @IsNotEmpty()
-  public empresaId!: string;
-
-  @IsString()
-  public empresaDesc?: string;
-
-  @IsString()
-  @IsNumberString({ no_symbols: true })
-  @Length(1, 10)
-  public proveedorId!: string;
-
-  @IsString()
-  public proveedorDesc?: string;
-
-  @Type(() => Date)
-  @IsDate()
-  public fechaDoc!: Date;
-
-  @Type(() => Date)
-  @IsDate()
-  public fechaCtble!: Date;
-
-  @IsString()
-  @IsNotEmpty()
-  public sapCbteId!: string;
-
-  @IsString()
-  public sapCbteDesc?: string;
-
-  @IsString()
-  public numeroFactura?: string | null;
- 
-  @IsString()
-  @IsNotEmpty()
-  public monedaDoc!: string;
- 
-  @IsNumber()
-  @IsNotEmpty()
-  public monedaCotiz!: number;
-
-  @IsNumber()
-  public totalNeto?: number;
-
   @IsString()
   @IsNotEmpty()
   public areaAprobadoraId!: string;
@@ -128,22 +50,19 @@ export class EsquemaAprobacionDto {
   @IsString()
   public areaAprobadoraDesc?: string;
 
-  @IsOptional()
-  public docStatus?: string;
+  @IsNumber()
+  @IsNotEmpty()
+  @Min(1)
+  public importeMax!: number;
+ 
+  @IsString()
+  @IsNotEmpty()
+  public monedaId!: string;
 
-  // Detalle Factura
-  @Type(() => DetalleFactura)
+  // Detalle esquema de aprobaciones
+  @IsNotEmpty()
+  @Type(() => DetalleEsquema)
   @ValidateNested({ each: true })
-  public detalle?: DetalleFactura[];
-
-  // Impuestos Factura
-  @Type(() => ImpuestoFactura)
-  @ValidateNested({ each: true })
-  public impuestos?: ImpuestoFactura[];
-
-  // Log Factura
-  @Type(() => LogFactura)
-  @ValidateNested({ each: true })
-  public log?: LogFactura[];
+  public detalleAprobaciones!: DetalleEsquema[];
 
 }
