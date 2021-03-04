@@ -33,7 +33,7 @@ import { ValidateTokenPipe } from 'src/common/validate-token.pipe';
 // Environment
 import { PUBLIC_PATH } from 'src/environment/environment.settings';
 // Schemas & Models
-import { DetalleFactura, FacturaProveedor, FacturaProveedorDocument, FacturaProveedorToResponse, ImpuestoFactura, LogFactura } from './factura-proveedor.schema';
+import { DetalleFactura, FacturaProveedor, FacturaProveedorToResponse, ImpuestoFactura, LogFactura } from './factura-proveedor.schema';
 import { FacturaProveedorOld } from './old/factura-proveedor-old.schema';
 import { UserAuth } from 'src/models/user-auth.model';
 // DTOs
