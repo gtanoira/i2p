@@ -5,6 +5,7 @@ import {
   Get,
   HttpCode,
   Post,
+  ServiceUnavailableException,
   UnauthorizedException,
   ValidationPipe
 } from '@nestjs/common';
@@ -75,7 +76,10 @@ export class EsquemaAprobacionController {
           _id: esquema._id,
           message: "esquema de aprobación creado con éxito."
         }
-      });
+      })
+      .catch(error => {
+        throw new ServiceUnavailableException(error.message);
+      })
     } else {
       throw new UnauthorizedException('API-0027(E): no posee acceso a esta api.');
     }

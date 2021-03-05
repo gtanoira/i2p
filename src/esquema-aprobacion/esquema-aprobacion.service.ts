@@ -11,13 +11,28 @@ export class EsquemaAprobacionService {
     @InjectModel(EsquemaAprobacion.name) private esquemaAprobacionModel: Model<EsquemaAprobacionDocument>
   ) {}
 
-  // Traer todos los registros
-  async getAllRecords(): Promise<EsquemaAprobacion[]> {
-    return this.esquemaAprobacionModel.find().exec();
-  }
-
   // Grabar un nuevo doc
   async addRecord(esquema: EsquemaAprobacion) {
     return this.esquemaAprobacionModel.create(esquema);
+  }
+
+  // Encontrar un esquema de aprobación que se ajuste a las especificaciones
+  async findAprobacion(areaId: string, monedaId: string, importe: number): Promise<EsquemaAprobacion> {
+    console.log(`area: ${areaId}, moneda: ${monedaId}, importe: ${importe}`)
+    return this.esquemaAprobacionModel.findOne(
+      {
+          $and: [
+              {areaAprobadoraId: {$eq: areaId}},
+              {monedaId: {$eq: monedaId}},
+              {importeMax: {$gte: importe}}
+          ]
+      
+      }
+    );
+  }
+
+  // Traer todos los registros
+  async getAllRecords(): Promise<EsquemaAprobacion[]> {
+    return this.esquemaAprobacionModel.find().exec();
   }
 }

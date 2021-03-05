@@ -1,9 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Type } from 'class-transformer';
+import {Type } from 'class-transformer';
 import { Document, Types } from 'mongoose';
 
 // Models
 import { DocStatus } from '../models/constantes.model';
+import { DetalleAprobaciones } from 'src/esquema-aprobacion/esquema-aprobacion.schema';
 
 // Detalle Factura
 export class DetalleFactura {
@@ -155,6 +156,9 @@ export class FacturaProveedor {
   @Prop({ type: LogFactura, _id: false })
   public log?: LogFactura[];
 
+  // Aprobaciones
+  @Prop({ type: DetalleAprobaciones, _id: false })
+  public aprobaciones?: DetalleAprobaciones[];
 }
 
 export type FacturaProveedorDocument = FacturaProveedor & Document;

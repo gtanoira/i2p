@@ -14,7 +14,7 @@ export class DetalleAprobaciones {
   @Prop({ uppercase: true })
   public areaAprobadoraId!: string;
 
-  @Prop({default: UserRoles.CARGADOR})
+  @Prop({default: UserRoles.ADMINISTRADOR})
   public role!: string;
   
   @Prop({default: null})

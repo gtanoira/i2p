@@ -39,6 +39,7 @@ import { UserAuth } from 'src/models/user-auth.model';
 // DTOs
 import { CreateFacturaProveedorDto } from '../dto/factura-proveedor.dto';
 // Services
+import { EsquemaAprobacionService } from 'src/esquema-aprobacion/esquema-aprobacion.service';
 import { FacturaProveedorService } from './factura-proveedor.service';
 import { FacturaProveedorOldService } from './old/factura-proveedor.service';
 
@@ -46,6 +47,7 @@ import { FacturaProveedorOldService } from './old/factura-proveedor.service';
 export class FacturaProveedorController {
 
   constructor (
+    private esquemaAprobacionService: EsquemaAprobacionService,
     private facturaProveedorService: FacturaProveedorService,
     private facturaProveedorOldService: FacturaProveedorOldService
   ) {}
@@ -61,6 +63,7 @@ export class FacturaProveedorController {
     const docsConError = [];  // informe de las facturas que NO pudieron ser grabadas en la base de datos
     const newDocs: FacturaProveedor[] = [];
     
+    // Leer las facturas del I2P de Juan Carta
     const oldDocs = await this.facturaProveedorOldService.findAll()
       .catch(error => {
         console.log('*** ERROR facturaProveedorOld:', error);
@@ -74,7 +77,7 @@ export class FacturaProveedorController {
         newDocs.push(this.mapNewDoc(factura));
       });
 
-      // Grabar las facturas
+      // Grabar las facturas en el nuevo I2P
       for (const factura of newDocs) {
         await this.facturaProveedorService.addFacturaProveedor(factura)
           .then(() => {
@@ -122,7 +125,25 @@ export class FacturaProveedorController {
       statusLog: 'CREADA',
       description: 'Se creó una nueva factura.'
     };
-    const newFactura = { ...facturaProveedorDto, log: [newLog] };
+    
+    // Crear detalle de aprobaciones
+    let aprobaciones = [];
+    await this.esquemaAprobacionService.findAprobacion(
+      facturaProveedorDto.areaAprobadoraId,
+      facturaProveedorDto.monedaDoc,
+      facturaProveedorDto.totalNeto
+    )
+    .then(esquema => {
+      const detalleAprobaciones = esquema.detalleAprobaciones.map(el => {
+        return {...el, fechaAprobado: null, userAprobado: null }
+      })
+      aprobaciones = detalleAprobaciones;
+    })
+    .catch(error => {
+      throw new ConflictException([`API-0051(E): no se encontró un esquema de aprobacion.`, `Error: ${error.message}`]);
+    });
+
+    const newFactura = { ...facturaProveedorDto, log: [newLog], aprobaciones };
     return await this.facturaProveedorService.addFacturaProveedor(newFactura)
     .then(factura => {
       return {
@@ -332,6 +353,9 @@ export class FacturaProveedorController {
         userLog: gralLog.description?.split(/\:/)[1]
       });
     });
+
+    // Armar el esquema de aprobacion
+    
 
     // Salvar el PDF asociado al doc en el disco
     const pdfName = `${factura.supplier.split(/\:/)[0]}_${factura.accountingdate}_${factura.documentnumber}.pdf`;
