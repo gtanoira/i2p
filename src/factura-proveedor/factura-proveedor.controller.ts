@@ -243,7 +243,6 @@ export class FacturaProveedorController {
     @Query('search') search: string,
     @Req() req  
   ): Promise<FacturaProveedorToResponse> {
-    console.log(`${req.method} ${req.url}`);
     // Obtener las facturas
     return await this.facturaProveedorService.getRecords({
       infoUser,
@@ -261,7 +260,6 @@ export class FacturaProveedorController {
       };
     })
     .catch(error => {
-      console.log(error);
       throw new ServiceUnavailableException({'message': error.message});
     });
   }

@@ -18,7 +18,6 @@ export class EsquemaAprobacionService {
 
   // Encontrar un esquema de aprobación que se ajuste a las especificaciones
   async findAprobacion(areaId: string, monedaId: string, importe: number): Promise<EsquemaAprobacion> {
-    console.log(`area: ${areaId}, moneda: ${monedaId}, importe: ${importe}`)
     return this.esquemaAprobacionModel.findOne(
       {
           $and: [

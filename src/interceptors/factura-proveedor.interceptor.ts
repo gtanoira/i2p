@@ -5,9 +5,6 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class FacturaProveedorInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    console.log();
-    console.log('Before...');
-    console.log(context);
     
     // Obtener el body con los datos necesario
     const factura = context.getArgByIndex(0).body;
