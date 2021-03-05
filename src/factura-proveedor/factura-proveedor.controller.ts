@@ -63,6 +63,7 @@ export class FacturaProveedorController {
     const docsConError = [];  // informe de las facturas que NO pudieron ser grabadas en la base de datos
     const newDocs: FacturaProveedor[] = [];
     
+    // Leer las facturas del I2P de Juan Carta
     const oldDocs = await this.facturaProveedorOldService.findAll()
       .catch(error => {
         console.log('*** ERROR facturaProveedorOld:', error);
@@ -76,7 +77,7 @@ export class FacturaProveedorController {
         newDocs.push(this.mapNewDoc(factura));
       });
 
-      // Grabar las facturas
+      // Grabar las facturas en el nuevo I2P
       for (const factura of newDocs) {
         await this.facturaProveedorService.addFacturaProveedor(factura)
           .then(() => {
@@ -352,6 +353,9 @@ export class FacturaProveedorController {
         userLog: gralLog.description?.split(/\:/)[1]
       });
     });
+
+    // Armar el esquema de aprobacion
+    
 
     // Salvar el PDF asociado al doc en el disco
     const pdfName = `${factura.supplier.split(/\:/)[0]}_${factura.accountingdate}_${factura.documentnumber}.pdf`;
