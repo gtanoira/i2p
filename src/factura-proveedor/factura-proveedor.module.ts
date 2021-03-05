@@ -9,11 +9,9 @@ import { EsquemaAprobacion, EsquemaAprobacionSchema } from 'src/esquema-aprobaci
 import { FacturaProveedor, FacturaProveedorSchema } from './factura-proveedor.schema';
 import { FacturaImagenOld, FacturaImagenOldSchema } from './old/factura-imagen-old.schema';
 import { FacturaProveedorOld, FacturaProveedorOldSchema } from './old/factura-proveedor-old.schema';
-
 // Controllers
 import { FacturaProveedorController } from './factura-proveedor.controller';
 import { FacturaProveedorOldController } from './old/factura-proveedor.controller';
-
 // Services
 import { EsquemaAprobacionService } from 'src/esquema-aprobacion/esquema-aprobacion.service';
 import { FacturaProveedorService } from './factura-proveedor.service';
