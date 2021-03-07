@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { query } from 'express';
 import { Model } from 'mongoose';
 
 // Models
@@ -80,11 +81,24 @@ export class FacturaProveedorService {
         proveedor['proveedorId'] = proveedorId;
       }
       // Query by search
-      const search = {};
+      const s = new RegExp(search, 'i');
+      const searchQuery = {};
+      if (search != null && search !== '') {
+        searchQuery['$or'] = [
+          {proveedorDesc: {$regex: s}},
+          {numeroFactura: {$regex: s}},
+          {empresaDesc: {$regex: s}},
+          {docStatus: {$regex: s}},
+          {sapCbteId: {$regex: s}}
+          /* {fechaDoc: {$regex: search}} ,*/
+          /* {totalNeto: {$regex: search}} */
+        ];
+      }
       
       // Get the records
       return this.facturaProveedorModel.find(this.createQuery(infoUser))
       .where(proveedor)
+      .where(searchQuery)
       .sort(sorting)
       .skip(pagina)
       .limit(Math.abs(recsPage))
