@@ -104,6 +104,9 @@ export class FacturaProveedor {
   @Prop()
   public fechaDoc!: Date;
 
+  @Prop({ default: null})
+  public fechaVtoDoc?: Date;
+
   @Prop()
   public fechaCtble!: Date;
 

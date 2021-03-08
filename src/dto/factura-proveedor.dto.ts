@@ -96,6 +96,11 @@ export class CreateFacturaProveedorDto {
   @IsDate()
   public fechaDoc!: Date;
 
+  @IsOptional()
+  @Type(() => Date)
+  @IsDate()
+  public fechaVtoDoc?: Date;
+
   @Type(() => Date)
   @IsDate()
   public fechaCtble!: Date;
